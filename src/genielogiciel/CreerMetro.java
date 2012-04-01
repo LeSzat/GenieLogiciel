@@ -4,6 +4,8 @@
  */
 package genielogiciel;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author User
@@ -15,13 +17,14 @@ public class CreerMetro {
     public CreerMetro(){
         
         lignes=new Ligne[1];
-        Station[] stations=new Station[5];
+       
         Zone zone=new Zone(1,2);
-        stations[0]=new Station("Station la défense grande arche",false,true,zone);
-        stations[1]=new Station("Station esplanade de la défense",true,true,zone); 
-        stations[2]= new Station("Station argentine",true,true,zone); 
-        stations[3]=new Station("Station george V" , true,false,zone);
-        stations[4]= new Station("Station porte de vincennes",true,false,zone);
+        
+        ArrayList <Station> stations=new ArrayList();
+        stations.add(new Station("Station la défense grande arche",false,true,zone));
+        stations.add(new Station("Station argentine",true,true,zone));
+        stations.add(new Station("Station george V" , true,false,zone));
+        stations.add(new Station("Station porte de vincennes",true,false,zone));
         lignes[0]= new Ligne("Ligne 1",stations);
         
         
