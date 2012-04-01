@@ -54,7 +54,7 @@ public class Metro {
                 System.out.println("Les informations de quelle station voulez-vous consulter?");
                 for(int i=0;i<m.getLignes().length;i++){
                      System.out.println(m.getLigne(i).getNom());
-                    for(int j=0;j<m.getLigne(i).getStations().length;j++){
+                    for(int j=0;j<m.getLigne(i).getStations();j++){
                        
                         System.out.println(" - " + j + " " + m.getLigne(i).getStation(j).getNom());
                     }
@@ -66,7 +66,7 @@ public class Metro {
                     System.out.println("Les informations de quelle station voulez-vous consulter?");
                 for(int i=0;i<m.getLignes().length;i++){
                      System.out.println(m.getLigne(i).getNom());
-                    for(int j=0;j<m.getLigne(i).getStations().length;j++){
+                    for(int j=0;j<m.getLigne(i).getStations();j++){
                        int somme=i+j;
                         System.out.println(" - " + somme + " " + m.getLigne(i).getStation(j).getNom());
                     }
