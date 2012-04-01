@@ -9,5 +9,5 @@ package genielogiciel;
  * @author mathias
  */
 public class NewClass {
-    
+    int i=0;
 }
