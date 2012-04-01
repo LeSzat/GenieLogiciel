@@ -16,6 +16,13 @@ public class Perturbation {
     private Date jour;
     private boolean enCours;
     
+    public Perturbation(){
+        ligne= null;
+        jour=new Date();
+        enCours=false;
+    }
+    
+    
     public Perturbation(Station[] ligne,Date jour,boolean enCours){
         this.ligne=new Station[ligne.length];
         for(int i=ligne.length-1;i>=0;i--){
