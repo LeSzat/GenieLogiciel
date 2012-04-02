@@ -54,12 +54,13 @@ public class Metro {
         switch(choix ){
             case 1:
                 System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");
-                int i=1;
+                
                 
                 
                 System.out.println(lignes.size());
             //    System.out.println(lignes.get(0).toString());
-                for( i=0;i<lignes.size();i++){
+                for(int i=1;i<=lignes.size();i++){
+                    System.out.println(i);
                      System.out.println("-" + i + "-" + m.getLigne(i).getNom());
                 }
                 
