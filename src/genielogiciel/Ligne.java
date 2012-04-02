@@ -14,65 +14,29 @@ public class Ligne {
     
     private String nom;
     private ArrayList<Station> stations;
-    private boolean[] perturbations;
-    private Perturbation[] perturbationsListe;
+    private boolean perturbations;
+    private ArrayList<Station> StationPerturbees;
     
-    
-    public Ligne(String nom,ArrayList station){
+    public Ligne(String nom)
+    {
        this.nom=nom;
        stations = new ArrayList<Station>();
-       stations.addAll(station);
-      
-        perturbations=new boolean[station.size()];
-        for(int i=0;i<stations.size();i++){
-            perturbations[i]=false;
-        }
-        
-        perturbationsListe=new Perturbation[2];
-        for(int i=0;i<perturbationsListe.length;i++){
-               
-            // a changer
-            perturbationsListe[i]=new Perturbation();
-        }
+       StationPerturbees = new ArrayList<Station>();
+       perturbations=false;
     }
-
-    public boolean[] getPerturbations() {
-        return perturbations;
-    }
+   
     
-    public boolean getPerturbation(int i){
-        return perturbations[i];
+    public void ajouterStation(Station s)
+    {
+        stations.add(s);
     }
-    
-
-    public void setPerturbations(boolean[] perturbations) {
-        for(int i=0;i<perturbations.length;i++){
-              this.perturbations[i] = perturbations[i];
-        }
-      
-    }
+  
 
     
-    public int getStations(){
+    public int getNbrStations(){
         return stations.size();
     }
     
-    public Perturbation[] getPerturbationsListe() {
-        return perturbationsListe;
-    }
-    
-    public Perturbation getPerturbationListe(int i){
-        return perturbationsListe[i];
-    }
-
-    public void setPerturbationsListe(Perturbation[] perturbationsListe) {
-        for (int i=0;i<perturbationsListe.length;i++){
-            this.perturbationsListe[i] = perturbationsListe[i];
-        }
-        
-    }
-
-  
     public ArrayList getStation(){
         return this.stations;
     }
