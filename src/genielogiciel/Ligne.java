@@ -19,17 +19,18 @@ public class Ligne {
     
     
     public Ligne(String nom,ArrayList station){
-        this.nom=nom;
-        stations = new ArrayList(station);
+       this.nom=nom;
+       stations = new ArrayList<Station>();
+       stations.addAll(station);
+      
         perturbations=new boolean[station.size()];
         for(int i=0;i<stations.size();i++){
             perturbations[i]=false;
         }
         
-        perturbationsListe=new Perturbation[5];
+        perturbationsListe=new Perturbation[2];
         for(int i=0;i<perturbationsListe.length;i++){
-            
-            
+               
             // a changer
             perturbationsListe[i]=new Perturbation();
         }
@@ -72,6 +73,9 @@ public class Ligne {
     }
 
   
+    public ArrayList getStation(){
+        return this.stations;
+    }
 
     public Station getStation(int i){
         return stations.get(i);
@@ -82,6 +86,7 @@ public class Ligne {
     }
     
     
+    @Override
     public String toString(){
         String res=  this.nom + " passe par les stations: ";
         for (int i=0;i<this.stations.size();i++){

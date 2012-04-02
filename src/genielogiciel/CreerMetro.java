@@ -12,37 +12,40 @@ import java.util.ArrayList;
  */
 public class CreerMetro {
     
-    private Ligne[] lignes;
+    public ArrayList<Ligne> lignes;
     
-    public CreerMetro(){
+        public CreerMetro(){
+                ArrayList <Ligne> lignes=new ArrayList<Ligne>();
+    }
+
+    public ArrayList<Ligne> creer(){
+          Zone zone=new Zone(1,2);
         
-        lignes=new Ligne[1];
-       
-        Zone zone=new Zone(1,2);
+        ArrayList <Ligne> lignes=new ArrayList<Ligne>();
+        ArrayList <Station> stations=new ArrayList<Station>();
         
-        ArrayList <Station> stations=new ArrayList();
         stations.add(new Station("Station la défense grande arche",false,true,zone));
         stations.add(new Station("Station argentine",true,true,zone));
         stations.add(new Station("Station george V" , true,false,zone));
         stations.add(new Station("Station porte de vincennes",true,false,zone));
-        lignes[0]= new Ligne("Ligne 1",stations);
         
-        
-    }
-
-    public Ligne[] getLignes() {
+        Ligne ligne=new Ligne("Ligne 1",stations);  
+        lignes.add(ligne);
         return lignes;
+       
     }
+        
+   /* public ArrayList<Ligne> getLignes() {
+        return this.lignes;
+    } */
 
     public Ligne getLigne(int i){
-        return lignes[i];
+        return lignes.get(i);
     }
     
     
-    public void setLignes(Ligne[] lignes) {
-        for(int i=0;i<lignes.length;i++){
-              this.lignes[i] = lignes[i];
-          }
+    public void setLignes(ArrayList lignes) {
+        lignes=new ArrayList(lignes);
     }
     
     
