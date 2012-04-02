@@ -18,6 +18,16 @@ public class Main {
      */
     public static void main(String[] args) {
        
+        Zone zone=new Zone(1,2);
+        Ligne ligne=new Ligne("Ligne 1"); 
+        ligne.ajouterStation(new Station("Station la défense grande arche",false,true,zone));
+        ligne.ajouterStation(new Station("Station argentine",true,true,zone));
+        ligne.ajouterStation(new Station("Station george V" , true,false,zone));
+        ligne.ajouterStation(new Station("Station porte de vincennes",true,false,zone));
+        Metro m = new Metro();
+        m.ajouterLigne(ligne);
+        
+        
         System.out.println("Bonjour!");
         System.out.println("Quelle opération voulez-vous effectuer?");
         System.out.println("Veuillez choisir le chiffre correspondant dans la liste");
@@ -47,9 +57,7 @@ public class Main {
         
         int choix= sc.nextInt();
         
-        Metro m = new Metro();
-        m.creer();
-        
+       
         switch(choix ){
             case 1:
                 System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");
