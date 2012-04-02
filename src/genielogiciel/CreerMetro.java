@@ -28,8 +28,11 @@ public class CreerMetro {
         stations.add(new Station("Station argentine",true,true,zone));
         stations.add(new Station("Station george V" , true,false,zone));
         stations.add(new Station("Station porte de vincennes",true,false,zone));
-       // lignes[0]= new Ligne("Ligne 1",stations);
-        int sisi=0;
+
+
+
+
+
         
         Ligne ligne=new Ligne("Ligne 1",stations);  
         Ligne ligne2=new Ligne("Ligne 2",stations);
