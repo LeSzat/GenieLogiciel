@@ -13,8 +13,10 @@ public class Station {
     private String nom;
     private boolean handicape;
     private boolean ascenseur;
-    private String adresse;
     private Zone  zone;
+    private int abscisse;
+    private int ordonnée;
+    
     
     public Station(){
         
@@ -26,7 +28,7 @@ public class Station {
         this.ascenseur=ascenseur;
         this.handicape=handicape;
         this.zone=new Zone(zone);
-        this.adresse="";
+       
     }
     
     
@@ -35,20 +37,19 @@ public class Station {
         this.ascenseur=ascenseur;
         this.handicape=handicape;
         this.zone=zone;
-        this.adresse=adresse;
+       
     }
     
-    
-    
-    
-       public String getAdresse() {
-        return adresse;
+    public int getAbscisse()
+    {
+        return this.abscisse;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public int getOrdonnée()
+    {
+        return this.ordonnée;
     }
-
+    
     public boolean isAscenseur() {
         return ascenseur;
     }

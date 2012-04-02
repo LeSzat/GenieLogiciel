@@ -16,15 +16,16 @@ public class Parcours {
     private int nbreChangements;
     private Ligne[] lignes;
     private Station[] intermediaires;
+    private int temps_parcours;
     
     
-    
-    public Parcours(){
+    public Parcours(int nbchangements, int tps_parcours){
         this.depart=new Station();
         this.arrivee=new Station();
-        nbreChangements=0;
+        nbreChangements=nbchangements;
         lignes=null;
         intermediaires=null;
+        temps_parcours = tps_parcours;
         
     }
 
@@ -83,7 +84,10 @@ public class Parcours {
         this.nbreChangements = nbreChangements;
     }
     
-    
+    public int getDistance(Station s1, Station s2)
+    {
+        return (int) Math.sqrt((int)Math.pow(s1.getAbscisse()-s2.getAbscisse(),2) +(Math.pow(s1.getOrdonnée()-s2.getOrdonnée(),2)));
+    }
     
     
     
