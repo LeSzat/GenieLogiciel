@@ -80,6 +80,7 @@ public class Parcours {
         return nbreChangements;
     }
 
+    //
     public void setNbreChangements(int nbreChangements) {
         this.nbreChangements = nbreChangements;
     }
