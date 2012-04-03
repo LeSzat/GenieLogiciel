@@ -15,13 +15,13 @@ public class Ligne {
     private String nom;
     private ArrayList<Station> stations;
     private boolean perturbations;
-    private ArrayList<Station> StationPerturbees;
+    private ArrayList<Station> stationPerturbees;
     
     public Ligne(String nom)
     {
        this.nom=nom;
        stations = new ArrayList<Station>();
-       StationPerturbees = new ArrayList<Station>();
+       stationPerturbees = new ArrayList<Station>();
        perturbations=false;
     }
    
@@ -31,7 +31,10 @@ public class Ligne {
         stations.add(s);
     }
   
-
+    public void ajouterStationPerturbees(Station s)
+    {
+        stationPerturbees.add(s);
+    }
     
     public int getNbrStations(){
         return stations.size();
