@@ -81,10 +81,8 @@ public class Station {
     public void setZone(Zone zone) {
         this.zone = zone;
     }
-    
-    
-    
-    
+     
+    @Override
     public String toString(){
         return (  this.nom + " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape);
     }
