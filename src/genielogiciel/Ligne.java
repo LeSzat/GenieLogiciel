@@ -17,6 +17,10 @@ public class Ligne {
     private boolean perturbations;
     private ArrayList<Station> stationPerturbees;
     
+    /**
+     * Constructeur de ligne
+     * @param nom 
+     */
     public Ligne(String nom)
     {
        this.nom=nom;
