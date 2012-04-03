@@ -13,8 +13,8 @@ public class Station {
     private String nom;
     private boolean handicape;
     private boolean ascenseur;
-    private String adresse;
     private Zone  zone;
+    private int tempsarret;
     
     public Station(){
         
@@ -26,28 +26,18 @@ public class Station {
         this.ascenseur=ascenseur;
         this.handicape=handicape;
         this.zone=new Zone(zone);
-        this.adresse="";
+        this.tempsarret=0;
     }
     
     
-    public Station(String nom,boolean handicape,boolean ascenseur,String adresse,Zone zone){
+    public Station(String nom,boolean handicape,boolean ascenseur,Zone zone,int temps){
         this.nom=nom;
         this.ascenseur=ascenseur;
         this.handicape=handicape;
         this.zone=zone;
-        this.adresse=adresse;
+        this.tempsarret=temps;
     }
     
-    
-    
-    
-       public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
 
     public boolean isAscenseur() {
         return ascenseur;
@@ -80,12 +70,21 @@ public class Station {
     public void setZone(Zone zone) {
         this.zone = zone;
     }
-    
-    
+
+    public int getTempsarret() {
+        return tempsarret;
+    }
+
+    public void setTempsarret(int tempsarret) {
+        this.tempsarret = tempsarret;
+    }
     
     
     public String toString(){
-        return (  this.nom + " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape);
+        return (  this.nom + " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape + "\n"+ "temps d'arret : " +this.getTempsarret()+ " min");
     }
+    
+    
+    
     
 }
