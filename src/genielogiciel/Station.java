@@ -9,6 +9,7 @@ package genielogiciel;
  * @author User
  */
 public class Station {
+    
  
     private String nom;
     private boolean handicape;
@@ -38,7 +39,16 @@ public class Station {
         this.tempsarret=temps;
     }
     
+    public int getAbscisse()
+    {
+        return this.abscisse;
+    }
 
+    public int getOrdonnée()
+    {
+        return this.ordonnée;
+    }
+    
     public boolean isAscenseur() {
         return ascenseur;
     }

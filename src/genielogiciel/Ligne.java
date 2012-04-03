@@ -17,12 +17,20 @@ public class Ligne {
     private boolean perturbations;
     private ArrayList<Station> stationPerturbees;
     
+    /**
+     * Constructeur de ligne
+     * @param nom 
+     */
     public Ligne(String nom)
     {
        this.nom=nom;
        stations = new ArrayList<Station>();
        stationPerturbees = new ArrayList<Station>();
        this.perturbations=false;
+       stations = new ArrayList<>();
+       stationPerturbees = new ArrayList<>();
+       perturbations=false;
+
     }
    
     
@@ -56,7 +64,10 @@ public class Ligne {
         this.perturbations=true;
         stationPerturbees.add(s);
     }
-    
+    public void enleverStationPerturbees(Station s)
+    {
+        stationPerturbees.remove(s);
+    }
     public int getNbrStations(){
         return stations.size();
     }
