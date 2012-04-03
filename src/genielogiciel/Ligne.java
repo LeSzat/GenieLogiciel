@@ -35,7 +35,10 @@ public class Ligne {
     {
         stationPerturbees.add(s);
     }
-    
+    public void enleverStationPerturbees(Station s)
+    {
+        stationPerturbees.remove(s);
+    }
     public int getNbrStations(){
         return stations.size();
     }
