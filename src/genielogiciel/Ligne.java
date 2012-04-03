@@ -20,8 +20,8 @@ public class Ligne {
     public Ligne(String nom)
     {
        this.nom=nom;
-       stations = new ArrayList<Station>();
-       stationPerturbees = new ArrayList<Station>();
+       stations = new ArrayList<>();
+       stationPerturbees = new ArrayList<>();
        perturbations=false;
     }
    
