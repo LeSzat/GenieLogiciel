@@ -71,33 +71,6 @@ public class Main {
                 int i=0;
                  int lignee=0;
                 
-<<<<<<< HEAD
-                
-               
-            //    System.out.println(lignes.get(0).toString());
-                for( i=0;i<m.getNbLignes();i++){
-                     System.out.println("-" + i + "-" + m.getLigne(i).getNom());
-                }
-                
-           /*     Scanner sce=new Scanner(System.in);
-                       
-                while(! sce.hasNextInt()){
-                    System.out.println("Choix erroné!Veuillez recommencer!");
-                    System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");
-                    for( i=1;i<lignes.size();i++){
-                         System.out.println("-" + i + "-" + lignes.get(i).getNom());
-                     }
-                    sce=new Scanner(System.in);
-                    
-              /*  for(int i=0;i<m.getLignes().length;i++){
-                     System.out.println(m.getLigne(i).getNom());
-                    for(int j=0;j<m.getLigne(i).getStations();j++){
-                       int somme=i+j;
-                        System.out.println(" - " + somme + " " + m.getLigne(i).getStation(j).getNom());
-                    }
-                }
-=======
->>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
             
                 for( i=0;i<m.getNbLignes();i++){
                     System.out.println("-" + i + "- " + m.getLigne(i).getNom());
