@@ -44,6 +44,7 @@ public class Main {
         System.out.println("-4- consulter les stations accessibles aux personnes à mobilité réduite");
         System.out.println("-5- afficher les zones d'une ligne");
         System.out.println("-6- afficher la station la plus proche");
+         System.out.println("-7- quitter");
         
         
         Scanner sc=new Scanner(System.in);
@@ -59,13 +60,15 @@ public class Main {
                   System.out.println("-3- consulter les perturbations d'une ligne");
                   System.out.println("-4- consulter les stations accessibles aux personnes à mobilité réduite");
                   System.out.println("-5- afficher les zones d'une ligne");
+                  System.out.println("-6- afficher la station la plus proche");
+                 System.out.println("-7- quitter");
                   sc=new Scanner(System.in);
             }
         }
         
         int choix= sc.nextInt();
         
-       
+       while(choix<8 && choix >0){
         switch(choix ){
             case 1:
                System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");
@@ -171,8 +174,22 @@ public class Main {
                 System.out.println("x: " + x + " y: "+ y );
                 
             break;
+                
+            case 7:
+                System.out.println("Etes-vos sûr de vouloir quitter? O/N");
+                Scanner sf=new Scanner(System.in);
+                
+                while(sf.hasNext()){
+                    if(sf.next().equalsIgnoreCase("O")){
+                        System.exit(0);
+                    }
+                   
+                }
+            break;
             
-        }      
+        }    
     }
+    }
+    
 }
 
