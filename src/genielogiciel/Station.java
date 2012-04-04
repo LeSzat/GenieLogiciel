@@ -13,12 +13,13 @@ public class Station {
     private String nom;
     private boolean handicape;
     private boolean ascenseur;
-    private Zone  zone;
+//    private Zone  zone;
     private int abscisse;
     private int ordonnée;
     
     
-    public Station(){
+    public Station(String nom){
+        this.nom=nom;
         
     }
     
@@ -27,7 +28,7 @@ public class Station {
         this.nom=nom;
         this.ascenseur=ascenseur;
         this.handicape=handicape;
-        this.zone=new Zone(zone);
+//        this.zone=new Zone(zone);
        
     }
     
@@ -36,7 +37,7 @@ public class Station {
         this.nom=nom;
         this.ascenseur=ascenseur;
         this.handicape=handicape;
-        this.zone=zone;
+//        this.zone=zone;
        
     }
     
@@ -74,17 +75,17 @@ public class Station {
         this.nom = nom;
     }
 
-    public Zone getZone() {
-        return zone;
-    }
-
-    public void setZone(Zone zone) {
-        this.zone = zone;
-    }
-     
+//    public Zone getZone() {
+//        return zone;
+//    }
+//
+//    public void setZone(Zone zone) {
+//        this.zone = zone;
+//    }
+//     
     @Override
     public String toString(){
-        return (  this.nom + " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape);
+   return (  this.nom /*+ " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape*/);
     }
     
 }
