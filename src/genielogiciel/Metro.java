@@ -6,6 +6,7 @@ package genielogiciel;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -14,20 +15,17 @@ import java.util.ArrayList;
 public class Metro {
 
     public ArrayList<Ligne> lignes;
+    public HashMap<String,Station> station;
 
     public Metro() {
         lignes = new ArrayList<>();
+        station = new HashMap<>();
+        importerInfoStations();
         importerStations();
-
+        
     }
 
     private void importerStations() {
-        String chaine = "";
-        File f = new File("monficiher");
-        try {
-            f.createNewFile();
-        } catch (Exception e) {
-        }
         String fichier = "listeStationParLigne.txt";
 
         //lecture du fichier texte	
@@ -43,17 +41,37 @@ public class Metro {
                         i++;
                         lignes.add(new Ligne(tokens[0].substring(5)));
                     } else if (tokens.length == 2) {
-                        Station s = new Station(tokens[1]);
-                        lignes.get(i).ajouterStation(s);
+                        lignes.get(i).ajouterStation(station.get(tokens[1]));
                     }
 
                 }
+                System.out.println(lignes.toString());
             }
         } catch (Exception e) {
             System.err.println(e.toString());
         }
     }
-    
+    private void importerInfoStations()
+    {
+           String fichier = "stationLOc.txt";
+
+        //lecture du fichier texte	
+        try {
+            InputStream ips = new FileInputStream(fichier);
+            InputStreamReader ipsr = new InputStreamReader(ips);
+            try (BufferedReader br = new BufferedReader(ipsr)) {
+                String ligne;
+                int i = -1;
+                while ((ligne = br.readLine()) != null) {
+                    String[] tokens = ligne.split("\t");
+                   this.station.put(tokens[0],new Station(tokens[0],Double.parseDouble(tokens[1]),Double.parseDouble(tokens[2])));
+                }
+                System.out.println(station.toString());
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println(e.toString());
+        }
+    }
     public void ajouterLigne(Ligne l) {
         lignes.add(l);
     }
