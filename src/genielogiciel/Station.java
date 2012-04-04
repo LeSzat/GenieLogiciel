@@ -15,7 +15,9 @@ public class Station {
     private boolean handicape;
     private boolean ascenseur;
     private Zone  zone;
-    private int tempsarret;
+    private int abscisse;
+    private int ordonnée;
+    
     
     public Station(){
         
@@ -27,7 +29,7 @@ public class Station {
         this.ascenseur=ascenseur;
         this.handicape=handicape;
         this.zone=new Zone(zone);
-        this.tempsarret=0;
+       
     }
     
     
@@ -36,7 +38,7 @@ public class Station {
         this.ascenseur=ascenseur;
         this.handicape=handicape;
         this.zone=zone;
-        this.tempsarret=temps;
+       
     }
     
     public int getAbscisse()
@@ -80,18 +82,11 @@ public class Station {
     public void setZone(Zone zone) {
         this.zone = zone;
     }
-
-    public int getTempsarret() {
-        return tempsarret;
-    }
-
-    public void setTempsarret(int tempsarret) {
-        this.tempsarret = tempsarret;
-    }
     
-    
+    @Override
     public String toString(){
-        return (  this.nom + " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape + "\n"+ "temps d'arret : " +this.getTempsarret()+ " min");
+        return "";
+              //  (  this.nom + " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape + "\n"+ "temps d'arret : " +this.getTempsarret()+ " min");
     }
     
     
