@@ -14,15 +14,28 @@ public class Station {
     private String nom;
     private boolean handicape;
     private boolean ascenseur;
+<<<<<<< HEAD
     private Zone  zone;
   
    
+=======
+//    private Zone  zone;
+    private int abscisse;
+    private int ordonnée;
+    
+    
+    public Station(String nom){
+        this.nom=nom;
+        
+    }
+    
+>>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
     
     public Station(String nom,boolean handicape,boolean ascenseur,Zone zone){
         this.nom=nom;
         this.ascenseur=ascenseur;
         this.handicape=handicape;
-        this.zone=new Zone(zone);
+//        this.zone=new Zone(zone);
        
     }
     
@@ -31,7 +44,7 @@ public class Station {
         this.nom=nom;
         this.ascenseur=ascenseur;
         this.handicape=handicape;
-        this.zone=zone;
+//        this.zone=zone;
        
     }
     
@@ -60,18 +73,19 @@ public class Station {
         this.nom = nom;
     }
 
-    public Zone getZone() {
-        return zone;
-    }
-
-    public void setZone(Zone zone) {
-        this.zone = zone;
-    }
-     
+//    public Zone getZone() {
+//        return zone;
+//    }
+//
+//    public void setZone(Zone zone) {
+//        this.zone = zone;
+//    }
+//     
     @Override
     public String toString(){
-        return "";
-              //  (  this.nom + " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape + "\n"+ "temps d'arret : " +this.getTempsarret()+ " min");
+
+   return (  this.nom /*+ " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape*/);
+
     }
     
     
