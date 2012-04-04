@@ -11,30 +11,29 @@ import java.util.ArrayList;
  * @author User
  */
 public class Ligne {
-    
+
     private String nom;
     private ArrayList<Station> stations;
     private boolean perturbations;
     private ArrayList<Station> stationPerturbees;
-    
+
     /**
      * Constructeur de ligne
-     * @param nom 
+     *
+     * @param nom
      */
-    public Ligne(String nom)
-    {
-       this.nom=nom;
-       stations = new ArrayList<>();
-       stationPerturbees = new ArrayList<>();
-       perturbations=false;
 
+    public Ligne(String nom) {
+        this.nom=nom;
+        this.stations = new ArrayList<>();
+        stationPerturbees = new ArrayList<>();
+        perturbations = false;
     }
-   
-    
-    public void ajouterStation(Station s)
-    {
-        stations.add(s);
+
+    public void ajouterStation(Station s) {
+        this.stations.add(s);
     }
+
 
     public boolean isPerturbations() {
         return perturbations;
@@ -61,28 +60,31 @@ public class Ligne {
         this.perturbations=true;
         stationPerturbees.add(s);
     }
-    public void enleverStationPerturbees(Station s)
-    {
+
+    public void enleverStationPerturbees(Station s) {
         stationPerturbees.remove(s);
     }
-    public int getNbrStations(){
+
+    public int getNbrStations() {
         return stations.size();
     }
-    
-    public ArrayList getStation(){
+
+    public ArrayList getStation() {
         return this.stations;
     }
 
-    public Station getStation(int i){
+    public Station getStation(int i) {
         return stations.get(i);
     }
-    
+
     public void setStations(ArrayList stations) {
-        for(int i=0;i<this.stations.size();i++)  this.stations.set(i,(Station)stations.get(i));
+        for (int i = 0; i < this.stations.size(); i++) {
+            this.stations.set(i, (Station) stations.get(i));
+        }
     }
-    
-    
+
     @Override
+
     public String toString(){
         String res=  this.nom + " passe par les stations: ";
         for (int i=0;i<this.stations.size();i++){
@@ -108,10 +110,4 @@ public class Ligne {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
-    
-    
-    
-    
-    
 }
