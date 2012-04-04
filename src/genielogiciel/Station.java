@@ -19,12 +19,15 @@ public class Station {
    
 
 //    private Zone  zone;
-    private int abscisse;
-    private int ordonnée;
+    private double abscisse;
+    private double ordonnée;
     
+   
     
-    public Station(String nom){
+    public Station(String nom, double x, double y){
         this.nom=nom;
+        this.abscisse=x;
+        this.ordonnée=y;
         
     }
     
@@ -47,6 +50,15 @@ public class Station {
        
     }
     
+    public double getAbscisse()
+    {
+        return this.abscisse;
+    }
+
+    public double getOrdonnée()
+    {
+        return this.ordonnée;
+    }
     
     public boolean isAscenseur() {
         return ascenseur;
@@ -83,7 +95,7 @@ public class Station {
     @Override
     public String toString(){
 
-   return (  this.nom /*+ " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape*/);
+   return (  this.nom +" "+this.abscisse+" "+this.ordonnée+"\n"/*+ " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape*/);
 
     }
     
