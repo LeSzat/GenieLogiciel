@@ -82,7 +82,7 @@ public class Station {
     public void setZone(Zone zone) {
         this.zone = zone;
     }
-    
+     
     @Override
     public String toString(){
         return "";
