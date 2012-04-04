@@ -44,7 +44,7 @@ public class Parcours {
                 if(m.getLigne(i).getStation(j).getNom().compareTo(s.getNom()) == 0)
                 {
                    
-                    if(m.getLigne(i).getNom().compareTo())                           
+                    //if(m.getLigne(i).getNom().compareTo())                           
                     
                     
                     
