@@ -14,7 +14,7 @@ import java.util.LinkedList;
 public class Ligne {
 
     private String nom;
-    private LinkedList<Station> stations;
+    private ArrayList<Station> stations;
     private boolean perturbations;
     private ArrayList<Station> stationPerturbees;
 
@@ -23,15 +23,8 @@ public class Ligne {
      *
      * @param nom
      */
-<<<<<<< HEAD
-    public Ligne(String nom)
-    {
-       this.nom=nom;
-       stations = new LinkedList<>();
-       stationPerturbees = new ArrayList<>();
-       perturbations=false;
-=======
->>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
+
+
 
     public Ligne(String nom) {
         this.nom=nom;
@@ -61,9 +54,7 @@ public class Ligne {
         this.stationPerturbees = stationPerturbees;
     }
 
-    public ArrayList<Station> getStations() {
-        return stations;
-    }
+  
   
     public void ajouterStationPerturbees(Station s)
     {
@@ -78,13 +69,8 @@ public class Ligne {
     public int getNbrStations() {
         return stations.size();
     }
-<<<<<<< HEAD
-    
-    public LinkedList getStation(){
-=======
 
     public ArrayList getStation() {
->>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
         return this.stations;
     }
 

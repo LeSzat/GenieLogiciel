@@ -14,11 +14,10 @@ public class Station {
     private String nom;
     private boolean handicape;
     private boolean ascenseur;
-<<<<<<< HEAD
     private Zone  zone;
   
    
-=======
+
 //    private Zone  zone;
     private int abscisse;
     private int ordonnée;
@@ -29,7 +28,7 @@ public class Station {
         
     }
     
->>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
+
     
     public Station(String nom,boolean handicape,boolean ascenseur,Zone zone){
         this.nom=nom;

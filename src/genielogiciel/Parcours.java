@@ -13,7 +13,7 @@ public class Parcours {
     
     private Station depart;
     private Station arrivee;
-<<<<<<< HEAD
+
    
     /**
      * 
@@ -23,14 +23,9 @@ public class Parcours {
      * @param m l'ensemble des lignes
      * @return 
      */
-=======
->>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
-    
-<<<<<<< HEAD
+
     public static Station[] passePar(Station dep, Station arr,Station s, Metro m)
-=======
-     public int getDistance(Station s1, Station s2)
->>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
+
     {
         Station []tab_station = null ;
         int i=0, k=0;     
@@ -68,10 +63,5 @@ public class Parcours {
         return tab_station;
     }
     
-<<<<<<< HEAD
-=======
-    
-   
-       
->>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
+
 }
