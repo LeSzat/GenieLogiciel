@@ -5,6 +5,7 @@
 package genielogiciel;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class Ligne {
     
     private String nom;
-    private ArrayList<Station> stations;
+    private LinkedList<Station> stations;
     private boolean perturbations;
     private ArrayList<Station> stationPerturbees;
     
@@ -24,7 +25,7 @@ public class Ligne {
     public Ligne(String nom)
     {
        this.nom=nom;
-       stations = new ArrayList<>();
+       stations = new LinkedList<>();
        stationPerturbees = new ArrayList<>();
        perturbations=false;
     }
@@ -47,7 +48,7 @@ public class Ligne {
         return stations.size();
     }
     
-    public ArrayList getStation(){
+    public LinkedList getStation(){
         return this.stations;
     }
 

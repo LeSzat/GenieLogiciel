@@ -14,14 +14,8 @@ public class Station {
     private boolean handicape;
     private boolean ascenseur;
     private Zone  zone;
-    private int abscisse;
-    private int ordonnée;
-    
-    
-    public Station(){
-        
-    }
-    
+  
+   
     
     public Station(String nom,boolean handicape,boolean ascenseur,Zone zone){
         this.nom=nom;
@@ -40,15 +34,6 @@ public class Station {
        
     }
     
-    public int getAbscisse()
-    {
-        return this.abscisse;
-    }
-
-    public int getOrdonnée()
-    {
-        return this.ordonnée;
-    }
     
     public boolean isAscenseur() {
         return ascenseur;

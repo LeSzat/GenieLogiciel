@@ -13,83 +13,52 @@ public class Parcours {
     
     private Station depart;
     private Station arrivee;
-    private int nbreChangements;
-    private Ligne[] lignes;
-    private Station[] intermediaires;
-    private int temps_parcours;
+   
+    /**
+     * 
+     * @param dep la station de départ
+     * @param arr la station de départ
+     * @param s la station intermédiaire demandée
+     * @param m l'ensemble des lignes
+     * @return 
+     */
     
-    
-    public Parcours(int nbchangements, int tps_parcours){
-        this.depart=new Station();
-        this.arrivee=new Station();
-        nbreChangements=nbchangements;
-        lignes=null;
-        intermediaires=null;
-        temps_parcours = tps_parcours;
-        
-    }
-
-    public Station getArrivee() {
-        return arrivee;
-    }
-
-    public void setArrivee(Station arrivee) {
-        this.arrivee = arrivee;
-    }
-
-    public Station getDepart() {
-        return depart;
-    }
-
-    public void setDepart(Station depart) {
-        this.depart = depart;
-    }
-
-    public Station[] getIntermediaires() {
-        return intermediaires;
-    }
-    
-    public Station getIntermediaires(int i){
-        return intermediaires[i];
-    }
-
-    public void setIntermediaires(Station[] intermediaires) {
-        for(int i=0;i<intermediaires.length;i++){
-             this.intermediaires[i] = intermediaires[i];
-        }
-       
-    }
-
-    public Ligne[] getLignes() {
-        return lignes;
-    }
-    
-    public Ligne getLignes(int i){
-        return lignes[i];
-    }
-    
-
-    public void setLignes(Ligne[] lignes) {
-        for(int i=lignes.length;i>=0;i--){
-             this.lignes[i] = lignes[i];
-        }
-       
-    }
-
-    public int getNbreChangements() {
-        return nbreChangements;
-    }
-
-    //
-    public void setNbreChangements(int nbreChangements) {
-        this.nbreChangements = nbreChangements;
-    }
-    
-    public int getDistance(Station s1, Station s2)
+    public static Station[] passePar(Station dep, Station arr,Station s, Metro m)
     {
-        return (int) Math.sqrt((int)Math.pow(s1.getAbscisse()-s2.getAbscisse(),2) +(Math.pow(s1.getOrdonnée()-s2.getOrdonnée(),2)));
+        Station []tab_station = null ;
+        int i=0, k=0;     
+        /**
+         * Pour toutes les lignes
+         */
+        while( i<m.getLignes().size())
+        {
+            int j=0;
+            /**
+             * on parcourt les stations de la ligne
+             */
+            while(j<m.getLigne(i).getStation().size())
+            {
+                /**
+                 * Si la station est la même que celle demandée
+                 */
+                if(m.getLigne(i).getStation(j).getNom().compareTo(s.getNom()) == 0)
+                {
+                   
+                    if(m.getLigne(i).getNom().compareTo())                           
+                    
+                    
+                    
+                    while(tab_station[k] !=null)
+                    {
+                    
+                            
+                    }
+                    tab_station[k] = s;
+                }
+                    
+            }
+        }
+        return tab_station;
     }
-    
-    
     
 }

@@ -66,7 +66,7 @@ public class Main {
                 
                
             //    System.out.println(lignes.get(0).toString());
-                for( i=0;i<m.getSize();i++){
+                for( i=0;i<m.getNbLignes();i++){
                      System.out.println("-" + i + "-" + m.getLigne(i).getNom());
                 }
                 
