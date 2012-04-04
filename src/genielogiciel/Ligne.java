@@ -28,6 +28,7 @@ public class Ligne {
        stations = new LinkedList<>();
        stationPerturbees = new ArrayList<>();
        perturbations=false;
+
     }
    
     
@@ -35,9 +36,30 @@ public class Ligne {
     {
         stations.add(s);
     }
+
+    public boolean isPerturbations() {
+        return perturbations;
+    }
+
+    public void setPerturbations(boolean perturbations) {
+        this.perturbations = perturbations;
+    }
+
+    public ArrayList<Station> getStationPerturbees() {
+        return stationPerturbees;
+    }
+
+    public void setStationPerturbees(ArrayList<Station> stationPerturbees) {
+        this.stationPerturbees = stationPerturbees;
+    }
+
+    public ArrayList<Station> getStations() {
+        return stations;
+    }
   
     public void ajouterStationPerturbees(Station s)
     {
+        this.perturbations=true;
         stationPerturbees.add(s);
     }
     public void enleverStationPerturbees(Station s)
@@ -67,6 +89,15 @@ public class Ligne {
         for (int i=0;i<this.stations.size();i++){
                  res +=  "\n" + "-" + i + "- " + this.stations.get(i).toString();
          }
+        if(this.perturbations){
+            res += "\n *** Il y a des perturbations sur les stations : ***";
+            for(int i=0;i<this.stationPerturbees.size();i++){
+                res += "\n" +this.stationPerturbees.get(i).getNom() + " ";
+            }
+        }
+        else{
+            System.out.println("Pas de perturbations signalées sur cette ligne.");
+        }
         System.out.println(res);
         return res;
     }

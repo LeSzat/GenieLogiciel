@@ -9,6 +9,7 @@ package genielogiciel;
  * @author User
  */
 public class Station {
+    
  
     private String nom;
     private boolean handicape;
@@ -26,7 +27,7 @@ public class Station {
     }
     
     
-    public Station(String nom,boolean handicape,boolean ascenseur,String adresse,Zone zone){
+    public Station(String nom,boolean handicape,boolean ascenseur,Zone zone,int temps){
         this.nom=nom;
         this.ascenseur=ascenseur;
         this.handicape=handicape;
@@ -69,7 +70,11 @@ public class Station {
      
     @Override
     public String toString(){
-        return (  this.nom + " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape);
+        return "";
+              //  (  this.nom + " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape + "\n"+ "temps d'arret : " +this.getTempsarret()+ " min");
     }
+    
+    
+    
     
 }
