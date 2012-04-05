@@ -23,11 +23,11 @@ public class Parcours {
      * @return 
      */
 
-    public static Station[] passePar(Station dep, Station arr,Station s, Metro m)
+    public static void passePar(Station dep, Station arr,Station s, Metro m)
 
     {
-        Station []tab_station = null ;
-        int i=0, k=0;     
+       
+        int i=0, tps=0;     
         /**
          * Pour toutes les lignes
          */
@@ -43,23 +43,15 @@ public class Parcours {
                  * Si la station est la même que celle demandée
                  */
                 if(m.getLigne(i).getStation(j).getNom().compareTo(s.getNom()) == 0)
-                {
+                {          
+                    //"calc_tps" à remplacer par la focntion de calcul du temps
+                    //tps = calc_tps(dep,m.getLigne(i).getStation(j)) + calc_tps(m.getLigne(i).getStation(j),arr);
                    
-                    //if(m.getLigne(i).getNom().compareTo())                           
-                    
-                    
-                    
-                    while(tab_station[k] !=null)
-                    {
-                    
-                            
-                    }
-                    tab_station[k] = s;
                 }
                     
             }
         }
-        return tab_station;
+        System.out.println("Il vous faudra au mieux " + tps + "pour aller de la station " + dep.getNom() + " à la station "+ arr.getNom() + "en passant par la station " + s.getNom());
     }
     
 
