@@ -5,6 +5,7 @@
 package genielogiciel;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -22,6 +23,7 @@ public class Ligne {
      *
      * @param nom
      */
+
 
     public Ligne(String nom) {
         this.nom=nom;
@@ -69,7 +71,9 @@ public class Ligne {
         return stations.size();
     }
 
+
     public ArrayList getStation() {
+
         return this.stations;
     }
 

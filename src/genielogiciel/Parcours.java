@@ -13,13 +13,54 @@ public class Parcours {
     
     private Station depart;
     private Station arrivee;
-    
-     public int getDistance(Station s1, Station s2)
+
+    /**
+     * 
+     * @param dep la station de départ
+     * @param arr la station de départ
+     * @param s la station intermédiaire demandée
+     * @param m l'ensemble des lignes
+     * @return 
+     */
+
+    public static Station[] passePar(Station dep, Station arr,Station s, Metro m)
+
     {
-        return (int) Math.sqrt((int)Math.pow(s1.getAbscisse()-s2.getAbscisse(),2) +(Math.pow(s1.getOrdonnée()-s2.getOrdonnée(),2)));
+        Station []tab_station = null ;
+        int i=0, k=0;     
+        /**
+         * Pour toutes les lignes
+         */
+        while( i<m.getLignes().size())
+        {
+            int j=0;
+            /**
+             * on parcourt les stations de la ligne
+             */
+            while(j<m.getLigne(i).getStation().size())
+            {
+                /**
+                 * Si la station est la même que celle demandée
+                 */
+                if(m.getLigne(i).getStation(j).getNom().compareTo(s.getNom()) == 0)
+                {
+                   
+                    //if(m.getLigne(i).getNom().compareTo())                           
+                    
+                    
+                    
+                    while(tab_station[k] !=null)
+                    {
+                    
+                            
+                    }
+                    tab_station[k] = s;
+                }
+                    
+            }
+        }
+        return tab_station;
     }
     
-    
-   
-       
+
 }
