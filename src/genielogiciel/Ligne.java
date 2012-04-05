@@ -25,7 +25,6 @@ public class Ligne {
      */
 
 
-
     public Ligne(String nom) {
         this.nom=nom;
         this.stations = new ArrayList<>();
@@ -70,7 +69,9 @@ public class Ligne {
         return stations.size();
     }
 
+
     public ArrayList getStation() {
+
         return this.stations;
     }
 
