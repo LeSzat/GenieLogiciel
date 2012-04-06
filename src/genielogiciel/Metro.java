@@ -45,7 +45,6 @@ public class Metro {
                     }
 
                 }
-                System.out.println(lignes.toString());
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -66,7 +65,6 @@ public class Metro {
                     String[] tokens = ligne.split("\t");
                    this.station.put(tokens[0],new Station(tokens[0],Double.parseDouble(tokens[1]),Double.parseDouble(tokens[2])));
                 }
-                System.out.println(station.toString());
             }
         } catch (IOException | NumberFormatException e) {
             System.err.println(e.toString());
