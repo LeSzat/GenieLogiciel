@@ -12,14 +12,14 @@ import java.util.ArrayList;
  */
 public class NoeudReseau {
     private Station station;
-    private ArrayList<Station> suivant;
+    private ArrayList<NoeudReseau> suivant;
 
     public NoeudReseau(Station s) {
         station=s;
         suivant = new ArrayList<>();
     }
     
-    public void ajouterSuivant(Station s)
+    public void ajouterSuivant(NoeudReseau s)
     {
         suivant.add(s);
     }
@@ -28,9 +28,11 @@ public class NoeudReseau {
         return station;
     }
 
-    public ArrayList<Station> getSuivant() {
+    public ArrayList<NoeudReseau> getSuivant() {
         return suivant;
     }
+
+    
     
     
 }
