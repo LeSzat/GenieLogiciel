@@ -7,6 +7,8 @@ package genielogiciel;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -15,14 +17,34 @@ import java.util.HashMap;
 public class Metro {
 
     private ArrayList<Ligne> lignes;
-    private HashMap<String,Station> station;
+    private HashMap<String, Station> station;
+    private LinkedList<NoeudReseau> metro;
 
     public Metro() {
         lignes = new ArrayList<>();
         station = new HashMap<>();
+        metro =  new LinkedList<>();
         importerInfoStations();
         importerStations();
-        
+        creerReseau();
+
+    }
+
+    private void creerReseau() {
+        metro.addLast( new NoeudReseau(new Station("Départ", 0, 0)));
+        NoeudReseau fin = new NoeudReseau(new Station("Fin",10,10));
+        for (int i = 0; i < lignes.size(); i++) {
+           NoeudReseau prem = new NoeudReseau(lignes.get(i).getStation(0));
+            for(int j=0;j<lignes.get(i).getNbrStations();j++)
+            {
+                prem.ajouterSuivant(new NoeudReseau(lignes.get(i).getStation(j)));
+            }
+            prem.ajouterSuivant(fin);
+            metro.add(prem);
+        }
+        System.out.println("NbLigne : "+lignes.size()+"\t"+metro.size());
+        System.out.println(metro);
+
     }
 
     private void importerStations() {
@@ -50,9 +72,9 @@ public class Metro {
             System.err.println(e.toString());
         }
     }
-    private void importerInfoStations()
-    {
-           String fichier = "stationLOc.txt";
+
+    private void importerInfoStations() {
+        String fichier = "stationLOc.txt";
 
         //lecture du fichier texte	
         try {
@@ -63,13 +85,14 @@ public class Metro {
                 int i = -1;
                 while ((ligne = br.readLine()) != null) {
                     String[] tokens = ligne.split("\t");
-                   this.station.put(tokens[0],new Station(tokens[0],Double.parseDouble(tokens[1]),Double.parseDouble(tokens[2])));
+                    this.station.put(tokens[0], new Station(tokens[0], Double.parseDouble(tokens[1]), Double.parseDouble(tokens[2])));
                 }
             }
         } catch (IOException | NumberFormatException e) {
             System.err.println(e.toString());
         }
     }
+
     public void ajouterLigne(Ligne l) {
         lignes.add(l);
     }
