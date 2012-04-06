@@ -14,8 +14,8 @@ import java.util.HashMap;
  */
 public class Metro {
 
-    public ArrayList<Ligne> lignes;
-    public HashMap<String,Station> station;
+    private ArrayList<Ligne> lignes;
+    private HashMap<String,Station> station;
 
     public Metro() {
         lignes = new ArrayList<>();
