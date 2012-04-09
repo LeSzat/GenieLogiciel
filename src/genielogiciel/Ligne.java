@@ -114,4 +114,18 @@ public class Ligne {
     public void setNom(String nom) {
         this.nom = nom;
     }
+    
+    
+        public boolean estDansCetteLigne(String s){
+        boolean res=false;
+        for(int i=0;i<this.stations.size();i++){
+            if(this.getStation(i).getNom().equalsIgnoreCase(s)){
+                res=true;
+            }
+        }
+        return res;
+    }
+    
+    
+    
 }
