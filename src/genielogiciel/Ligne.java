@@ -127,5 +127,20 @@ public class Ligne {
     }
     
     
+       
+    public int getPosition(String s){
+        int pos=0;
+        if(this.estDansCetteLigne(s)){
+            for(int i=0;i<this.getStation().size();i++){
+                 if(this.getStation(i).getNom().equalsIgnoreCase(s)){
+                    pos=i;
+                }
+            }
+            return pos;
+        }
+        else {
+            return -1;
+        }
+    }
     
 }
