@@ -13,6 +13,17 @@ public class Parcours {
     
     private Station depart;
     private Station arrivee;
+    private Metro m;
+
+    
+    
+    
+    public Parcours(Station depart,Station arrivee){
+        this.depart=depart;
+        this.arrivee=arrivee;
+        this.m=new Metro();
+    }
+    
 
     /**
      * 
