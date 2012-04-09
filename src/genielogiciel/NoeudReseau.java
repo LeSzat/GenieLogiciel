@@ -33,6 +33,18 @@ public class NoeudReseau {
     }
 
     
+     @Override
+    public String toString(){
+        String res="";
+        System.out.println(this.station.getNom() + "successeurs: ");
+        int i=0;
+        while(this.suivant.get(i) != null){
+            res=res + this.suivant.get(i).station + "\n";
+            i++;
+        }
+        System.out.println(res);
+        return res;
+    }
     
     
 }
