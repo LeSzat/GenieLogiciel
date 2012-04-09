@@ -108,4 +108,30 @@ public class Metro {
     public int getNbLignes() {
         return lignes.size();
     }
+    
+        public LinkedList<NoeudReseau> getMetro() {
+        return metro;
+    }
+    
+    public NoeudReseau getMetro(int i){
+        return this.metro.get(i);
+    }
+
+    public void setMetro(LinkedList<NoeudReseau> metro) {
+        this.metro = metro;
+    }
+
+    public HashMap<String, Station> getStation() {
+        return station;
+    }
+    
+    public Station getStation(String i){
+        return this.station.get(i);
+    }
+
+    public void setStation(HashMap<String, Station> station) {
+        this.station = station;
+    }
+    
+    
 }
