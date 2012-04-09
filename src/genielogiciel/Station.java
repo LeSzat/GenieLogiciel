@@ -19,6 +19,13 @@ public class Station {
     private double ordonnée;
     
    
+     public Station(){
+        this.nom="";
+        this.handicape=false;
+        this.abscisse=0;
+        this.ordonnée=0;
+        this.ascenseur=false;
+    }
     
     public Station(String nom, double x, double y){
         this.nom=nom;
