@@ -65,5 +65,23 @@ public class Parcours {
         System.out.println("Il vous faudra au mieux " + tps + "pour aller de la station " + dep.getNom() + " à la station "+ arr.getNom() + "en passant par la station " + s.getNom());
     }
     
+    
+    public ArrayList djikstra(){
+        ArrayList stations=new ArrayList();     //la liste des stations existantes
+        ArrayList poids=new ArrayList();        //le poids de chaque liaison entre les stations
+        ArrayList parcouru=new ArrayList();     //un bool qui donnent les stations parcourues
+        ArrayList antecedants=new ArrayList();  //l'antécédant de chaque noeud pour avoir le chemin min     
+        
+        for(int i=0;i<this.m.getNbLignes();i++){
+            stations.addAll(this.m.getLigne(i).getStations());
+            poids.set(i,0);
+            parcouru.set(i,false);
+            antecedants.set(i,new Station());
+        }
+        
+        return stations;
+        
+    }
+    
 
 }
