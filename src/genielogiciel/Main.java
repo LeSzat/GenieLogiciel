@@ -35,84 +35,85 @@ public class Main {
 //        m.getLigne(0).ajouterStationPerturbees(new Station("Station la défense grande arche",false,true,zone,2));
 //         m.getLigne(0).ajouterStationPerturbees(new Station("Station george V" , true,false,zone,1));
 //        
-//        System.out.println("Bonjour!");
-//        System.out.println("Quelle opération voulez-vous effectuer?");
-//        System.out.println("Veuillez choisir le chiffre correspondant dans la liste");
-//        
-//        System.out.println("-1- consulter les infos d'une station");
-//        System.out.println("-2- consulter les infos d'une ligne");
-//        System.out.println("-3- consulter les perturbations actuelles");
-//        System.out.println("-4- consulter les stations accessibles aux personnes à mobilité réduite");
-//        System.out.println("-5- afficher les zones d'une ligne");
-//        System.out.println("-6- afficher la station la plus proche");
-//        
-//        
-//        Scanner sc=new Scanner(System.in);
-//        
-//        if(! sc.hasNextInt() ) {
-//            System.out.println("Choix erroné!Veuillez recommencer");
-//            while (! sc.hasNextInt() ){
-//                 System.out.println("Bonjour!");
-//                  System.out.println("Quelle opération voulez-vous effectuer?");
-//                  System.out.println("Veuillez choisir le chiffre correspondant dans la liste");
-//                  System.out.println("-1- consulter les infos d'une station");
-//                  System.out.println("-2- consulter les infos d'une ligne");
-//                  System.out.println("-3- consulter les perturbations d'une ligne");
-//                  System.out.println("-4- consulter les stations accessibles aux personnes à mobilité réduite");
-//                  System.out.println("-5- afficher les zones d'une ligne");
-//                  sc=new Scanner(System.in);
-//            }
-//        }
-//        
-//        int choix= sc.nextInt();
-//        
-//       
-//        switch(choix ){
-//            case 1:
-//               System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");
-//                int i=0;
-//                 int lignee=0;
-//                
-//            
-//                for( i=0;i<m.getNbLignes();i++){
-//                    System.out.println("-" + i + "- " + m.getLigne(i).getNom());
-//                    // System.out.println("-" + i + "-" + m.getLigne(i).getNom());
-//                    lignee=i;
-//                }
-//                
-//               Scanner sce=new Scanner(System.in);
-//                 
-//                while((! sce.hasNextInt()) || sce.nextInt()>=m.getNbLignes()){
-//                    System.out.println("Choix erroné!Veuillez recommencer!");
-//                    System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");      
-//                    for( i=0;i<m.getNbLignes();i++){
-//                         System.out.println("-" + i + "-" + m.getLigne(i).getNom());
-//                         lignee=i;
-//                     }
-//                    sce=new Scanner(System.in);  
-//                   
-//                }            
-//                lignee=sce.nextInt();
-//                System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
-//                for(int j=0;j<m.getLigne(lignee).getNbrStations();j++){    
-//                       System.out.println(" - " + j + " " + m.getLigne(lignee).getStation(j).getNom());       
-//                    }
-//               sce=new Scanner(System.in);
-//               int next=sce.nextInt();
-//               while((! sce.hasNextInt()) || next>=m.getLigne(lignee).getNbrStations()){
-//                    System.out.println("Choix erroné!Veuillez recommencer!");
-//                    System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
-//                    for(int j=0;j<m.getLigne(lignee).getNbrStations();j++){    
-//                       System.out.println(" - " + j + " " + m.getLigne(lignee).getStation(j).getNom());       
-//                    }
-//                     sce=new Scanner(System.in);
-//                     next=sce.nextInt();
-//               }
-//           //    int station=sce.nextInt();
-//               
-//               System.out.println(m.getLigne(lignee).getStation(sce.nextInt()));
-//               
-//                break;
+             Metro m =new Metro();
+        System.out.println("Bonjour!");
+        System.out.println("Quelle opération voulez-vous effectuer?");
+        System.out.println("Veuillez choisir le chiffre correspondant dans la liste");
+        
+        System.out.println("-1- consulter les infos d'une station");
+        System.out.println("-2- consulter les infos d'une ligne");
+        System.out.println("-3- consulter les perturbations actuelles");
+        System.out.println("-4- consulter les stations accessibles aux personnes à mobilité réduite");
+        System.out.println("-5- afficher les zones d'une ligne");
+        System.out.println("-6- afficher la station la plus proche");
+        
+        
+        Scanner sc=new Scanner(System.in);
+        
+        if(! sc.hasNextInt() ) {
+            System.out.println("Choix erroné!Veuillez recommencer");
+            while (! sc.hasNextInt() ){
+                 System.out.println("Bonjour!");
+                  System.out.println("Quelle opération voulez-vous effectuer?");
+                  System.out.println("Veuillez choisir le chiffre correspondant dans la liste");
+                  System.out.println("-1- consulter les infos d'une station");
+                  System.out.println("-2- consulter les infos d'une ligne");
+                  System.out.println("-3- consulter les perturbations d'une ligne");
+                  System.out.println("-4- consulter les stations accessibles aux personnes à mobilité réduite");
+                  System.out.println("-5- afficher les zones d'une ligne");
+                  sc=new Scanner(System.in);
+            }
+        }
+        
+        int choix= sc.nextInt();
+        
+       
+        switch(choix ){
+            case 1:
+               System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");
+                int i=0;
+                 int lignee=0;
+                
+            
+                for( i=0;i<m.getNombreLignes();i++){
+                    System.out.println("-" + i + "- " + m.getLigne(i).getNom());
+                    // System.out.println("-" + i + "-" + m.getLigne(i).getNom());
+                    lignee=i;
+                }
+                
+               Scanner sce=new Scanner(System.in);
+                 
+                while((! sce.hasNextInt()) || sce.nextInt()>=m.getNbLignes()){
+                    System.out.println("Choix erroné!Veuillez recommencer!");
+                    System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");      
+                    for( i=0;i<m.getNbLignes();i++){
+                         System.out.println("-" + i + "-" + m.getLigne(i).getNom());
+                         lignee=i;
+                     }
+                    sce=new Scanner(System.in);  
+                   
+                }            
+                lignee=sce.nextInt();
+                System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
+                for(int j=0;j<m.getLigne(lignee).getNbrStations();j++){    
+                       System.out.println(" - " + j + " " + m.getLigne(lignee).getStation(j).getNom());       
+                    }
+               sce=new Scanner(System.in);
+               int next=sce.nextInt();
+               while((! sce.hasNextInt()) || next>=m.getLigne(lignee).getNbrStations()){
+                    System.out.println("Choix erroné!Veuillez recommencer!");
+                    System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
+                    for(int j=0;j<m.getLigne(lignee).getNbrStations();j++){    
+                       System.out.println(" - " + j + " " + m.getLigne(lignee).getStation(j).getNom());       
+                    }
+                     sce=new Scanner(System.in);
+                     next=sce.nextInt();
+               }
+           //    int station=sce.nextInt();
+               
+               System.out.println(m.getLigne(lignee).getStation(sce.nextInt()));
+               
+                break;
 //            
 //            case 2:
 //              System.out.println("***Les informations de quelle ligne voulez-vous consulter?***");        
@@ -175,7 +176,7 @@ public class Main {
 //            
 //        }      
         
-        Metro m =new Metro();
+   
         
         for(int i=0;i<m.getStation().size();i++){
             System.out.println("station: " + m.getStation(i) + " de la ligne " + m.getStation(i).getLigne());

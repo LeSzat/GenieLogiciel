@@ -59,16 +59,18 @@ public class Itineraire {
         if((ligne=this.depart.getLigne()) == this.arrivee.getLigne()){
            int arrets=0;
            int d,a;
-          if((d=this.depart.getPostionLigne()) > (a=this.arrivee.getPostionLigne())){ 
-              for(int i=;i<a;i++){
+          if((d=this.depart.getPostionLigne()) < (a=this.arrivee.getPostionLigne())){ 
+              int posd=m.getPositionStation(depart);
+              int posa= m.getPositionStation(arrivee);
+              for(int i=posd;i<posa;i++){
                  res += m.getStation(i).getTempsArret();
               }
-            arrets=(this.depart.getPostionLigne() - this.arrivee.getPostionLigne());
+            arrets=(this.arrivee.getPostionLigne() - this.depart.getPostionLigne());
           }  
           else{
                arrets=(this.arrivee.getPostionLigne() - this.depart.getPostionLigne());
           }
-        this.temps=arrets * 5;
+        this.temps=arrets * 5 + res;
         }
      }
     

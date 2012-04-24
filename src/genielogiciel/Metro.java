@@ -59,7 +59,7 @@ public class Metro {
        for(int i=0;i<4;i++){
            this.station.get(i).setLigne(1);
            this.station.get(i).setPositionLigne(i);
-           this.station.get(i).setTempsArret(5 );
+           this.station.get(i).setTempsArret(1 );
        }
        
        s=new Station("SS1",10,20);
@@ -75,7 +75,7 @@ public class Metro {
             
            this.station.get(i).setLigne(2);
             this.station.get(i).setPositionLigne(j);
-            this.station.get(i).setTempsArret(2);
+            this.station.get(i).setTempsArret(1);
             j++;
        }
        
@@ -91,7 +91,7 @@ public class Metro {
         for(int i=8;i<12;i++){
            this.station.get(i).setLigne(3);
             this.station.get(i).setPositionLigne(j);
-            this.station.get(i).setTempsArret(5);
+            this.station.get(i).setTempsArret(1);
             j++;
        }
     }
@@ -286,6 +286,24 @@ public class Metro {
             }
         }
         return tab;
+    }
+    
+    public int getNombreLignes(){
+        int compt=0;
+        ArrayList tab=new ArrayList();
+        for(int i=0;i<this.station.size();i++){
+           if((i == this.station.size()-1) && (! tab.contains(this.station.get(i).getLigne()))) {
+                tab.add(this.station.get(i).getLigne());
+                compt++;
+            }
+           else {
+            if((this.station.get(i).getLigne() != this.station.get(i+1).getLigne()) && (! tab.contains(this.station.get(i).getLigne()))){
+                  tab.add(this.station.get(i).getLigne());
+                  compt++;  
+            }
+           }
+        }
+        return compt;
     }
     
     

@@ -11,16 +11,16 @@ import junit.framework.TestCase;
  *
  * @author User
  */
-public class ItineraireTest extends TestCase {
+public class MetroTest extends TestCase{
     
     Metro m=new Metro();
     
-    public void testSetgetTemps(){
-        m.creerReseau();
-        Itineraire i =new Itineraire(m.getStation(0),m.getStation(2));
-       // i.setTemps();
-        assertEquals(12,i.getTemps());
+    public void testgetNombreLignes(){
+      int lignes=  m.getNombreLignes();
+        assertEquals(3,lignes);
+        
     }
+
     
     
 }
