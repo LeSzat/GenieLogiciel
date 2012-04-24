@@ -1,22 +1,22 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package genielogiciel;
 
-/**
- *
- * @author User
- */
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
 public class Station {
     
  
     private String nom;
+    private int ligne;
+    private int position;
     private boolean handicape;
     private boolean ascenseur;
 //    private Zone  zone;
     private double abscisse;
     private double ordonnée;
+    private boolean perturbation;
+    private int tempsArret;
     
    
      public Station(){
@@ -25,30 +25,42 @@ public class Station {
         this.abscisse=0;
         this.ordonnée=0;
         this.ascenseur=false;
+        this.perturbation=false;
+        this.ligne=0;
+        this.position=0;
     }
     
     public Station(String nom, double x, double y){
         this.nom=nom;
         this.abscisse=x;
-        this.ordonnée=y;
-        
+        this.ordonnée=y;       
+        this.perturbation=false;
+       this.ligne=0;
+        this.position=0;
+
     }
     
-    
-    public Station(String nom,boolean handicape,boolean ascenseur,Zone zone){
+     
+     
+    public Station(String nom,int ligne,boolean handicape,boolean ascenseur,Zone zone){
         this.nom=nom;
         this.ascenseur=ascenseur;
         this.handicape=handicape;
 //        this.zone=new Zone(zone);
-       
+       this.perturbation=false;
+       this.ligne=ligne;
+        this.position=0;
     }
     
     
-    public Station(String nom,boolean handicape,boolean ascenseur,Zone zone,int temps){
+    public Station(String nom,boolean handicape,boolean ascenseur){
         this.nom=nom;
         this.ascenseur=ascenseur;
         this.handicape=handicape;
 //        this.zone=zone;
+        this.perturbation=false;
+        this.ligne=0;
+        this.position=0;
        
     }
     
@@ -70,6 +82,15 @@ public class Station {
         this.ascenseur = ascenseur;
     }
 
+    public boolean isPerturbation() {
+        return perturbation;
+    }
+
+    public void setPerturbation(boolean perturbation) {
+        this.perturbation = perturbation;
+    }
+
+     
     public boolean isHandicape() {
         return handicape;
     }
@@ -86,6 +107,34 @@ public class Station {
         this.nom = nom;
     }
 
+    public int getLigne() {
+        return ligne;
+    }
+
+    public void setLigne(int ligne) {
+        this.ligne = ligne;
+    }
+    
+    public int getPostionLigne() {
+        return this.position;
+    }
+
+    public void setPositionLigne(int pos) {
+        this.position=pos;
+    }
+
+
+
+    public int getTempsArret() {
+        return tempsArret;
+    }
+
+    public void setTempsArret(int tempsArret) {
+        this.tempsArret = tempsArret;
+    }
+    
+    
+
 //    public Zone getZone() {
 //        return zone;
 //    }
@@ -94,10 +143,22 @@ public class Station {
 //        this.zone = zone;
 //    }
 //     
+    
+    
+    /*
+     * renvoie la distance entre 2 arrêts voisins (sans prendre en compte les arretes intermédiaires)
+     */
+    public double getDistance(Station s){
+        double distance;
+        distance=Math.sqrt((s.getAbscisse()-this.getAbscisse())* (s.getAbscisse()-this.getAbscisse()) + (s.getOrdonnée()-this.getOrdonnée())*(s.getOrdonnée()-this.getOrdonnée()));
+       return distance;
+    }
+    
+    
     @Override
     public String toString(){
 
-   return (  this.nom +" "+this.abscisse+" "+this.ordonnée+"\n"/*+ " est dans la zone " + this.getZone().getZone() + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape*/);
+   return (  this.nom +" "+this.abscisse+" "+this.ordonnée+"\n" + " de la ligne" + this.ligne+ "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape );
 
     }
     

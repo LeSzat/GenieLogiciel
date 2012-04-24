@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -173,7 +174,41 @@ public class Main {
 //            break;
 //            
 //        }      
+        
         Metro m =new Metro();
+        
+        for(int i=0;i<m.getStation().size();i++){
+            System.out.println("station: " + m.getStation(i) + " de la ligne " + m.getStation(i).getLigne());
+          
+           
+        }
+          Itineraire ii=new Itineraire(m.getStation(0),m.getStation(3));
+          System.out.println(ii.calculerDistance());
+          ii.setTemps();
+         System.out.println(ii.getTemps());
+        
+  //     Station s=m.getLigne(1).getStation(1);
+   //    Station s2=m.getLigne(1).getStation(2);
+   //  Parcours p=new Parcours(s,s2);
+        
+   /*     System.out.println("Quelles sont vos coordonnées? X?");
+        Scanner s=new Scanner(System.in);
+        double x=s.nextDouble();
+         System.out.println("Y?");
+         double y=s.nextDouble();
+        int[] res= m.rechercherStationProche(x, y);
+        System.out.println("La station la plus proche est la station " + m.getLigne(res[0]).getStation(res[1]).getNom() + " de la ligne " + m.getLigne(res[0]).getNom());
+   
+        
+        
+        
+      
+        Itineraire i=new Itineraire(m.getLigne(0).getStation(0),m.getLigne(0).getStation(2),m.getLigne(0));
+       Itineraire ii=new Itineraire(m.getLigne(0).getStation(0),m.getLigne(0).getStation(9),m.getLigne(0));
+         System.out.println("distance " + ii.calculerDistance());
+        System.out.println("distance " +i.calculerDistance());
+      */   
+        
     }
 }
 

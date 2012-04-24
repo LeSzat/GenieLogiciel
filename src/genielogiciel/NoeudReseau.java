@@ -6,10 +6,7 @@ package genielogiciel;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author mathias
- */
+
 public class NoeudReseau {
     private Station station;
     private ArrayList<NoeudReseau> suivant;
@@ -37,7 +34,7 @@ public class NoeudReseau {
     public String toString(){
         String res="";
         System.out.println(this.station.getNom() + "successeurs: ");
-        int i=0;
+        int i=1;
         while(this.suivant.get(i) != null){
             res=res + this.suivant.get(i).station + "\n";
             i++;
@@ -47,4 +44,9 @@ public class NoeudReseau {
     }
     
     
+     
+     
+     
+     
+     
 }
