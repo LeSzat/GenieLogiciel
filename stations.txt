@@ -1,0 +1,316 @@
+504 265 Abbesses
+469 848 Alésia
+833 575 Alexandre Dumas
+878 836 Alfort - Ecole Vétérinaire
+276 529 Alma - Marceau
+168 307 Anatole France
+537 295 Anvers
+187 453 Argentine
+636 508 Arts et Métiers
+403 573 Assemblée Nationale
+424 438 Auber
+756 145 Aubervilliers - Pantin Quatre Chemins
+277 684 Avenue Emile Zola
+144 505 Avenue Foch
+132 541 Avenue Henri Martin
+833 602 Avron
+212 795 Balard
+577 295 Barbès - Rochechouart
+695 614 Bastille
+760 820 Bd Masséna
+173 782 Bd Victor
+834 684 Bel Air
+743 424 Belleville
+943 675 Bérault
+753 752 Bercy
+ 43 796 Billancourt
+231 625 Bir Hakeim
+445 295 Blanche
+932 151 Bobigny - Pablo Picasso
+895 181 Bobigny - Pantin - Raymond Queneau
+212 517 Boissière
+741 340 Bolivar
+567 431 Bonne Nouvelle
+802 352 Botzaris
+259 758 Boucicaut
+168 590 Boulainvilliers
+795 598 Boulets - Montreuil
+ 55 665 Boulogne - Jean Jaurès
+ 23 665 Boulogne - Pont de Saint-Cloud
+518 469 Bourse
+702 590 Bréguet - Sabin
+385 247 Brochant
+764 352 Buttes Chaumont
+838 610 Buzenval
+527 370 Cadet
+338 685 Cambronne
+638 786 Campo Formio
+588 677 Cardinal Lemoine
+501 105 Carrefour Pleyel
+599 760 Censier - Daubenton
+231 606 Champ de Mars - Tour Eiffel
+363 509 Champs Elysées - Clémenceau
+156 699 Chardon - Lagache
+854 808 Charenton - Ecoles
+230 462 Charles de Gaulle - Etoile
+242 684 Charles Michels
+776 575 Charonne
+618 408 Château d'Eau
+971 684 Château de Vincennes
+665 368 Château Landon
+577 264 Château Rouge
+534 574 Châtelet
+563 547 Châtelet - Les Halles
+345 947 Châtillon - Montrouge
+456 392 Chaussée d'Antin - La Fayette
+684 573 Chemin Vert
+697 798 Chevaleret
+524 606 Cité
+493 865 Cité Universitaire
+526 657 Cluny - La Sorbonne
+719 386 Colonel Fabien
+281 711 Commerce
+403 523 Concorde
+292 790 Convention
+736 206 Corentin Cariou
+273 852 Corentin Celton
+594 818 Corvisart
+293 413 Courcelles
+767 453 Couronnes
+919 888 Créteil - L'Echat
+946 921 Créteil - Préfecture
+932 903 Créteil - Université
+726 236 Crimée
+921 543 Croix de Chavaux
+825 334 Danube
+811 705 Daumesnil
+493 785 Denfert Rochereau
+783 728 Dugommier
+256 656 Dupleix
+363 664 Duroc
+306 637 Ecole Militaire
+440 745 Edgar Quinet
+162 678 Eglise d'Auteuil
+858 211 Eglise de Pantin
+ 69 414 Esplanade de La Défense
+583 511 Etienne Marcel
+376 374 Europe
+114 734 Exelmans
+749 629 Faidherbe - Chaligny
+394 712 Falguière
+274 734 Félix Faure
+684 507 Filles du Calvaire
+765 117 Fort d'Aubervilliers
+317 495 Franklin-D. Roosevelt
+281 120 Gabriel Péri
+406 762 Gaîté
+924 477 Gallieni
+856 477 Gambetta
+666 702 Gare d'Austerlitz
+624 370 Gare de l'Est
+745 685 Gare de Lyon
+619 320 Gare du Nord
+450 146 Garibaldi
+493 896 Gentilly
+272 480 George V
+558 806 Glacière
+715 446 Goncourt
+ 48 404 Grande Arche de La Défense
+423 217 Guy Môquet
+424 408 Havre - Caumartin
+822 239 Hoche
+600 587 Hôtel de Ville
+239 542 Iéna
+363 557 Invalides
+152 845 Issy - Plaine
+799 868 Ivry sur Seine
+649 426 Jacques Bonsergent
+147 630 Jasmin
+723 322 Jaurès
+205 684 Javel
+792 384 Jourdain
+545 234 Jules Joffrin
+623 689 Jussieu
+197 628 Kennedy - Radio-France
+218 497 Kléber
+630 295 La Chapelle
+771  97 La Courneuve - 8 Mai 1945
+406 272 La Fourche
+298 672 La Motte-Picquet - Grenelle
+168 572 La Muette
+624 128 La Plaine - Voyageurs
+516 234 Lamarck - Caulaincourt
+329 591 Latour Maubourg
+741 305 Laumière
+658 905 Le Kremlin Bicêtre
+486 370 Le Peletier
+718 619 Ledru Rollin
+598 798 Les Gobelins
+571 521 Les Halles
+124 432 Les Sablons
+840 790 Liberté
+406 350 Liège
+690 352 Louis Blanc
+199 316 Louise Michel
+235 777 Lourmel
+509 556 Louvre - Rivoli
+520 701 Luxembourg
+457 641 Mabillon
+403 496 Madeleine
+262 885 Mairie d'Issy
+766 889 Mairie d'Ivry
+319 167 Mairie de Clichy
+945 524 Mairie de Montreuil
+476 125 Mairie de Saint-Ouen
+922 389 Mairie des Lilas
+658 873 Maison Blanche
+885 868 Maisons-Alfort - Alfortville
+906 871 Maisons-Alfort - Les Juilliottes
+892 854 Maisons-Alfort - Stade
+365 886 Malakoff - Plateau de Vanves
+356 914 Malakoff - Rue Etienne Dolet
+313 354 Malesherbes
+856 595 Maraîchers
+577 234 Marcadet - Poissonniers
+ 67 776 Marcel Sembat
+637 229 Marx Dormoy
+558 667 Maubert - Mutualité
+788 479 Ménilmontant
+826 725 Michel Bizot
+135 669 Michel-Ange - Auteuil
+129 689 Michel-Ange - Molitor
+173 691 Mirabeau
+363 458 Miromesnil
+322 389 Monceau
+793 683 Montgallet
+418 729 Montparnasse - Bienvenüe
+479 817 Mouton Duvernet
+430 574 Musée d'Orsay
+817 631 Nation
+668 821 Nationale
+453 345 Notre-Dame de Lorette
+446 697 Notre-Dame des Champs
+724 514 Oberkampf
+483 641 Odéon
+456 447 Opéra
+765 285 Ourcq
+474 545 Palais Royal - Musée du Louvre
+730 482 Parmentier
+203 591 Passy
+376 724 Pasteur
+865 448 Pelleport
+812 508 Père Lachaise
+260 336 Péreire
+395 793 Pernéty
+831 532 Philippe Auguste
+831 659 Picpus
+748 868 Pierre Curie
+495 295 Pigalle
+625 827 Place d'Italie
+406 322 Place de Clichy
+822 376 Place des Fêtes
+610 726 Place Monge
+385 823 Plaisance
+574 370 Poissonnière
+275 558 Pont de l'Alma
+142 298 Pont de Levallois - Bécon
+ 98 424 Pont de Neuilly
+ 23 812 Pont de Sèvres
+585 599 Pont Marie
+503 573 Pont Neuf
+508 739 Port Royal
+101 665 Porte d'Auteuil
+678 889 Porte d'Italie
+725 850 Porte d'Ivry
+459 877 Porte d'Orléans
+162 496 Porte Dauphine
+885 477 Porte de Bagnolet
+230 327 Porte de Champerret
+829 767 Porte de Charenton
+701 869 Porte de Choisy
+364 221 Porte de Clichy
+577 173 Porte de Clignancourt
+656 173 Porte de la Chapelle
+745 178 Porte de la Villette
+874 581 Porte de Montreuil
+791 265 Porte de Pantin
+ 91 757 Porte de Saint-Cloud
+438 172 Porte de Saint-Ouen
+377 850 Porte de Vanves
+283 820 Porte de Versailles
+872 652 Porte de Vincennes
+886 389 Porte des Lilas
+842 756 Porte Dorée
+163 445 Porte Maillot
+859 345 Pré-Saint-Gervais
+456 508 Pyramides
+767 404 Pyrénées
+728 772 Quai de la Gare
+674 675 Quai de la Rapée
+486 458 Quatre Septembre
+618 533 Rambuteau
+155 606 Ranelagh
+472 759 Raspail
+591 494 Réaumur - Sébastopol
+430 671 Rennes
+684 471 République
+775 661 Reuilly - Diderot
+712 561 Richard Lenoir
+503 411 Richelieu - Drouot
+717 266 Riquet
+896 563 Robespierre
+378 344 Rome
+182 542 Rue de la Pompe
+403 621 Rue du Bac
+537 422 Rue Montmartre
+736 526 Saint-Ambroise
+397 429 Saint-Augustin
+543  48 Saint-Denis
+558  58 Saint-Denis - Basilique
+524  86 Saint-Denis - Porte de Paris
+878 411 Saint-Fargeau
+363 625 Saint-François-Xavier
+477 325 Saint-Georges
+457 632 Saint-Germain des Prés
+523 794 Saint-Jacques
+406 384 Saint-Lazare
+909 664 Saint-Mandé - Tourelle
+650 749 Saint-Marcel
+768 496 Saint-Maur
+513 638 Saint-Michel
+541 641 Saint-Michel - Notre-Dame
+364 129 Saint-Ouen
+652 603 Saint-Paul
+339 477 Saint-Philippe du Roule
+430 693 Saint-Placide
+684 548 Saint-Sébastien - Froissart
+440 663 Saint-Sulpice
+322 664 Ségur
+549 480 Sentier
+403 641 Sèvres - Babylone
+354 697 Sèvres - Lecourbe
+577 200 Simplon
+403 597 Solférino
+706 304 Stalingrad
+607 444 Strasbourg - Saint-Denis
+632 625 Sully - Morland
+844 376 Télégraphe
+657 486 Temple
+265 435 Ternes
+642 851 Tolbiac
+425 367 Trinité
+204 542 Trocadéro
+439 534 Tuileries
+378 655 Vaneau
+363 603 Varenne
+322 765 Vaugirard
+448 735 Vavin
+184 500 Victor Hugo
+658 924 Villejuif - Léo Lagrange
+658 968 Villejuif - Louis Aragon
+658 946 Villejuif - Paul Vaillant-Couturier
+351 366 Villiers
+931 658 Vincennes
+350 743 Volontaires
+756 551 Voltaire
+291 347 Wagram
