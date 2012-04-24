@@ -21,10 +21,7 @@ public class Parcours {
         this.depart=depart;
         this.arrivee=arrivee;
         temps=0;
-        this.m=new Metro();
-        System.out.println("num de la ligne:" + ligneIdent());
-      //  this.resultat=new HashMap();
-        
+        this.m=new Metro();        
     }
     
 
@@ -54,44 +51,36 @@ public class Parcours {
    */ 
     
     
-    /*
-     * teste si les stations d'arrivee et de départ appartiennent à la même ligne
-     * @return le numero de la ligne
-     * -1 si les stations n'appartiennent pas à la même ligne
-     */
-    public int ligneIdent(){
-                
-               //System.out.println("temps de parcours:" + it.getTemps() + " min");
-        return -1;
-    }
+ 
+    
     
     
     
     // a changer
     public ArrayList djikstra(){
-        ArrayList stations=new ArrayList();     //la liste des stations existantes
-        ArrayList poids=new ArrayList();        //le poids de chaque liaison entre les stations
+        ArrayList stations= m.getStation();     //la liste des stations existantes
+        ArrayList poids= m.getAretes();        //le poids de chaque liaison entre les stations
         ArrayList parcouru=new ArrayList();     //un bool qui donnent les stations parcourues
-        ArrayList antecedants=new ArrayList();  //l'antécédant de chaque noeud pour avoir le chemin min     
+        ArrayList<Arete> antecedants=m.getMinDistanceTous();  //l'antécédant de chaque noeud pour avoir le chemin min 
+        ArrayList resultat=new ArrayList();
+        
+        for(int i=0;i<m.getStation().size();i++){
+            parcouru.set(i,false);
+        }
         
         for(int i=0;i<10;i++){
-            int ligne=ligneIdent();
-            if(ligne != -1){        //si les 2 stations n'appartiennent pas à la meme ligne
-                
-           
-         //   stations.addAll(this.m.getLigne(i).getStations());
-            poids.set(i,0);
-            parcouru.set(i,false);
-            antecedants.set(i,new Station());
+            if(this.depart.getLigne() != this.arrivee.getLigne()){        //si les 2 stations n'appartiennent pas à la meme ligne
+ 
+            
+            
              }
             else {          //si les 2 stations appartiennent à la meme ligne
                 Itineraire itin=new Itineraire(this.depart,this.arrivee);
-                itin.calculerDistance();
-              //  itin.getTemps();
+                this.temps=(int)itin.calculerDistance();
             }
          }
         
-        return stations;
+        return resultat;
         
     }
     

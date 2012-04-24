@@ -75,11 +75,7 @@ public class Main {
                  int lignee=0;
                 
             
-                for( i=0;i<m.getNombreLignes();i++){
-                    System.out.println("-" + i + "- " + m.getLigne(i).getNom());
-                    // System.out.println("-" + i + "-" + m.getLigne(i).getNom());
-                    lignee=i;
-                }
+    
                 
                Scanner sce=new Scanner(System.in);
                  

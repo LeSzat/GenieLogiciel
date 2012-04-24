@@ -47,37 +47,54 @@ public class Metro {
   
      
        
-       Station s= new Station("S2",200,230);
-       Station ss=new Station("S3",220,250);
-       Station sss=new Station("S4",260,270);
-       Station ssss=new Station("S5",340,300);
+       Station s= new Station("S2",10,20);
+       Station ss=new Station("S3",10,30);
+       Station sss=new Station("S4",50,20);
+       Station ssss=new Station("S5",30,40);
        
        this.station.add(s);
        this.station.add(ss);
        this.station.add(sss);
        this.station.add(ssss);
+       this.aretes.add(new Arete("S2-S3",1,s,ss));
+       this.aretes.add(new Arete("S3-S4",1,ss,sss));
+       this.aretes.add(new Arete("S4-S5",1,sss,ssss));
+       int a=0;
        for(int i=0;i<4;i++){
            this.station.get(i).setLigne(1);
            this.station.get(i).setPositionLigne(i);
            this.station.get(i).setTempsArret(1 );
+           a++;
+           if(a<3){
+           this.aretes.get(i).setDistance(5);}
        }
        
-       s=new Station("SS1",10,20);
-       ss= new Station("SS2",20,30);
-       sss=new Station("SS3",30,40);
-       ssss=new Station("SS4",40,50);
+       
+       s=new Station("SS1",25,10);
+       
+   //    sss=new Station("SS3",30,40);
+       ss= new Station("SS2",50,40);
+       ssss=new Station("SS4",60,50);
        this.station.add(s);
        this.station.add(ss);
        this.station.add(sss);
        this.station.add(ssss);
        int j=0;
+        this.aretes.add(new Arete("SS1-S4",2,s,sss));
+       this.aretes.add(new Arete("S-S4",2,sss,ss));
+       this.aretes.add(new Arete("SS2-SS4",2,ss,ssss));
+       a=4;
         for(int i=4;i<8;i++){
             
            this.station.get(i).setLigne(2);
             this.station.get(i).setPositionLigne(j);
             this.station.get(i).setTempsArret(1);
+            a++;
+            if(a<6){
+            this.aretes.get(i).setDistance(10); }
             j++;
        }
+       
        
        s=new Station("SSS1",10,30);
        ss=new Station("SSS2",20,30);
@@ -304,6 +321,38 @@ public class Metro {
            }
         }
         return compt;
+    }
+    
+    
+    
+    /*
+    * calcule l'arete avec distance min pour arriver à la station s
+    */
+    public Arete getMinDistance(Station s){
+        double min=9990;
+        Arete amin= this.aretes.get(0);
+        for(int i=0;i<this.aretes.size();i++){
+            if(this.aretes.get(i).isArrivee(s)){
+                if(this.aretes.get(i).getDistance() < min){
+                    min = this.aretes.get(i).getDistance();
+                    amin=this.aretes.get(i);
+                }
+            }
+        }
+        return amin;
+    }
+    
+    
+    /*
+     * calcule les antécédents optimaux pour arriver a chaque station
+     */
+    public ArrayList<Arete> getMinDistanceTous(){
+        ArrayList a=new ArrayList();
+        for(int i=0;i< this.station.size();i++){
+           Arete aa= this.getMinDistance(this.getStation(i));
+            a.add(aa);
+        }
+        return a;
     }
     
     
