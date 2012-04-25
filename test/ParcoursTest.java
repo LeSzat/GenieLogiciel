@@ -22,8 +22,16 @@ public class ParcoursTest extends TestCase{
         res.add(new Arete("S2-S3",1,s,ss));
         res.add(new Arete("S3-S4",1,ss,sss));
         res.add(new Arete("S4-SS4",2,sss,ssss));
-        
-        assertEquals(res,a);
+      //  for(int i=0;i<res.size();i++){
+            assertEquals(res,a);
+       // }
+    }
+    
+    
+    public static void assertEquals(ArrayList o,ArrayList r){
+        for(int i=0;i<r.size();i++){
+            o.get(i).equals(r.get(i));
+        }
     }
     
 }

@@ -44,7 +44,7 @@ public class Parcours {
                 this.temps=(int)itin.calculerDistance();
         }
         else{     //si les 2 stations n'appartiennent pas à la meme ligne   
-            while((actuelle != depart)){
+            while(( !(actuelle.getNom().equalsIgnoreCase(depart.getNom()) && actuelle.getAbscisse()==depart.getAbscisse() && actuelle.getOrdonnée()==depart.getOrdonnée()))){
              for(int i=0;i<m.getStation().size();i++){
                   Arete a= m.getMinDistance(actuelle);                                              
                  if(m.getMinDistance(actuelle).isArrivee(actuelle) || actuelle.isIdentiqueStation(m.getStation(i))){
