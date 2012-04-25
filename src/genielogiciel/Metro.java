@@ -72,17 +72,17 @@ public class Metro {
        
        s=new Station("SS1",25,10);
        
-   //    sss=new Station("SS3",30,40);
-       ss= new Station("SS2",50,40);
+       sss=new Station("SS3",50,20);
+       ss= new Station("SS2",50,15);
        ssss=new Station("SS4",60,50);
        this.station.add(s);
        this.station.add(ss);
        this.station.add(sss);
        this.station.add(ssss);
        int j=0;
-        this.aretes.add(new Arete("SS1-S4",2,s,sss));
-       this.aretes.add(new Arete("S-S4",2,sss,ss));
-       this.aretes.add(new Arete("SS2-SS4",2,ss,ssss));
+        this.aretes.add(new Arete("SS1-SS2",2,s,ss));
+       this.aretes.add(new Arete("SS2-S4",2,ss,sss));
+       this.aretes.add(new Arete("S4-SS4",2,sss,ssss));
        a=4;
         for(int i=4;i<8;i++){
             
@@ -305,6 +305,9 @@ public class Metro {
         return tab;
     }
     
+    /*
+     * le nombre total des lignes du réseau
+     */
     public int getNombreLignes(){
         int compt=0;
         ArrayList tab=new ArrayList();
@@ -324,28 +327,53 @@ public class Metro {
     }
     
     
+    /*
+     * renvoie les stations qui correspondent a cette station (mais pour les autres lignes)
+     */
+    public ArrayList<Station>  getStationsIdentiques(Station s){
+        ArrayList a=new ArrayList();
+        for(int i=0;i<this.station.size();i++){
+            if(this.getStation(i).isIdentiqueStation(s)){
+                a.add(this.station.get(i));
+            }
+        }
+        return a;
+    }
+    
+    
     
     /*
-    * calcule l'arete avec distance min pour arriver à la station s
+    * calcule l'arete avec la distance min pour arriver à la station s
     */
     public Arete getMinDistance(Station s){
         double min=9990;
+        ArrayList<Station> a= this.getStationsIdentiques(s);
         Arete amin= this.aretes.get(0);
+        
         for(int i=0;i<this.aretes.size();i++){
-            if(this.aretes.get(i).isArrivee(s)){
-                if(this.aretes.get(i).getDistance() < min){
+            int nbreIdent =a.size();
+            if(nbreIdent == 0){
+                    amin=this.aretes.get(i);
+            }
+            else{
+                if(((this.aretes.get(i).isArrivee(a.get(nbreIdent-1)) ) || ((this.aretes.get(i).isArrivee(s)) && (this.aretes.get(i).getDistance() < min)))){
+                    if((this.aretes.get(i).isArrivee(a.get(nbreIdent-1))) && (this.aretes.get(i).getDistance() < min)){
+                        nbreIdent--;
+                    }
                     min = this.aretes.get(i).getDistance();
                     amin=this.aretes.get(i);
                 }
             }
         }
+   //     System.out.println(amin.getSommetArrivee());
+    //      System.out.println(amin.getSommetDepart());
         return amin;
     }
     
     
     /*
-     * calcule les antécédents optimaux pour arriver a chaque station
-     */
+     * calcule les antécédents optimaux(distance) pour arriver a chaque station
+     
     public ArrayList<Arete> getMinDistanceTous(){
         ArrayList a=new ArrayList();
         for(int i=0;i< this.station.size();i++){
@@ -354,6 +382,6 @@ public class Metro {
         }
         return a;
     }
-    
+    */
     
 }

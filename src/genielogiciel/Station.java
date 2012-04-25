@@ -133,6 +133,15 @@ public class Station {
         this.tempsArret = tempsArret;
     }
     
+   /*
+    * teste si 2 stations sont identiques (le cas de lignes différentes)
+    */
+    public boolean isIdentiqueStation(Station s){
+        if(this.getAbscisse()== s.getAbscisse() && this.getOrdonnée()== s.getOrdonnée() && this.getLigne() != s.getLigne()){
+            return true;
+        }
+        return false;
+    }
     
 
 //    public Zone getZone() {
