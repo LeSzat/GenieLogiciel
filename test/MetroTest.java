@@ -23,10 +23,18 @@ public class MetroTest extends TestCase{
     
     public void testgetMinDistance(){
     //   double res= m.getMinDistance(m.getStation(6)).getDistance();
-       double res = m.getMinDistance(m.getStation(5)).getDistance();
-       
-        assertEquals(10.,res);
-        
+       double res = m.getMinDistance(m.getStation(5)).getDistance();    
+        assertEquals(10.,res);    
+    }
+    
+    
+    public void testgetHorairedePassage(){
+       // Station s= new Station("S3",10,30);
+        Station s=new Station("S4",50,20);
+        s.setLigne(1);
+        s.setPositionLigne(1);
+        m.getHorairedePassage(s,2);
+        assertEquals(2,2);
     }
     
     

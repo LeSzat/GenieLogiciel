@@ -255,27 +255,61 @@ public class Metro {
     
     /*
      * permet de trouver le prochain passage d'une ligne à la station s
+     * si sens=1, c'est le sens aller sinon les horaires dans l'autre sens
      */
     public String getHorairedePassage(Station s,int sens){
        GregorianCalendar d = new GregorianCalendar();
-        //Permet de récolter les données (heure,minute,seconde) de la classe GregorianCalendar!
-        int heure = d.get(Calendar.HOUR),i=0;
+        //Permet de trouver le time actuel
+        int heure = d.get(Calendar.HOUR_OF_DAY),i=0,attente=0,index=0;
         int min = d.get(Calendar.MINUTE);
         int sec = d.get(Calendar.SECOND); 
         
         int[] horaires=Horaire.horaire;
-        Iterator iter=this.getStationsLigne(s.getLigne().getNum()).iterator();          // on récupère toutes les stations de cette ligne
-        while(iter.hasNext()){
-            
+        Station station,station2;
+        ArrayList<Station> stations=this.getStationsLigne(s.getLigne().getNum());
+        Collections.sort(stations);
+        
+        Iterator iter=stations.iterator();          // on récupère toutes les stations de cette ligne
+        double distance=0;
+        if(sens != 1){     // si c'est dans le sens retour
+                   Collections.reverse(stations);
         }
+            while(iter.hasNext() && index<s.getPostionLigne() ){
+                station2= (Station)iter.next();
+                station= (Station)iter.next();
+                index +=2;
+                distance += station2.getDistance(station) ; 
+                attente += station2.getTempsArret();
+            }
+            distance += stations.get(index-1).getDistance(s);
+
         while(i<horaires.length && horaires[i]<min){
             i++;
         }
-        min=horaires[i];
-        if( (heure < Horaire.debut) || (heure> Horaire.fin)){
-            return( "le premier passage de cette ligne est à " + Horaire.debut + "\n" + " et le dernier est à" + Horaire.fin);
+        
+
+        
+        if(horaires[horaires.length-1] <min){
+            heure=heure+1;
+            min= horaires[0];
         }
-        else return ("le prochain passage est à " + heure + " h" + min);
+        else {
+            min=horaires[i];
+        }
+        if(index == 0){
+            String  res = "le prochain passage est à " + heure + " h" + min;
+            return res;
+        }
+        if( (heure < Horaire.debut) || (heure> Horaire.fin)){
+            return( "le premier passage de cette ligne est à " + Horaire.debut + " h" + "\n" + " et le dernier est à" + Horaire.fin + " h");
+        }
+        else {
+            distance *=  (Ligne.vitesse /3.6);           //le temps de parcours = vitesse*distance
+            distance = (distance*3600)/1000 + attente;
+            return ("le prochain passage est à " + heure + " h" + min);
+        }
+
+
     }
     
        

@@ -132,9 +132,9 @@ public class Station implements java.lang.Comparable {
 //        return(s.ligne.getNum() - ss.getLigne().getNum());
 //    }
     
-    public int compareTo(Station s){
-        if (s.position > this.position)  return -1; 
-        else if(s.position == this.position) return 0; 
+    public int compareTo(Object s){
+        if (((Station)s).position > this.position)  return -1; 
+        else if(((Station)s).position == this.position) return 0; 
         else return 1;
    }  
 
@@ -183,7 +183,7 @@ public class Station implements java.lang.Comparable {
    return (  this.nom +" "+this.abscisse+" "+this.ordonnée+"\n" + " de la ligne" + this.ligne+ "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape );
 
     }
-    
+
     
     
     

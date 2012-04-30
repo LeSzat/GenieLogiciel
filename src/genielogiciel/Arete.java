@@ -26,6 +26,8 @@ public class Arete implements java.lang.Comparable {
         this.accident = false;
     }
 
+    
+    
     @Override
     public int compareTo(Object o) {
         double dist = ((Arete) o).getDistance();
