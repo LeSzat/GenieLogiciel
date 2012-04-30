@@ -54,14 +54,14 @@ public class ParcoursTest extends TestCase{
     }
     
     
-//    public void testdijkstraChangements(){
-//         Parcours p=new Parcours(m.getStation(0),m.getStation(7));
-//         Station ss2=new Station("SS3",50,20);
-//         Station s= p.dijkstraChangements();
-//         ss2.setLigne(2);
-//         
-//        assertEquals(ss2,s);
-//    }
+    public void testdijkstraChangements(){
+         Parcours p=new Parcours(m.getStation(0),m.getStation().get(11));
+         Station ss2=new Station("SS3",50,20);
+         ArrayList s= p.dijkstraChangements(p.getDepart(),p.getArrivee());
+         ss2.setLigne(2);
+         
+        assertEquals(ss2,s);
+    }
     
     
     public static void assertEquals(ArrayList o,ArrayList r){
