@@ -271,8 +271,13 @@ public class Metro {
         
         Iterator iter=stations.iterator();          // on récupère toutes les stations de cette ligne
         double distance=0;
+        int total=0;
         if(sens != 1){     // si c'est dans le sens retour
                    Collections.reverse(stations);
+                    total = s.getLigne().getTempsTotalParcours();           // on regarde le temps nécesaire à la rame d'arriver au terminus
+                    for(int ii=0;ii<horaires.length;ii++){
+                        horaires[ii] = (Horaire.horaire[ii]+ total + 5)%60;
+                    }
         }
             while(iter.hasNext() && index<s.getPostionLigne() ){
                 station2= (Station)iter.next();
@@ -286,9 +291,7 @@ public class Metro {
         while(i<horaires.length && horaires[i]<min){
             i++;
         }
-        
 
-        
         if(horaires[horaires.length-1] <min){
             heure=heure+1;
             min= horaires[0];
@@ -304,8 +307,8 @@ public class Metro {
             return( "le premier passage de cette ligne est à " + Horaire.debut + " h" + "\n" + " et le dernier est à" + Horaire.fin + " h");
         }
         else {
-            distance *=  (Ligne.vitesse /3.6);           //le temps de parcours = vitesse*distance
-            distance = (distance*3600)/1000 + attente;
+            distance = (distance/1000) * (Ligne.vitesse);           //le temps de parcours = vitesse*distance
+            distance = (distance*60) + attente;
             return ("le prochain passage est à " + heure + " h" + min);
         }
 
