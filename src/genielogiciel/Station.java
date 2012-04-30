@@ -1,14 +1,15 @@
 package genielogiciel;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 
-public class Station {
+public class Station implements java.lang.Comparable {
     
  
     private String nom;
-    private int ligne;
+    private Ligne ligne;
     private int position;
     private boolean handicape;
     private boolean ascenseur;
@@ -26,7 +27,7 @@ public class Station {
         this.ordonnée=0;
         this.ascenseur=false;
         this.perturbation=false;
-        this.ligne=0;
+        this.ligne=new Ligne(0,"0");
         this.position=0;
     }
     
@@ -35,7 +36,7 @@ public class Station {
         this.abscisse=x;
         this.ordonnée=y;       
         this.perturbation=false;
-       this.ligne=0;
+       this.ligne=new Ligne(0,"0");
         this.position=0;
 
     }
@@ -48,7 +49,7 @@ public class Station {
         this.handicape=handicape;
 //        this.zone=new Zone(zone);
        this.perturbation=false;
-       this.ligne=ligne;
+      this.ligne=new Ligne(ligne,"" + ligne);
         this.position=0;
     }
     
@@ -59,7 +60,7 @@ public class Station {
         this.handicape=handicape;
 //        this.zone=zone;
         this.perturbation=false;
-        this.ligne=0;
+        this.ligne=new Ligne(0,"0");
         this.position=0;
        
     }
@@ -107,13 +108,17 @@ public class Station {
         this.nom = nom;
     }
 
-    public int getLigne() {
+    public Ligne getLigne() {
         return ligne;
     }
 
-    public void setLigne(int ligne) {
+    public void setLigne(Ligne ligne) {
         this.ligne = ligne;
     }
+     public void setLigne(int ligne) {
+        this.ligne = new Ligne(ligne,"" +ligne);
+    }
+    
     
     public int getPostionLigne() {
         return this.position;
@@ -123,7 +128,15 @@ public class Station {
         this.position=pos;
     }
 
-
+//    public int compare(Station s,Station ss){
+//        return(s.ligne.getNum() - ss.getLigne().getNum());
+//    }
+    
+    public int compareTo(Station s){
+        if (s.position > this.position)  return -1; 
+        else if(s.position == this.position) return 0; 
+        else return 1;
+   }  
 
     public int getTempsArret() {
         return tempsArret;
@@ -137,7 +150,9 @@ public class Station {
     * teste si 2 stations sont identiques (le cas de lignes différentes)
     */
     public boolean isIdentiqueStation(Station s){
-        if(this.getAbscisse()== s.getAbscisse() && this.getOrdonnée()== s.getOrdonnée() && this.getLigne() != s.getLigne()){
+      //  Comparator<double,double> comp = new DoubleComparator();
+        
+        if(this.getAbscisse()== s.getAbscisse() && this.getOrdonnée()== s.getOrdonnée() ){
             return true;
         }
         return false;
@@ -155,12 +170,10 @@ public class Station {
     
     
     /*
-     * renvoie la distance entre 2 arrêts voisins (sans prendre en compte les arretes intermédiaires)
+     * renvoie la distance entre 2 arrêts voisins 
      */
-    public double getDistance(Station s){
-        double distance;
-        distance=Math.sqrt((s.getAbscisse()-this.getAbscisse())* (s.getAbscisse()-this.getAbscisse()) + (s.getOrdonnée()-this.getOrdonnée())*(s.getOrdonnée()-this.getOrdonnée()));
-       return distance;
+    public double getDistance(Station s){           //distance euclidienne
+        return Math.sqrt((s.getAbscisse()-this.getAbscisse())* (s.getAbscisse()-this.getAbscisse()) + (s.getOrdonnée()-this.getOrdonnée())*(s.getOrdonnée()-this.getOrdonnée()));
     }
     
     

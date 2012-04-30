@@ -56,12 +56,12 @@ public class Itineraire {
     */
     public void setTemps(){
         int res=0,ligne;
-        if((ligne=this.depart.getLigne()) == this.arrivee.getLigne()){
+        if((ligne=this.depart.getLigne().getNum()) == this.arrivee.getLigne().getNum()){
            int arrets=0;
            int d,a;
           if((d=this.depart.getPostionLigne()) < (a=this.arrivee.getPostionLigne())){ 
               int posd=m.getPositionStation(depart);
-              int posa= m.getPositionStation(arrivee);
+              int posa= m.getPositionStation(arrivee);           
               for(int i=posd;i<posa;i++){
                  res += m.getStation(i).getTempsArret();
               }
@@ -74,13 +74,11 @@ public class Itineraire {
         }
      }
     
-    public double calculerDistance(){   
-        
+    public double calculerDistance(){          
    //     d = R * (Pi/2 - ArcSin( sin(destLat) * sin(sourceLat) + cos(destLong - sourceLong) * cos(destLat) * cos(sourceLat)));      
     double earth = 6378;
     double dlat = Math.toRadians(depart.getAbscisse());
-    double dlon = Math.toRadians(depart.getOrdonnée());
-    
+    double dlon = Math.toRadians(depart.getOrdonnée());  
     double alat= Math.toRadians(arrivee.getAbscisse());
     double alon = Math.toRadians(arrivee.getOrdonnée());
    /* double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
