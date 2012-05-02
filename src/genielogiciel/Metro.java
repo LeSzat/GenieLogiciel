@@ -16,6 +16,7 @@ public class Metro {
     private ArrayList<Arete> aretes;
     private ArrayList<Station> station;
     private ArrayList<Perturbation> perturbations;
+    private ArrayList<Ligne> lignes;
 
 
     public Metro() {
@@ -217,8 +218,18 @@ public class Metro {
 //       double distance = Math.sqrt(((x2-x)*(x2-x)) + ((y2 - y)*(y2 - y)));   
 //       return distance;
 //    }
+
+    public ArrayList<Ligne> getLignes() {
+        return lignes;
+    }
+
+    public void setLignes(ArrayList<Ligne> lignes) {
+        this.lignes = lignes;
+    }
     
-    
+    public Ligne getLigne(int i){
+        return this.lignes.get(i);
+    }
    
 
     public ArrayList<Arete> getAretes() {

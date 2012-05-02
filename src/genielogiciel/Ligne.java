@@ -16,7 +16,7 @@ public class Ligne {
     
     private int num;
     private String nom;
-    public static double vitesse=26;   //vitesse moy 26km/h
+    public static double vitesse=18;   //vitesse moy 18m/s
 
     public Ligne(int num, String nom) {
         this.num = num;
