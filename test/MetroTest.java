@@ -30,11 +30,11 @@ public class MetroTest extends TestCase{
     
     public void testgetHorairedePassage(){
        // Station s= new Station("S3",10,30);
-        Station s=new Station("S4",50,20);
+         Station s= new Station("S2",10,20);
         s.setLigne(1);
         s.setPositionLigne(1);
-        m.getHorairedePassage(s,2);
-        assertEquals(2,2);
+        String res=m.getHorairedePassage(s,1);
+        assertEquals("le prochain passage est à 22h12",res);
     }
     
     
