@@ -152,7 +152,7 @@ public class Metro {
                 while ((ligne = br.readLine()) != null) {
                     String[] tokens = ligne.split(":");
                     String[] nom;
-                    Ligne l=new Ligne();
+                    Ligne l;
                     if (tokens[0].contains("####")) {                       
                         nomligne=tokens[1];//.substring(5);
                         l=new Ligne(i,nomligne);

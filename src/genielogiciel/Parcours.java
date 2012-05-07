@@ -57,7 +57,7 @@ public class Parcours {
     
         if(this.depart.getLigne() == this.arrivee.getLigne()){   //si les 2 stations appartiennent à la meme ligne
                 Itineraire itin=new Itineraire(this.depart,this.arrivee);
-                this.temps=(int)itin.calculerDistance();
+                this.temps=(int)itin.getTemps();
         }
         else{     //si les 2 stations n'appartiennent pas à la meme ligne   
           Iterator iter= m.getStation().iterator();
