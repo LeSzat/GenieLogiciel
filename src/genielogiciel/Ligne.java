@@ -21,6 +21,13 @@ public class Ligne {
     public Ligne(int num, String nom) {
         this.num = num;
         this.nom = nom;
+//        this.m= new Metro();
+    }
+    
+    
+    public Ligne(){
+        this.num=0;
+        this.nom=" ";
     }
 
     public String getNom() {
@@ -45,7 +52,7 @@ public class Ligne {
      * renvoie le temps qu'il faut pour parcourir toutes les stations de la ligne (de terminus à terminus)
      */
     public int getTempsTotalParcours(){
-        Metro m=new Metro();
+       Metro m=new Metro();
         double distance=0;
         int temps=0,index=0,attente=0;
         ArrayList<Station> stations = m.getStationsLigne(this.num);
@@ -64,4 +71,8 @@ public class Ligne {
 
         return temps;
     }
+    
+    
+    
+ 
 }

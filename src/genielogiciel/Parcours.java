@@ -15,7 +15,7 @@ public class Parcours {
    // private Itineraire resultat;
     private int temps;
     private int correspondance;
-    
+    private ArrayList<Station> res;
     
     
     public Parcours(Station depart,Station arrivee){
@@ -24,6 +24,7 @@ public class Parcours {
         temps=0;
         this.m=new Metro();  
         this.correspondance=0;
+        res=new ArrayList();
     }
       
     
@@ -37,14 +38,15 @@ public class Parcours {
         Station actuelle = arrivee;
         int changement=0;
         
-//        if( isDepartPerturbe()){
-//            System.out.println("il y des perturbations sur la station de départ");
-//            return null;
-//        }
-//         if( isArriveePerturbee()){
-//            System.out.println("il y des perturbations sur la station d'arrivée");
-//            return null;
-//        }
+        if( isDepartPerturbe()){
+            System.out.println("il y des perturbations sur la station de départ");
+            System.out.println("Veuillez choisir une autre station de départ!");
+            return null;
+        }
+         if( isArriveePerturbee()){
+            System.out.println("il y des perturbations sur la station d'arrivée");
+            return null;
+        }
         Iterator ii= m.getStation().iterator();
         while(ii.hasNext()){
             parcouru.add(Boolean.FALSE);
@@ -152,7 +154,40 @@ public class Parcours {
         this.depart = depart;
     }
     
-    
+   /*
+    * calcule le changement avec min de correspondances
+    */
+    public ArrayList<Station> getMinCorrespondance(Station depart,Station arrivee){
+        //correspondance=0;
+       ArrayList<Station> stationsDepart= m.getStationsLigne(depart.getLigne().getNum());
+       ArrayList<Station> stationInterm=new ArrayList();    
+       ArrayList<Station> stationsArrivee= m.getStationsLigne(arrivee.getLigne().getNum());
+       Iterator it= stationsDepart.iterator();
+       while(it.hasNext()){
+           Station dep= (Station)it.next();
+           if(depart.getLigne().getNum() == arrivee.getLigne().getNum()) {          //sans changement de ligne
+               //res.add(dep);
+              // this.correspondance++;
+               return res;
+           }
+           if (!(m.getStationsIdentiques(dep).isEmpty())){                          
+               stationInterm.addAll(m.getStationsIdentiques(dep));
+               for(int j=0;j<m.getStationsIdentiques(dep).size();j++){
+                    if(stationsArrivee.contains(m.getStationsIdentiques(dep).get(j))){  //avec 1 changement de ligne
+                          // res.add(stationInterm.get(0));
+                       // stationInterm.add(m.getStationsIdentiques(dep).get(j));
+                        res.add(depart);
+                        res.add(m.getStationsIdentiques(dep).get(0));
+                        this.correspondance++;
+                        return res;
+                    }
+               }
+           }
+       }
+        this.correspondance++;
+       return getMinCorrespondance(stationInterm.get(0),arrivee);                   //avec plusieurs changements de ligne
+      // return res;
+    }
     
     
     public ArrayList dijkstraChangements(Station a,Station b){

@@ -1,7 +1,7 @@
 #### 1-a:La Défense -- Château de Vincennes
-1-a:La Défense
-1-a:Esplanade de la Défense
-1-a:Pont de Neuilly
+1-a:La Défense	48.89129108954035	2.240116596221924
+1-a:Esplanade de la Défense	48.888361	2.249955
+1-a:Pont de Neuilly	48.884968	2.259775
 1-a:Les Sablons
 1-a:Porte Maillot
 1-a:Argentine

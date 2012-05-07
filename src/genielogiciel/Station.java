@@ -168,6 +168,8 @@ public class Station implements java.lang.Comparable {
 //    }
 //     
     
+  
+    
     
     /*
      * renvoie la distance entre 2 arrêts voisins 
@@ -180,7 +182,7 @@ public class Station implements java.lang.Comparable {
     @Override
     public String toString(){
 
-   return (  this.nom +" "+this.abscisse+" "+this.ordonnée+"\n" + " de la ligne" + this.ligne+ "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape );
+   return (  this.nom +" "+this.abscisse+" "+this.ordonnée+"\n" + " de la ligne" + this.ligne.getNom()+ "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape );
 
     }
 

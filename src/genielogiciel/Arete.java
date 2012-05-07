@@ -95,4 +95,5 @@ public class Arete implements java.lang.Comparable {
     public void setNum(int num) {
         this.num = num;
     }
+    
 }

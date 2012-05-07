@@ -13,22 +13,16 @@ public class Horaire {
     public static int debut=6;      // l'heure du 1er passage
     public static int fin=24;        // l'heure de passage du dernier
     public static int[] horaire= {0,12,24,36,48};    // à quelle min passe la ligne
+    public int[] horaireRet;                         //à quelle min passe la ligne mais au retour
    // private int ligne;
 
     public Horaire() {
       //  this.ligne = ligne;
+        this.horaireRet=new int[5];
+              
     }
 
-/*
-    public int getLigne() {
-        return ligne;
-    }
 
-    public void setLigne(int ligne) {
-        this.ligne = ligne;
-    }
-    
-   */
 
     public static int getDebut() {
         return debut;
