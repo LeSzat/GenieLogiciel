@@ -27,8 +27,9 @@ public class Metro {
   //      this.perturbations=new ArrayList();
         
        // importerInfoStations();
-       // importerStations();
-           creerReseau();
+        importerStations();
+        creerAretes();
+         //  creerReseau();
             //creerLignes();
 
     }
@@ -150,9 +151,10 @@ public class Metro {
                 String nomligne;
                 while ((ligne = br.readLine()) != null) {
                     String[] tokens = ligne.split(":");
+                    String[] nom;
                     Ligne l=new Ligne();
                     if (tokens[0].contains("####")) {                       
-                        nomligne=tokens[1].substring(5);
+                        nomligne=tokens[1];//.substring(5);
                         l=new Ligne(i,nomligne);
                         l.setNum(j);
                         this.lignes.add(l);
@@ -161,7 +163,8 @@ public class Metro {
                     } else if (tokens.length == 2 ) {
                       //  lignes.get(i).ajouterStation(station.get(tokens[1]));
                             tokens = ligne.split("\t");  
-                            Station s= new Station(tokens[0], Double.parseDouble(tokens[1])*10, Double.parseDouble(tokens[2])*10);
+                            nom = tokens[0].split(":");
+                            Station s= new Station(nom[1], Double.parseDouble(tokens[1])*10, Double.parseDouble(tokens[2])*10);
                             s.setLigne(this.lignes.get(j-1));
                             this.station.add(s);
                       // int position= this.getPositionStation(tokens[0]);
@@ -175,32 +178,55 @@ public class Metro {
             System.err.println(e.toString());
         }
     }
-
     
-    private void importerInfoStations() {
-        String fichier = "stationLOc.txt";
-
-        //lecture du fichier texte	
-        try {
-            InputStream ips = new FileInputStream(fichier);
-            InputStreamReader ipsr = new InputStreamReader(ips);
-            try (BufferedReader br = new BufferedReader(ipsr)) {
-                String ligne;
-                int i = -1;
-                while ((ligne = br.readLine()) != null) {
-                    String[] tokens = ligne.split("\t");  
-                    Station s= new Station(tokens[0], Double.parseDouble(tokens[1])*10, Double.parseDouble(tokens[2])*10);
-                    s.setPositionLigne(i);
-                    this.station.add(s);
-                    
-              //   this.station.put(tokens[2], new Station(tokens[2], Double.parseDouble(tokens[0]), Double.parseDouble(tokens[1])));
+    
+    public boolean creerAretes(){
+        Iterator it=this.lignes.iterator();
+        ArrayList<Station> stations=new ArrayList();
+        while(it.hasNext()){
+            stations=getStationsLigne(((Ligne)it.next()).getNum());
+            int j=0;
+            for(int i=0;i<stations.size();i++){
+                if(i != 0) {                
+                    Arete a=new Arete("",stations.get(i).getLigne().getNum(),stations.get(j),stations.get(i));
+                    Arete a2=new Arete("",stations.get(i).getLigne().getNum(),stations.get(i),stations.get(j));
+                    this.aretes.add(a2);
+                    this.aretes.add(a);
+                     j++;
+                }
+                else {
+                  
                 }
             }
-        } catch (IOException | NumberFormatException e) {
-            System.err.println(e.toString());
         }
-    }  
-   
+        return (!this.aretes.isEmpty());
+    }
+
+//    
+//    private void importerInfoStations() {
+//        String fichier = "stationLOc.txt";
+//
+//        //lecture du fichier texte	
+//        try {
+//            InputStream ips = new FileInputStream(fichier);
+//            InputStreamReader ipsr = new InputStreamReader(ips);
+//            try (BufferedReader br = new BufferedReader(ipsr)) {
+//                String ligne;
+//                int i = -1;
+//                while ((ligne = br.readLine()) != null) {
+//                    String[] tokens = ligne.split("\t");  
+//                    Station s= new Station(tokens[0], Double.parseDouble(tokens[1])*10, Double.parseDouble(tokens[2])*10);
+//                    s.setPositionLigne(i);
+//                    this.station.add(s);
+//                    
+//              //   this.station.put(tokens[2], new Station(tokens[2], Double.parseDouble(tokens[0]), Double.parseDouble(tokens[1])));
+//                }
+//            }
+//        } catch (IOException | NumberFormatException e) {
+//            System.err.println(e.toString());
+//        }
+//    }  
+//   
      /*
       * rechercher la station la plus proche des coordonnées
       */
@@ -576,7 +602,7 @@ public class Metro {
             res += " \n " + (((Station)i.next()).getNom());
         }
         if(this.isLignePerturbee(l)) res += " \n Il y a des perturbations sur cette ligne";
-        else res += " \n Il n'y a de perturbations sur cette ligne";
+        else res += " \n Il n'y a pas de perturbations sur cette ligne";
         return res;
     }
     
@@ -645,9 +671,10 @@ public class Metro {
         int rang=0;
         Iterator it= this.station.iterator();
         while(it.hasNext()){
-            if(((Station)it.next()).getNom().equalsIgnoreCase(s)) return rang;
-            rang++;
+            if(((Station)it.next()).getNom().equals(s)) return rang;
+            else rang++;
         }
+//        System.out.println(this.station.get(rang));
         return -1;
     }
     

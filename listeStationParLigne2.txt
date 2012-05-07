@@ -1,58 +1,58 @@
-#### 1-a:La Défense -- Château de Vincennes
-1-a:La Défense	48.89129108954035	2.240116596221924
-1-a:Esplanade de la Défense	48.888361	2.249955
-1-a:Pont de Neuilly	48.884968	2.259775
-1-a:Les Sablons	48.880966	2.272432
-1-a:Porte Maillot	48.877946	2.281925
-1-a:Argentine	48.875339	2.290113
-1-a:Franklin D. Roosevelt	48.868977	2.30989
-1-a:Champs-Élysées-Clémenceau	48.867531	2.313542
-1-a:Concorde	48.866176	2.322397
-1-a:Tuileries	48.864531	2.329617
-1-a:Palais Royal-Musée du Louvre	48.862644	2.336578
-1-a:Louvre-Rivoli	48.86108	2.340283
-1-a:Châtelet	48.858352	2.347324
-1-a:Bérault	48.845371	2.428264
-1-a:Château de Vincennes	48.844382	2.440136
+#### 1-a: La Défense--Château de Vincennes
+1-a: La Défense	48.89129108954035	2.240116596221924
+1-a: Esplanade de la Défense	48.888361	2.249955
+1-a: Pont de Neuilly	48.884968	2.259775
+1-a: Les Sablons	48.880966	2.272432
+1-a: Porte Maillot	48.877946	2.281925
+1-a: Argentine	48.875339	2.290113
+1-a: Franklin D. Roosevelt	48.868977	2.30989
+1-a: Champs-Elysees-Clémenceau	48.867531	2.313542
+1-a: Concorde	48.866176	2.322397
+1-a: Tuileries	48.864531	2.329617
+1-a: Palais Royal-Musée du Louvre	48.862644	2.336578
+1-a: Louvre-Rivoli	48.86108	2.340283
+1-a: Châtelet	48.858352	2.347324
+1-a: Bérault	48.845371	2.428264
+1-a: Château de Vincennes	48.844382	2.440136
 
-#### 2-a:Porte Dauphine -- Etoile -- Nation
-2-a:Porte Dauphine	48.871545	2.276768
-2-a:Victor Hugo	48.869817	2.285199
-2-a:Charles de Gaulle-Étoile	48.873773	2.294981
-2-a:Ternes	48.878178	2.298671
-2-a:Champs-Élysées - Clémenceau	48.867531	2.313542
-2-a:Couronnes	48.869521	2.379861
-2-a:Bérault	48.845371	2.428264
-2-a:Avron	48.8519401896706	2.397862672805786
-2-a:Nation	48.848389	2.3958
+#### 2-a: Porte Dauphine--Etoile--Nation
+2-a: Porte Dauphine	48.871545	2.276768
+2-a: Victor Hugo	48.869817	2.285199
+2-a: Charles de Gaulle-Étoile	48.873773	2.294981
+2-a: Ternes	48.878178	2.298671
+2-a: Champs-Élysées-Clémenceau	48.867531	2.313542
+2-a: Couronnes	48.869521	2.379861
+2-a: Bérault	48.845371	2.428264
+2-a: Avron	48.8519401896706	2.397862672805786
+2-a: Nation	48.848389	2.3958
 
-#### 8-a:Balard -- Créteil
+#### 8-a: Balard--Créteil
 8-a:Balard	48.83597047932563	2.278212010860443
 8-a:Lourmel	48.838604499472666	2.2818168997764587
 8-a:La Tour-Maubourg	48.857667003460904	2.310398519039154
 8-a:Franklin D. Roosevelt	48.868977	2.30989
-8-a:Strasbourg - Saint-Denis	48.869591497765406	2.3540085554122925
-8-a:Créteil - L'Échat	48.79596296515138	2.449355721473694
-8-a:Créteil - Université	48.78975374703421	2.4507853388786316
-8-a:Créteil - Préfecture	48.77977215279495	2.459317445755005
+8-a:Strasbourg-Saint-Denis	48.869591497765406	2.3540085554122925
+8-a:Créteil-L'Échat	48.79596296515138	2.449355721473694
+8-a:Créteil-Université	48.78975374703421	2.4507853388786316
+8-a:Créteil-Préfecture	48.77977215279495	2.459317445755005
 
-#### 4-a:Porte de Clignancourt -- Porte d'Orléans
+#### 4-a: Porte de Clignancourt--Porte d'Orléans
 4-a:Porte de Clignancourt	48.89703632390491	2.3449453711509705
 4-a:Simplon	48.893380823007114	2.34820157289505
 4-a:Marcadet-Poissonniers	48.89036875745133	2.350028157234192
 4-a:Barbès-Rochechouart	48.88364	2.350516
-2-a:Avron	48.8519401896706	2.397862672805786
+4-a:Avron	48.8519401896706	2.397862672805786
 4-a:Gare de l'Est	48.876141878749266	2.3582786321640015
 4-a:Porte d'Orléans	48.82319	2.325363
 
-#### 5-a:Bobigny -- Place d'Italie
-5-a:Bobigny - Pablo Picasso	48.906538	2.449994
-5-a:Bobigny - Pantin - Raymond Queneau	48.89540875087341	2.424928843975067
+#### 5-a: Bobigny--Place d'Italie
+5-a:Bobigny-Pablo Picasso	48.906538	2.449994
+5-a:Bobigny-Pantin-Raymond Queneau	48.89540875087341	2.424928843975067
 5-a:Église de Pantin	48.89362770557985	2.412917912006378
-5-a:Créteil - L'Échat	48.79596296515138	2.449355721473694
-5-a:Strasbourg - Saint-Denis	48.869591497765406	2.3540085554122925
+5-a:Créteil-L'Échat	48.79596296515138	2.449355721473694
+5-a:Strasbourg-Saint-Denis	48.869591497765406	2.3540085554122925
 5-a:Ourcq	48.886856	2.385747
-2-a:Bérault	48.845371	2.428264
+5-a:Bérault	48.845371	2.428264
 5-a:Saint-Marcel 	48.83798837714302	2.360416352748871
 5-a:Avron	48.8519401896706	2.397862672805786
 5-a:Place d'Italie	48.831483	2.355692
