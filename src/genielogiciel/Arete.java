@@ -11,7 +11,7 @@ package genielogiciel;
 public class Arete implements java.lang.Comparable {
 
     private String nom;
-    private int num;
+    private int num;                // numéro de la ligne
     private Station sommetDepart;
     private Station sommetArrivee;
     private double distance;      //la distance de parcours

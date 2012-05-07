@@ -32,7 +32,6 @@ public class Parcours {
     
     public ArrayList dijkstra(){
         ArrayList stations= m.getStation();     //la liste des stations existantes
-      //  ArrayList<Arete> poids= m.getAretes();        //le poids de chaque liaison entre les stations
         ArrayList<Boolean> parcouru=new ArrayList();     //un bool qui donnent les sommets visités
         ArrayList resultat=new ArrayList();
         Station actuelle = arrivee;
@@ -54,11 +53,8 @@ public class Parcours {
         }
         parcouru.set(m.getPositionStation(arrivee), Boolean.TRUE);
         resultat.add(m.getMinDistance(arrivee));
-   //     Comparator<Integer>  c= new IntComparator();
-        PriorityQueue queu;
-        queu=new PriorityQueue<Arete>();
         int i=0,j=0;
-        
+    
         if(this.depart.getLigne() == this.arrivee.getLigne()){   //si les 2 stations appartiennent à la meme ligne
                 Itineraire itin=new Itineraire(this.depart,this.arrivee);
                 this.temps=(int)itin.calculerDistance();
@@ -166,24 +162,41 @@ public class Parcours {
        while(it.hasNext()){
            Station dep= (Station)it.next();
            if(depart.getLigne().getNum() == arrivee.getLigne().getNum()) {          //sans changement de ligne
-               //res.add(dep);
-              // this.correspondance++;
                return res;
            }
            if (!(m.getStationsIdentiques(dep).isEmpty())){                          
                stationInterm.addAll(m.getStationsIdentiques(dep));
                for(int j=0;j<m.getStationsIdentiques(dep).size();j++){
-                    if(stationsArrivee.contains(m.getStationsIdentiques(dep).get(j))){  //avec 1 changement de ligne
+                  Station actuelle= m.getStationsIdentiques(dep).get(j);
+                    if(stationsArrivee.contains(actuelle)){  //avec 1 changement de ligne
                           // res.add(stationInterm.get(0));
                        // stationInterm.add(m.getStationsIdentiques(dep).get(j));
                         res.add(depart);
-                        res.add(m.getStationsIdentiques(dep).get(0));
+                        res.add(actuelle);
                         this.correspondance++;
                         return res;
                     }
                }
-           }
-       }
+             }
+        }
+        Iterator ite= stationsArrivee.iterator();
+       while(it.hasNext()){
+           Station dep= (Station)it.next();
+           if (!(m.getStationsIdentiques(dep).isEmpty())){                          
+               stationInterm.addAll(m.getStationsIdentiques(dep));
+               for(int j=0;j<m.getStationsIdentiques(dep).size();j++){
+                   Station actuelle=m.getStationsIdentiques(dep).get(j);
+                    if(stationsDepart.contains(actuelle)){  //avec 1 changement de ligne
+                          // res.add(stationInterm.get(0));
+                       // stationInterm.add(m.getStationsIdentiques(dep).get(j));
+                        res.add(depart);
+                        res.add(actuelle);
+                        this.correspondance++;
+                        return res;
+                    }
+               }
+             }
+        }    
         this.correspondance++;
        return getMinCorrespondance(stationInterm.get(0),arrivee);                   //avec plusieurs changements de ligne
       // return res;

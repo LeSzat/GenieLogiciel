@@ -15,13 +15,66 @@ import java.util.Scanner;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
+     private static Metro m =new Metro();
+     private static Scanner sc;
+     
+    public static int demanderLigne(){
+        System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");
+                int i=0,lignee=0;
+                 Iterator iter= m.getLignes().iterator();
+                    do{
+                         System.out.println("-" + i + "-" + " ligne " + m.getLigne(i).getNom());
+                         lignee=i;
+                         i++;
+                     } while( iter.hasNext() && i<m.getLignes().size()) ;           
+               Scanner sce=new Scanner(System.in);                
+                while((! sce.hasNextInt()) || (sce.nextInt()>=m.getLignes().size())){
+                    System.out.println("Choix erroné!Veuillez recommencer!");
+                    System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");      
+                     iter= m.getLignes().iterator();
+                     i=0;
+                    while( iter.hasNext() && i<m.getLignes().size()){
+                         System.out.println("-" + i + "-" + " ligne " +m.getLigne(i).getNom());
+                         lignee=i;
+                         i++;
+                     }
+                    sce=new Scanner(System.in);              
+                }   
+                int lign=sce.nextInt();
+                return lign;
+    }
+    
+    public static int demanderStation(int lign){
+            int lignee= lign;
+            int nbreStations=m.getStationsLigne(lignee).size();
+            System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
+               Iterator it= m.getStationsLigne(lignee).iterator();
+               int  i=0; 
+               while(it.hasNext()&& i<nbreStations){    
+                       System.out.println(" - " + i + " - " + m.getStationLigne(lignee, i).getNom()); 
+                       i++;
+                    }
+               sc=new Scanner(System.in);
+               int next=0;
+               while((! sc.hasNextInt()) || ((next=sc.nextInt())>= nbreStations)){
+                    System.out.println("Choix erroné!Veuillez recommencer!");
+                    System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
+                    Iterator itt= m.getStationsLigne(lignee).iterator();
+                    i=0; 
+                    while(itt.hasNext() && i<nbreStations){    
+                          System.out.println(" - " + i + " " + m.getStationLigne(lignee, i).getNom()); 
+                         i++;
+                    }
+                    sc=new Scanner(System.in);                
+               }  
+               next=sc.nextInt();
+               return next;
+    }
+    
     public static void main(String[] args) {
        
      
-             Metro m =new Metro();
+            
         System.out.println("Bonjour!");
         System.out.println("Quelle opération voulez-vous effectuer?");
         System.out.println("Veuillez choisir le chiffre correspondant dans la liste");
@@ -63,80 +116,25 @@ public class Main {
         }
         
         switch(choix ){
-            case 1:
-               System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");
-                int i=0,lignee=0;
-                 Iterator iter= m.getLignes().iterator();
-                    do{
-                         System.out.println("-" + i + "-" + " ligne " + m.getLigne(i).getNom());
-                         lignee=i;
-                         i++;
-                     } while( iter.hasNext() && i<m.getLignes().size()) ;           
-               Scanner sce=new Scanner(System.in);                
-                while((! sce.hasNextInt()) || (sce.nextInt()>=m.getLignes().size())){
-                    System.out.println("Choix erroné!Veuillez recommencer!");
-                    System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");      
-                     iter= m.getLignes().iterator();
-                     i=0;
-                    while( iter.hasNext() && i<m.getLignes().size()){
-                         System.out.println("-" + i + "-" + " ligne " +m.getLigne(i).getNom());
-                         lignee=i;
-                         i++;
-                     }
-                    sce=new Scanner(System.in);              
-                }   
-                
-                lignee=sce.nextInt();
-                int nbreStations=m.getStationsLigne(lignee).size();
-                System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
-               Iterator it= m.getStationsLigne(lignee).iterator();
-               i=0; 
-               while(it.hasNext()&& i<nbreStations){    
-                       System.out.println(" - " + i + " - " + m.getStationLigne(lignee, i).getNom()); 
-                       i++;
-                    }
-               sce=new Scanner(System.in);
-               int next=0;
-               while((! sce.hasNextInt()) || next>= nbreStations){
-                    System.out.println("Choix erroné!Veuillez recommencer!");
-                       System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
-               Iterator itt= m.getStationsLigne(lignee).iterator();
-               i=0; 
-               while(itt.hasNext() && i<nbreStations){    
-                       System.out.println(" - " + i + " " + m.getStationLigne(lignee, i).getNom()); 
-                       i++;
-                    }
-                     sce=new Scanner(System.in);
-                     
-               }  
-               next=sce.nextInt();
-               System.out.println(m.getStationLigne(m.getLigne(lignee).getNum(),next));            
+            case 1:             
+                int lig=demanderLigne();
+                int statio=demanderStation(lig);
+                int lignee=m.getStation(statio).getLigne().getNum();
+               System.out.println(m.getStationLigne(m.getLigne(lig).getNum(),statio));            
             break;
            
-            case 2:          // -2- consulter les infos d'une ligne"
-              System.out.println("***Les informations de quelle ligne voulez-vous consulter?***");    
-              Iterator iterat=m.getLignes().iterator();
-              int ligne=0;
-               while(iterat.hasNext() && ligne<m.getLignes().size()){
-                    System.out.println("-" + ligne + "- " + m.getLigne(ligne).getNom());
-                    ligne++;
-                }  
-               Scanner lign=new Scanner(System.in);          
-               while((! lign.hasNextInt()) || ((ligne=lign.nextInt())>=m.getLignes().size())){
-                   System.out.println("Choix erronné! Veuillez choisir le nombre correspondant!");
-                   System.out.println("***Les informations de quelle ligne voulez-vous consulter?***");    
-                   ligne=0;
-                    while(iterat.hasNext() && ligne<m.getLignes().size()){
-                         System.out.println("-" + ligne + "- " + m.getLigne(ligne).getNom());
-                         ligne++;
-                    }               
-                    lign=new Scanner(System.in);
-               }
+            case 2:          // -2- consulter les infos d'une ligne"          
+              int ligne=demanderLigne();
               System.out.println(m.toString(m.getLigne(ligne))); 
             break;  
-            case 3:         //-3- consulter les perturbations d'une ligne       
-                System.out.println("Actuellement, il y des perturbations sur les stations suivantes :");
-                 Iterator a=m.getToutesPerturbations().iterator();
+            case 3:         //-3- consulter les perturbations d'une ligne                     
+                ArrayList t=m.getToutesPerturbations();
+                if(t.isEmpty()) {
+                    System.out.println("Il n'y a pas de perturbations sur le réseau.");
+                    break;
+                }
+                 Iterator a=t.iterator();
+                 System.out.println("Actuellement, il y des perturbations sur les stations suivantes :");
                 while(a.hasNext()){
                     Station s=(Station)a.next();
                     System.out.println("station " + s.getNom() + " de la ligne " + s.getLigne().getNum());
@@ -147,26 +145,27 @@ public class Main {
 ////                
 ////             break;
             case 5:
-                ArrayList parcours=null;
-             while(parcours == null){
-                System.out.println("Quelle est votre station de départ?");
-                String station= sc.next();             
-                while( m.existeStation(station) == -1){
-                    System.out.println("Cette station n'existe pas!");
-                    System.out.println("Quelle est votre station de départ?");
-                    station= sc.next(); 
-                }
-                int depart= m.existeStation(station);
-                System.out.println("Quelle est votre station d'arrivée?");
-                String arrivee= sc.next();             
-                while( m.existeStation(arrivee) == -1){
-                    System.out.println("Cette station n'existe pas!");
-                    System.out.println("Quelle est votre station d'arrivée?");
-                    arrivee= sc.next(); 
-                }
-                int arrive=m.existeStation(arrivee);
-                Parcours p=new Parcours(m.getStation(depart),m.getStation(arrive));
-                parcours=p.dijkstra();
+                int numLine=demanderLigne();
+                System.out.println("Station de départ?");
+                int depart=demanderStation(numLine);
+                Station dep=m.getStationLigne(numLine,depart);
+                
+                int numLine2=demanderLigne();
+                System.out.println("Station de départ?");
+                int arrivee=demanderStation(numLine2);
+                Station arr=m.getStationLigne(numLine2,arrivee);
+                
+//                int depart= m.existeStation(station);
+//                System.out.println("Quelle est votre station d'arrivée?");
+//                String arrivee= sc.next();             
+//                while( m.existeStation(arrivee) == -1){
+//                    System.out.println("Cette station n'existe pas!");
+//                    System.out.println("Quelle est votre station d'arrivée?");
+//                    arrivee= sc.next(); 
+//                }
+//                int arrive=m.existeStation(arrivee);
+                Parcours p=new Parcours(dep,arr);
+                ArrayList parcours=p.dijkstra();
                 if(parcours != null){
                      Iterator ite=parcours.iterator();
                      while(ite.hasNext()){
@@ -174,7 +173,7 @@ public class Main {
                         System.out.println("de " + arete.getSommetDepart().getNom() + " à "+ arete.getSommetArrivee().getNom() + " ( ligne " + arete.getSommetArrivee().getLigne().getNom() +" )");
                     }
                 }
-             }
+//             }
                 
             break;              
             case 6:
@@ -234,95 +233,49 @@ public class Main {
                 
             break;
             case 8:        
-                parcours=null;
-                while(parcours == null){
-                System.out.println("Quelle est votre station de départ?");
-                String station= sc.next();             
-                while( m.existeStation(station) == -1){
-                    System.out.println("Cette station n'existe pas!");
-                    System.out.println("Quelle est votre station de départ?");
-                    station= sc.next(); 
-                }
-                int depart= m.existeStation(station);
-                System.out.println("Quelle est votre station d'arrivée?");
-                String arrivee= sc.next();             
-                while( m.existeStation(arrivee) == -1){
-                    System.out.println("Cette station n'existe pas!");
-                    System.out.println("Quelle est votre station d'arrivée?");
-                    arrivee= sc.next(); 
-                }
-                int arrive=m.existeStation(arrivee);
-                Parcours p=new Parcours(m.getStation(depart),m.getStation(arrive));            
+                 int lineD=demanderLigne();
+                int stat= demanderStation(lineD);
+                Station depar=m.getStationLigne(lineD,stat);
+                
+                int lineA =demanderLigne();
+                stat= demanderStation(lineA);
+                Station arriv=m.getStationLigne(lineA,stat);
+               
+                p=new Parcours(depar,arriv);            
                 ArrayList<Station> st=p.getMinCorrespondance(p.getDepart(),p.getArrivee());
-                System.out.println("Le minumum de correspondances est :" + p.getCorrespondance());
-               Iterator stat=st.iterator();
-               System.out.print("De " + p.getDepart().getNom());
-               while(stat.hasNext()){
-                    System.out.print(" -> " +((Station)stat.next()).getNom());
-               }
-               System.out.println(" à " + p.getArrivee().getNom());
+                if(st.isEmpty()){
+                    System.out.println("Les stations sont dans la même ligne.");
+                    System.out.println("De " + p.getDepart().getNom() + " à " + p.getArrivee().getNom() + " ligne " + p.getDepart().getLigne().getNom());
+                    break;
                 }
+                System.out.println("Le minumum de correspondances est :" + p.getCorrespondance());
+               Iterator sta=st.iterator();
+             //  System.out.print("De " + p.getDepart().getNom());
+               while(sta.hasNext()){
+                    System.out.print(" -> " +((Station)sta.next()).getNom());
+               }
+              System.out.println(" à " + p.getArrivee().getNom());
+             //   }
             break;
             case 9:
-                System.out.println("Les horaires de quelle ligne voulez-vous consulter?");
-                i=0;
-                lignee=0;
-                iter= m.getLignes().iterator();
-                    do{
-                         System.out.println("-" + i + "-" + " ligne " + m.getLigne(i).getNom());
-                         lignee=i;
-                         i++;
-                     } while( iter.hasNext() && i<m.getLignes().size()) ;           
-               sce=new Scanner(System.in);                
-                while((! sce.hasNextInt()) || (sce.nextInt()>=m.getLignes().size())){
-                    System.out.println("Choix erroné!Veuillez recommencer!");
-                    System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");      
-                     iter= m.getLignes().iterator();
-                     i=0;
-                    while( iter.hasNext() && i<m.getLignes().size()){
-                         System.out.println("-" + i + "-" + " ligne " +m.getLigne(i).getNom());
-                         lignee=i;
-                         i++;
-                     }
-                    sce=new Scanner(System.in);              
-                }   
+                int line=demanderLigne();
+                int stati= demanderStation(line);
                 
-                lignee=sce.nextInt();
-                nbreStations=m.getStationsLigne(lignee).size();
-                System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
-               it= m.getStationsLigne(lignee).iterator();
-               i=0; 
-               while(it.hasNext()&& i<nbreStations){    
-                       System.out.println(" - " + i + " - " + m.getStationLigne(lignee, i).getNom()); 
-                       i++;
-                    }
-               sce=new Scanner(System.in);
-               next=0;
-               while((! sce.hasNextInt()) || next>= nbreStations){
-                    System.out.println("Choix erroné!Veuillez recommencer!");
-                    System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
-                    Iterator itt= m.getStationsLigne(lignee).iterator();
-                    i=0; 
-                    while(itt.hasNext() && i<nbreStations){    
-                        System.out.println(" - " + i + " " + m.getStationLigne(lignee, i).getNom()); 
-                        i++;
-                    }
-                    sce=new Scanner(System.in);
-               }  
-               int station=sce.nextInt();
                System.out.println(" - 1 - à l'aller");
                System.out.println(" - 2 - au retour");
-               sce=new Scanner(System.in);
-               while(!sce.hasNextInt()){
+               sc=new Scanner(System.in);
+               int sens=0;
+               while(!sc.hasNextInt() && sens<3){
                    System.out.println("Voulez-vous voir les horaires à l'aller ou au retour?");
                    System.out.println(" - 1 - à l'aller");
                    System.out.println(" - 2 - au retour");
+                   sc=new Scanner(System.in);
                }
-               int sens=sce.nextInt();
+               sens=sc.nextInt();
                
         //       m.getTempsDeTerminus(m.getStation().get(2),2);
                
-              System.out.println(m.getHorairedePassage(m.getStationLigne(m.getLigne(lignee).getNum(),station),sens));
+              System.out.println(m.getHorairedePassage(m.getStationLigne(m.getLigne(line).getNum(),stati),sens));
             break;
                 
             case 100:
