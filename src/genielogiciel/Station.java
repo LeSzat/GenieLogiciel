@@ -20,50 +20,24 @@ public class Station implements java.lang.Comparable {
     private int tempsArret;
     
    
-     public Station(){
-        this.nom="";
-        this.handicape=false;
-        this.abscisse=0;
-        this.ordonnée=0;
-        this.ascenseur=false;
-        this.perturbation=false;
-        this.ligne=new Ligne(0,"0");
-        this.position=0;
-    }
+    
     
     public Station(String nom, double x, double y){
         this.nom=nom;
         this.abscisse=x;
         this.ordonnée=y;       
         this.perturbation=false;
-       this.ligne=new Ligne(0,"0");
+        this.ligne=new Ligne(0,"0");
         this.position=0;
 
     }
     
      
      
-    public Station(String nom,int ligne,boolean handicape,boolean ascenseur,Zone zone){
-        this.nom=nom;
-        this.ascenseur=ascenseur;
-        this.handicape=handicape;
-//        this.zone=new Zone(zone);
-       this.perturbation=false;
-      this.ligne=new Ligne(ligne,"" + ligne);
-        this.position=0;
-    }
+  
     
     
-    public Station(String nom,boolean handicape,boolean ascenseur){
-        this.nom=nom;
-        this.ascenseur=ascenseur;
-        this.handicape=handicape;
-//        this.zone=zone;
-        this.perturbation=false;
-        this.ligne=new Ligne(0,"0");
-        this.position=0;
-       
-    }
+    
     
     public double getAbscisse()
     {
