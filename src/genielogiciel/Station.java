@@ -31,14 +31,7 @@ public class Station implements java.lang.Comparable {
         this.position=0;
 
     }
-    
-     
-     
-  
-    
-    
-    
-    
+   
     public double getAbscisse()
     {
         return this.abscisse;
@@ -106,10 +99,16 @@ public class Station implements java.lang.Comparable {
 //        return(s.ligne.getNum() - ss.getLigne().getNum());
 //    }
     
+    @Override
     public int compareTo(Object s){
-        if (((Station)s).position > this.position)  return -1; 
-        else if(((Station)s).position == this.position) return 0; 
-        else return 1;
+        if(this.getAbscisse()== ((Station)s).getAbscisse() && this.getOrdonnée()== ((Station)s).getOrdonnée() ){
+            return 0;
+        }
+        if(((this.getAbscisse()- ((Station)s).getAbscisse()) + (this.getOrdonnée() - ((Station)s).getOrdonnée())) > 0)
+            return 1;
+        else
+            return -1;
+        
    }  
 
     public int getTempsArret() {
@@ -120,17 +119,7 @@ public class Station implements java.lang.Comparable {
         this.tempsArret = tempsArret;
     }
     
-   /*
-    * teste si 2 stations sont identiques (le cas de lignes différentes)
-    */
-    public boolean isIdentiqueStation(Station s){
-      //  Comparator<double,double> comp = new DoubleComparator();
-        
-        if(this.getAbscisse()== s.getAbscisse() && this.getOrdonnée()== s.getOrdonnée() ){
-            return true;
-        }
-        return false;
-    }
+   
     
 
 //    public Zone getZone() {

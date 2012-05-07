@@ -525,7 +525,7 @@ public class Metro {
         Iterator i=  this.station.iterator();
         while(i.hasNext()){
             Station ss= (Station)i.next();
-            if(ss.isIdentiqueStation(s) && ss.getLigne()!= s.getLigne() && (ss.getLigne().getNum() != s.getLigne().getNum())){
+            if(ss.compareTo((Station)s) == 0 && ss.getLigne()!= s.getLigne() && (ss.getLigne().getNum() != s.getLigne().getNum())){
                 a.add(ss);
             }
         }
@@ -612,7 +612,7 @@ public class Metro {
      */
     public boolean isTerminus(Station s){
         ArrayList<Station> a = this.getStationsLigne(s.getLigne().getNum());
-        return ((((Station)a.get(0)).isIdentiqueStation(s)) || (((Station)a.get(a.size()-1)).isIdentiqueStation(s)));
+        return ((((Station)a.get(0)).compareTo(s) == 0) || (((Station)a.get(a.size()-1)).compareTo(s) == 0));
     }
     
     /*

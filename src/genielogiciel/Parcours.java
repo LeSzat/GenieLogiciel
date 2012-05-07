@@ -75,7 +75,7 @@ public class Parcours {
                       Arete a=aretes.get(j);
                      if((parcouru.get(m.getPositionStation(a.getSommetDepart())) == false)){
                         if(temp.getLigne() != actuelle.getLigne()) changement ++;
-                        if(a.isArrivee(actuelle) || actuelle.isIdentiqueStation(temp)){
+                        if(a.isArrivee(actuelle) || actuelle.compareTo(temp) == 0){
                              resultat.add(a); // on ajoute cette arete au resultat du chemin
                             //   parcouru.set(i,true); 
                              actuelle= a.getSommetDepart();  //m.getMinDistance(actuelle).getSommetDepart();         
@@ -224,7 +224,7 @@ public class Parcours {
              //    Iterator it2= stationsA.iterator();
                   for(int i=0;i<stationsA.size();i++){
                  // while(it2.hasNext()){                 
-                      if(stationsA.get(i).isIdentiqueStation(d) && !(stationsA.get(i).isPerturbation())){
+                      if((stationsA.get(i).compareTo(d) == 0) && !(stationsA.get(i).isPerturbation())){
                           bcorrespondance=false;
                           correspondance++;
                           corresp=d;
