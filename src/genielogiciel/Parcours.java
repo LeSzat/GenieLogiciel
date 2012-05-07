@@ -30,22 +30,93 @@ public class Parcours {
     
     
     
-    public ArrayList dijkstra(){
-        ArrayList stations= m.getStation();     //la liste des stations existantes
+//    public ArrayList dijkstra(){
+//        ArrayList stations= m.getStation();     //la liste des stations existantes
+//        ArrayList<Boolean> parcouru=new ArrayList();     //un bool qui donnent les sommets visités
+//        ArrayList resultat=new ArrayList();
+//        Station actuelle = arrivee;
+//        int changement=0;
+//        
+//        if( isDepartPerturbe()){
+//            System.out.println("il y des perturbations sur la station de départ");
+//            System.out.println("Veuillez choisir une autre station de départ!");
+//            return null;
+//        }
+//         if( isArriveePerturbee()){
+//            System.out.println("il y des perturbations sur la station d'arrivée");
+//            return null;
+//        }
+//        Iterator ii= m.getStation().iterator();
+//        while(ii.hasNext()){
+//            parcouru.add(Boolean.FALSE);
+//            ii.next();
+//        }
+//        parcouru.set(m.getPositionStation(arrivee), Boolean.TRUE);
+//        resultat.add(m.getMinDistance(arrivee));
+//        int i=0,j=0;
+//    
+//        if(this.depart.getLigne() == this.arrivee.getLigne()){   //si les 2 stations appartiennent à la meme ligne
+//                Itineraire itin=new Itineraire(this.depart,this.arrivee);
+//                this.temps=(int)itin.calculerDistance();
+//        }
+//        else{     //si les 2 stations n'appartiennent pas à la meme ligne   
+//          Iterator iter= m.getStation().iterator();
+//          iter= m.getStation().iterator();
+//          while(iter.hasNext()){  
+//               Station temp= (Station)iter.next();
+//               i= m.getPositionStation(actuelle);
+//               j=0;
+//               ArrayList<Arete> aretes=m.getAretesArriveeStation(actuelle);
+//                while((  !(actuelle.getNom().equalsIgnoreCase(depart.getNom() ) && ( actuelle.getAbscisse()==depart.getAbscisse() && actuelle.getOrdonnée()==depart.getOrdonnée())))  && actuelle.isPerturbation()==false && j<aretes.size()){   //       
+//                  parcouru.set(m.getPositionStation(actuelle),true);
+//              //       Arete a= m.getMinDistance(actuelle);                          //on récupère l'arete avec distance min pour le sommet arrivee actuelle                    
+//                      
+//                      if(aretes.isEmpty()) return  null;
+//                      
+//                      Arete a=aretes.get(j);
+//                     if((parcouru.get(m.getPositionStation(a.getSommetDepart())) == false)){
+//                        if(temp.getLigne() != actuelle.getLigne()) changement ++;
+//                        if(a.isArrivee(actuelle) || actuelle.isIdentiqueStation(temp)){
+//                             resultat.add(a); // on ajoute cette arete au resultat du chemin
+//                            //   parcouru.set(i,true); 
+//                             actuelle= a.getSommetDepart();  //m.getMinDistance(actuelle).getSommetDepart();         
+//                         }
+//                        else{
+//                            if( ! m.getStationsIdentiques(actuelle).isEmpty()){
+//                              if(a.isArrivee(m.getStationsIdentiques(actuelle).get(0))){
+//                                 resultat.add(a);
+//                                 actuelle=m.getMinDistance(actuelle).getSommetDepart(); 
+//                                 }
+//                            }
+//                        }
+//                          }
+//                     else {
+//                         j++;
+//                     }
+//                   }
+//          }
+//        }
+//     this.correspondance +=changement;
+//     Collections.reverse(resultat);
+//     return resultat;     
+//    }
+    
+    public ArrayList<Station> dijkstra(Station depart,Station arrivee){
+         //ArrayList stations= m.getStation();     //la liste des stations existantes
         ArrayList<Boolean> parcouru=new ArrayList();     //un bool qui donnent les sommets visités
         ArrayList resultat=new ArrayList();
         Station actuelle = arrivee;
         int changement=0;
         
-        if( isDepartPerturbe()){
-            System.out.println("il y des perturbations sur la station de départ");
-            System.out.println("Veuillez choisir une autre station de départ!");
-            return null;
-        }
-         if( isArriveePerturbee()){
-            System.out.println("il y des perturbations sur la station d'arrivée");
-            return null;
-        }
+//        if( isDepartPerturbe()){
+//            System.out.println("il y des perturbations sur la station de départ");
+//            System.out.println("Veuillez choisir une autre station de départ!");
+//            return null;
+//        }
+//         if( isArriveePerturbee()){
+//            System.out.println("il y des perturbations sur la station d'arrivée");
+//            return null;
+//        }
         Iterator ii= m.getStation().iterator();
         while(ii.hasNext()){
             parcouru.add(Boolean.FALSE);
@@ -57,7 +128,10 @@ public class Parcours {
     
         if(this.depart.getLigne() == this.arrivee.getLigne()){   //si les 2 stations appartiennent à la meme ligne
                 Itineraire itin=new Itineraire(this.depart,this.arrivee);
-                this.temps=(int)itin.calculerDistance();
+                resultat.add(j);
+                this.temps=itin.getTemps();
+                return resultat;
+                
         }
         else{     //si les 2 stations n'appartiennent pas à la meme ligne   
           Iterator iter= m.getStation().iterator();
@@ -66,10 +140,11 @@ public class Parcours {
                Station temp= (Station)iter.next();
                i= m.getPositionStation(actuelle);
                j=0;
-                while((  !(actuelle.getNom().equalsIgnoreCase(depart.getNom() ) && ( actuelle.getAbscisse()==depart.getAbscisse() && actuelle.getOrdonnée()==depart.getOrdonnée())))  && actuelle.isPerturbation()==false){   //       
+               ArrayList<Arete> aretes=m.getAretesArriveeStation(actuelle);
+                while((  !(actuelle.getNom().equalsIgnoreCase(depart.getNom() ) && ( actuelle.getAbscisse()==depart.getAbscisse() && actuelle.getOrdonnée()==depart.getOrdonnée())))  && actuelle.isPerturbation()==false && j<aretes.size()){   //       
                   parcouru.set(m.getPositionStation(actuelle),true);
               //       Arete a= m.getMinDistance(actuelle);                          //on récupère l'arete avec distance min pour le sommet arrivee actuelle                    
-                      ArrayList<Arete> aretes=m.getAretesArriveeStation(actuelle);
+                      
                       if(aretes.isEmpty()) return  null;
                       
                       Arete a=aretes.get(j);
@@ -99,6 +174,8 @@ public class Parcours {
      Collections.reverse(resultat);
      return resultat;     
     }
+    
+    
     
     
     /*

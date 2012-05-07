@@ -151,19 +151,10 @@ public class Main {
                 Station dep=m.getStationLigne(numLine,depart);
                 
                 int numLine2=demanderLigne();
-                System.out.println("Station de départ?");
+                System.out.println("Station d'arrivée?");
                 int arrivee=demanderStation(numLine2);
                 Station arr=m.getStationLigne(numLine2,arrivee);
-                
-//                int depart= m.existeStation(station);
-//                System.out.println("Quelle est votre station d'arrivée?");
-//                String arrivee= sc.next();             
-//                while( m.existeStation(arrivee) == -1){
-//                    System.out.println("Cette station n'existe pas!");
-//                    System.out.println("Quelle est votre station d'arrivée?");
-//                    arrivee= sc.next(); 
-//                }
-//                int arrive=m.existeStation(arrivee);
+
                 Parcours p=new Parcours(dep,arr);
                 ArrayList parcours=p.dijkstra();
                 if(parcours != null){
@@ -173,8 +164,6 @@ public class Main {
                         System.out.println("de " + arete.getSommetDepart().getNom() + " à "+ arete.getSommetArrivee().getNom() + " ( ligne " + arete.getSommetArrivee().getLigne().getNom() +" )");
                     }
                 }
-//             }
-                
             break;              
             case 6:
                 System.out.println("Quelle est votre position?Position X?");
@@ -195,33 +184,23 @@ public class Main {
             break;         
             case 7:
                 ArrayList parcour=null;
-                while(parcour == null){
-                System.out.println("Quelle est votre station de départ?");
-                String station= sc.next();             
-                while( m.existeStation(station) == -1){
-                    System.out.println("Cette station n'existe pas!");
-                    System.out.println("Quelle est votre station de départ?");
-                    station= sc.next(); 
-                }
-                int depart= m.existeStation(station);
-                System.out.println("Quelle est votre station d'arrivée?");
-                String arrivee= sc.next();             
-                while( m.existeStation(arrivee) == -1){
-                    System.out.println("Cette station n'existe pas!");
-                    System.out.println("Quelle est votre station d'arrivée?");
-                    arrivee= sc.next(); 
-                }
-                int arrive=m.existeStation(arrivee);
+                System.out.println("Départ?");
+                ligne= demanderLigne();
+                int station=demanderStation(ligne);
+                Station departS=m.getStationLigne(ligne,station);
+                
+                System.out.println("Arrivée?");
+                int ligne2=demanderLigne();
+                int stationA=demanderStation(ligne2);
+                Station arriveeS=m.getStationLigne(ligne2,stationA);
+                
                 System.out.println("En passant par quelle station?");
-                String inter= sc.next();             
-                while( m.existeStation(inter) == -1){
-                    System.out.println("Cette station n'existe pas!");
-                    System.out.println("Quelle est votre station d'arrivée?");
-                    inter= sc.next(); 
-                }
-                int interm=m.existeStation(arrivee);
-                Parcours p=new Parcours(m.getStation(depart),m.getStation(arrive));
-                parcour=p.dijkstraParPoint(m.getStation(interm));
+                int ligne3=demanderLigne();
+                int stationInter=demanderStation(ligne3);
+                Station interm=m.getStationLigne(ligne3,stationInter);
+                
+                p=new Parcours(departS,arriveeS);
+                parcour=p.dijkstraParPoint(interm);
                 if(parcour != null){
                      Iterator ite=parcour.iterator();
                      while(ite.hasNext()){
@@ -229,7 +208,6 @@ public class Main {
                         System.out.println("de " + arete.getSommetDepart().getNom() + " à "+ arete.getSommetArrivee().getNom() + " ( ligne " + arete.getSommetArrivee().getLigne().getNom() +" )");
                     }
                 }
-             }
                 
             break;
             case 8:        

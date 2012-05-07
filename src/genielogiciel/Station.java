@@ -36,7 +36,7 @@ public class Station implements java.lang.Comparable {
         this.abscisse=x;
         this.ordonnée=y;       
         this.perturbation=false;
-       this.ligne=new Ligne(0,"0");
+        this.ligne=new Ligne(0,"0");
         this.position=0;
 
     }

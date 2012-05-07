@@ -188,7 +188,7 @@ public class Metro {
             int j=0;
             for(int i=0;i<stations.size();i++){
                 if(i != 0) {                
-                    Arete a=new Arete("",stations.get(i).getLigne().getNum(),stations.get(j),stations.get(i));
+                    Arete a=new Arete(stations.get(i).getLigne().getNom(),stations.get(i).getLigne().getNum(),stations.get(j),stations.get(i));
                     Arete a2=new Arete("",stations.get(i).getLigne().getNum(),stations.get(i),stations.get(j));
                     this.aretes.add(a2);
                     this.aretes.add(a);
