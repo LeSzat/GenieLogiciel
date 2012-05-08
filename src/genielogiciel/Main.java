@@ -79,11 +79,7 @@ public class Main {
         return ( s.getNom() != a.getNom());
     }
     
-    public static void main(String[] args) {
-//        Parcours p=new Parcours(m.getStation(0),m.getStation(15));
-//        ArrayList res=p.dijkstra(p.getDepart(),p.getArrivee());
-//        System.out.println(p.getTemps());
-//       
+    public static void main(String[] args) {    
         boolean continu=true;
             while(continu){
         System.out.println("Bonjour!");
