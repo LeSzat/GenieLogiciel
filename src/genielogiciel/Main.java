@@ -171,11 +171,12 @@ public class Main {
                      Iterator ite=parcours.iterator();
                      while(ite.hasNext()){
                         Object res=ite.next();
+                        
                         Station arete=((Station)res);
                         System.out.println(" -  " + arete.getNom() + " ( ligne " + arete.getLigne().getNom() +" )");
                     }
                 }
-                System.out.println(par.getTemps());
+              //  System.out.println(par.getTemps());
                       }
                 else{
                     System.out.println("Votre station de départ et la même que la station d'arrivée.");
@@ -252,7 +253,7 @@ public class Main {
                     System.out.print(" ("+ sp.getLigne().getNom() + ") " );
                }
               System.out.println(" à " + p.getArrivee().getNom());
-              System.out.println("temps de parcours : " + p.getTemps());
+           //   System.out.println("temps de parcours : " + p.getTemps());
              //   }
             break;
             case 9:

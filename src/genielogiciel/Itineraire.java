@@ -39,7 +39,7 @@ public class Itineraire {
         this.depart = d;
         this.arrivee = a;
         this.m = new Metro();
-        this.calculTemps();
+      //  this.calculTemps();
     }
 
     /**

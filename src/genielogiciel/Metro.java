@@ -501,7 +501,7 @@ public class Metro {
         Iterator i=  this.station.iterator();
         while(i.hasNext()){
             Station ss= (Station)i.next();
-            if(ss.isIdentiqueStation(s) && ss.getLigne()!= s.getLigne() && (ss.getLigne().getNum() != s.getLigne().getNum()) && ss.getLigne().getNum()==ligne){
+            if(ss.compareTo(s)==0 && ss.getLigne()!= s.getLigne() && (ss.getLigne().getNum() != s.getLigne().getNum()) && ss.getLigne().getNum()==ligne){
                 return ss;
             }
         }
