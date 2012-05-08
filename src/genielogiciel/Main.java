@@ -19,7 +19,7 @@ public class Main {
      private static Scanner sc;
      
     public static int demanderLigne(){
-        System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");
+        System.out.println("***D'une station de quelle ligne?***");
                 int i=0,lignee=0;
                  Iterator iter= m.getLignes().iterator();
                     do{
@@ -27,10 +27,11 @@ public class Main {
                          lignee=i;
                          i++;
                      } while( iter.hasNext() && i<m.getLignes().size()) ;           
-               Scanner sce=new Scanner(System.in);                
-                while((! sce.hasNextInt()) || (sce.nextInt()>=m.getLignes().size())){
+               Scanner sce=new Scanner(System.in); 
+               int lign;
+                while((! sce.hasNextInt()) || ((lign=sce.nextInt())>=m.getLignes().size())){
                     System.out.println("Choix erroné!Veuillez recommencer!");
-                    System.out.println("***Les informations d'une station de quelle ligne voulez-vous consulter?***");      
+                    System.out.println("***D'une station de quelle ligne?***");      
                      iter= m.getLignes().iterator();
                      i=0;
                     while( iter.hasNext() && i<m.getLignes().size()){
@@ -40,14 +41,14 @@ public class Main {
                      }
                     sce=new Scanner(System.in);              
                 }   
-                int lign=sce.nextInt();
+               // int lign=sce.nextInt();
                 return lign;
     }
     
     public static int demanderStation(int lign){
             int lignee= lign;
             int nbreStations=m.getStationsLigne(lignee).size();
-            System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
+            System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + "?**");
                Iterator it= m.getStationsLigne(lignee).iterator();
                int  i=0; 
                while(it.hasNext()&& i<nbreStations){    
@@ -58,7 +59,7 @@ public class Main {
                int next=0;
                while((! sc.hasNextInt()) || ((next=sc.nextInt())>= nbreStations)){
                     System.out.println("Choix erroné!Veuillez recommencer!");
-                    System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + " voulez-vous consulter?**");
+                    System.out.println("**Quelle station de  " + m.getLigne(lignee).getNom() + "?**");
                     Iterator itt= m.getStationsLigne(lignee).iterator();
                     i=0; 
                     while(itt.hasNext() && i<nbreStations){    
@@ -67,14 +68,24 @@ public class Main {
                     }
                     sc=new Scanner(System.in);                
                }  
-               next=sc.nextInt();
+          //     next=sc.nextInt();
                return next;
     }
     
+    /*
+     * vérifie si le départ et l'arrivée ne sont pas la même station
+     */
+    public static boolean verifierDepartArrivee(Station s,Station a){
+        return ( s.getNom() != a.getNom());
+    }
+    
     public static void main(String[] args) {
-       
-     
-            
+//        Parcours p=new Parcours(m.getStation(0),m.getStation(15));
+//        ArrayList res=p.dijkstra(p.getDepart(),p.getArrivee());
+//        System.out.println(p.getTemps());
+//       
+        boolean continu=true;
+            while(continu){
         System.out.println("Bonjour!");
         System.out.println("Quelle opération voulez-vous effectuer?");
         System.out.println("Veuillez choisir le chiffre correspondant dans la liste");
@@ -93,9 +104,10 @@ public class Main {
         
         Scanner sc=new Scanner(System.in);
         int choix=0;
-        if(! sc.hasNextInt()  || ((choix=sc.nextInt())>9 && choix !=100) ) {
-            System.out.println("Choix erroné!Veuillez recommencer");
-            while ((! sc.hasNextInt()) || choix>9 ){
+       // if(! sc.hasNextInt()  || ((choix=sc.nextInt())>9 && choix !=100) ) {
+           
+            while ((! sc.hasNextInt()) || (choix=sc.nextInt())>9 && choix !=100){
+                 System.out.println("Choix erroné!Veuillez recommencer");
                  System.out.println("Bonjour!");
                   System.out.println("Quelle opération voulez-vous effectuer?");
                   System.out.println("Veuillez choisir le chiffre correspondant dans la liste");
@@ -113,7 +125,7 @@ public class Main {
                  // sc=new Scanner(System.in);
                 if(sc.hasNextInt()) choix=sc.nextInt();
             }
-        }
+  //      }
         
         switch(choix ){
             case 1:             
@@ -141,9 +153,9 @@ public class Main {
                 }
             break;
 ////                
-////            case 4:
-////                
-////             break;
+//            case 4:
+//                
+//             break;
             case 5:
                 int numLine=demanderLigne();
                 System.out.println("Station de départ?");
@@ -155,14 +167,22 @@ public class Main {
                 int arrivee=demanderStation(numLine2);
                 Station arr=m.getStationLigne(numLine2,arrivee);
 
-                Parcours p=new Parcours(dep,arr);
-                ArrayList parcours=p.dijkstra();
+                if(verifierDepartArrivee(dep,arr)){             
+                      Parcours par=new Parcours(dep,arr);
+                      ArrayList parcours=par.dijkstra(dep,arr);
                 if(parcours != null){
+                    System.out.println(" - " + par.getDepart().getNom() );
                      Iterator ite=parcours.iterator();
                      while(ite.hasNext()){
-                         Arete arete=((Arete)ite.next());
-                        System.out.println("de " + arete.getSommetDepart().getNom() + " à "+ arete.getSommetArrivee().getNom() + " ( ligne " + arete.getSommetArrivee().getLigne().getNom() +" )");
+                        Object res=ite.next();
+                        Station arete=((Station)res);
+                        System.out.println(" -  " + arete.getNom() + " ( ligne " + arete.getLigne().getNom() +" )");
                     }
+                }
+                System.out.println(par.getTemps());
+                      }
+                else{
+                    System.out.println("Votre station de départ et la même que la station d'arrivée.");
                 }
             break;              
             case 6:
@@ -179,8 +199,8 @@ public class Main {
                     s=new Scanner(System.in);
                 }
                 int y=s.nextInt(); 
-                int res= m.rechercherStationProche(x, y);
-                System.out.println("La station la plus proche est la station " + m.getStation(res));      
+                int resu= m.rechercherStationProche(x, y);
+                System.out.println("La station la plus proche est la station " + m.getStation(resu));      
             break;         
             case 7:
                 ArrayList parcour=null;
@@ -199,15 +219,15 @@ public class Main {
                 int stationInter=demanderStation(ligne3);
                 Station interm=m.getStationLigne(ligne3,stationInter);
                 
-                p=new Parcours(departS,arriveeS);
+                Parcours p=new Parcours(departS,arriveeS);
                 parcour=p.dijkstraParPoint(interm);
-                if(parcour != null){
-                     Iterator ite=parcour.iterator();
-                     while(ite.hasNext()){
-                         Arete arete=((Arete)ite.next());
-                        System.out.println("de " + arete.getSommetDepart().getNom() + " à "+ arete.getSommetArrivee().getNom() + " ( ligne " + arete.getSommetArrivee().getLigne().getNom() +" )");
-                    }
-                }
+//                if(parcour != null){
+//                     Iterator ite=parcour.iterator();
+//                     while(ite.hasNext()){
+//                         Arete arete=((Arete)ite.next());
+//                        System.out.println("de " + arete.getSommetDepart().getNom() + " à "+ arete.getSommetArrivee().getNom() + " ( ligne " + arete.getSommetArrivee().getLigne().getNom() +" )");
+//                    }
+//                }
                 
             break;
             case 8:        
@@ -219,7 +239,7 @@ public class Main {
                 stat= demanderStation(lineA);
                 Station arriv=m.getStationLigne(lineA,stat);
                
-                p=new Parcours(depar,arriv);            
+                 p=new Parcours(depar,arriv);            
                 ArrayList<Station> st=p.getMinCorrespondance(p.getDepart(),p.getArrivee());
                 if(st.isEmpty()){
                     System.out.println("Les stations sont dans la même ligne.");
@@ -229,10 +249,14 @@ public class Main {
                 System.out.println("Le minumum de correspondances est :" + p.getCorrespondance());
                Iterator sta=st.iterator();
              //  System.out.print("De " + p.getDepart().getNom());
+               System.out.println("Votre parcours est : ");
                while(sta.hasNext()){
-                    System.out.print(" -> " +((Station)sta.next()).getNom());
+                   Station sp=(Station)sta.next();
+                    System.out.print(" -> " + sp.getNom());
+                    System.out.print(" ("+ sp.getLigne().getNom() + ") " );
                }
               System.out.println(" à " + p.getArrivee().getNom());
+              System.out.println("temps de parcours : " + p.getTemps());
              //   }
             break;
             case 9:
@@ -263,7 +287,7 @@ public class Main {
         }
      
         
-        
+      }
      }
 }
 

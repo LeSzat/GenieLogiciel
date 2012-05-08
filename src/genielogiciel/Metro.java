@@ -24,39 +24,18 @@ public class Metro {
         aretes = new ArrayList<>();
         station = new ArrayList<>();
         lignes = new ArrayList<>();
-  //      this.perturbations=new ArrayList();
-        
-       // importerInfoStations();
         importerStations();
         creerAretes();
-         //  creerReseau();
-            //creerLignes();
+         //  creerReseau();                 // pour insérer les données à la main
 
     }
 
-   public void creerReseau() {
-       /* metro.addLast( new NoeudReseau(new Station("Départ", 0, 0)));
-        NoeudReseau fin = new NoeudReseau(new Station("Fin",10,10));
-        for (int i = 0; i < lignes.size(); i++) {
-           NoeudReseau prem = new NoeudReseau(lignes.get(i).getStation(0));
-            for(int j=0;j<lignes.get(i).getNbrStations();j++)
-            {
-                prem.ajouterSuivant(new NoeudReseau(lignes.get(i).getStation(j)));
-            }
-            prem.ajouterSuivant(fin);
-            metro.add(prem);
-        }  */
-       
-  
-     
-       
+   public void creerReseau() {       
        Station s= new Station("S2",10,20);
        Station ss=new Station("S3",10,30);
        Station sss=new Station("S4",50,20);
        Station ssss=new Station("S5",30,40);
-       s.setPerturbation(true);
-     //  Station interm=new Station("")
-       
+       s.setPerturbation(true);  
        this.station.add(s);
        this.station.add(ss);
        this.station.add(sss);
@@ -138,7 +117,9 @@ public class Metro {
         
     }
 
-   
+   /*
+    * on importe les stations,lignes et coordonnées à partir d'un fichier
+    */
     private void importerStations() {
         String fichier = "listeStationParLigne2.txt";
         //lecture du fichier texte	
@@ -167,10 +148,6 @@ public class Metro {
                             Station s= new Station(nom[1], Double.parseDouble(tokens[1])*10, Double.parseDouble(tokens[2])*10);
                             s.setLigne(this.lignes.get(j-1));
                             this.station.add(s);
-                      // int position= this.getPositionStation(tokens[0]);
-                       
-                       // Arete a= new Arete(nomligne,i,this.station.get(this.getPositionStation(tokens[0])),this.station.get(this.getPositionStation(tokens2[0])));
-                      //  this.aretes.add(a);
                     }
                 }
             }
@@ -179,6 +156,10 @@ public class Metro {
         }
     }
     
+    
+    /*
+     * on crée automatiquement les arêtes à partir de la liste des stations
+     */
     
     public boolean creerAretes(){
         Iterator it=this.lignes.iterator();
@@ -202,31 +183,6 @@ public class Metro {
         return (!this.aretes.isEmpty());
     }
 
-//    
-//    private void importerInfoStations() {
-//        String fichier = "stationLOc.txt";
-//
-//        //lecture du fichier texte	
-//        try {
-//            InputStream ips = new FileInputStream(fichier);
-//            InputStreamReader ipsr = new InputStreamReader(ips);
-//            try (BufferedReader br = new BufferedReader(ipsr)) {
-//                String ligne;
-//                int i = -1;
-//                while ((ligne = br.readLine()) != null) {
-//                    String[] tokens = ligne.split("\t");  
-//                    Station s= new Station(tokens[0], Double.parseDouble(tokens[1])*10, Double.parseDouble(tokens[2])*10);
-//                    s.setPositionLigne(i);
-//                    this.station.add(s);
-//                    
-//              //   this.station.put(tokens[2], new Station(tokens[2], Double.parseDouble(tokens[0]), Double.parseDouble(tokens[1])));
-//                }
-//            }
-//        } catch (IOException | NumberFormatException e) {
-//            System.err.println(e.toString());
-//        }
-//    }  
-//   
      /*
       * rechercher la station la plus proche des coordonnées
       */
@@ -304,7 +260,7 @@ public class Metro {
     }
     
     /*
-     * permet de trouver le prochain passage d'une ligne à la station s
+     * permet de trouver le prochain passage(horaire) d'une ligne à la station s
      * si sens=1, c'est le sens aller sinon les horaires dans l'autre sens
      */
     public String getHorairedePassage(Station s,int sens){
@@ -399,6 +355,9 @@ public class Metro {
 
     }
     
+    /*
+     * retourne toutes les stations d'une ligne
+     */
        
     public ArrayList<Station> getStationsLigne(int ligne){
         ArrayList<Station> tab=new ArrayList();
@@ -416,6 +375,10 @@ public class Metro {
         return getStationsLigne(ligne).get(pos);
     }
     
+    
+    /*
+     * retrouve la position d'une station
+     */
      public int getPositionStation(String s){
         for(int i=0;i<this.station.size();i++){
             if(this.station.get(i).getNom().equalsIgnoreCase(s)){
@@ -434,20 +397,19 @@ public class Metro {
         return -1;
     }
     
-    
-   /* 
-    // on obtient toutes les stations d'une ligne entre la pos et pos2
-    public ArrayList getStations(int ligne,int pos,int pos2){
-        ArrayList res=new ArrayList();
-         ArrayList reste=new ArrayList();
-        res = getStationsLigne(ligne);
-        
-        for(int i=pos;i<pos2;i++){
-             reste.add(res.get(i));
-        }   
-        return reste;
-    }*/
-    
+    /*
+     * retourne les stations d'une ligne qui appartiennent à d'autres lignes
+     */
+   public ArrayList<Station> getStationsMultiLignes(int ligne){
+       Iterator it=this.getStationsLigne(ligne).iterator();
+       ArrayList<Station> temp,res=new ArrayList();
+       while(it.hasNext()){
+           Station station=(Station)it.next();
+           temp=this.getStationsIdentiques(station);
+           if(!temp.isEmpty()) res.add(station);
+       }
+       return res;
+   }
     
     /*
      * renvoie les aretes qui partent d'une station 
@@ -532,12 +494,30 @@ public class Metro {
         return a;
     }
     
+       /*
+     * renvoie les stations qui correspondent a cette station (mais pour la ligne l)
+     */
+    public  Station  getStationsIdentiques(Station s,int ligne){
+        Iterator i=  this.station.iterator();
+        while(i.hasNext()){
+            Station ss= (Station)i.next();
+            if(ss.isIdentiqueStation(s) && ss.getLigne()!= s.getLigne() && (ss.getLigne().getNum() != s.getLigne().getNum()) && ss.getLigne().getNum()==ligne){
+                return ss;
+            }
+        }
+        return null;
+        
+    }
+    
+    
+    
+    
     
     
     /*
     * calcule l'arete avec la distance min pour arriver à la station s
     */
-    public Arete getMinDistance(Station s){
+    public Arete getMinDistance(Station s,Station depart){
         double min=9990;
         ArrayList<Station> a= this.getStationsIdentiques(s);
         Arete amin=null;//this.aretes.get(0);
@@ -547,18 +527,18 @@ public class Metro {
             int nbreIdent =a.size();
             Arete aa=(Arete)i.next();
             if(nbreIdent == 0){         // si cette station ne concerne qu'une ligne
-                   if(((aa.isArrivee(s)) && (aa.getDistance() < min)) && (aa.isAccident()==false)){
+                   if(((aa.isArrivee(s)) && ((aa.getDistance() +aa.getSommetDepart().getDistance(depart)) < min)) && (aa.isAccident()==false)){
                         //nbreIdent--;              
-                    min = aa.getDistance();
+                    min = aa.getDistance()+ aa.getSommetDepart().getDistance(depart);
                     amin=aa;
                     }
             }
             else{
-                if(((aa.isArrivee(a.get(nbreIdent-1)) && (aa.getDistance() < min)) || ((aa.isArrivee(s)) && (aa.getDistance() < min)))){
+                if(((aa.isArrivee(a.get(nbreIdent-1)) && (aa.getDistance()+aa.getSommetDepart().getDistance(depart) < min)) || ((aa.isArrivee(s)) && (aa.getDistance() < min)))){
                     if(((aa.isArrivee(a.get(nbreIdent-1))) && (aa.getDistance() < min) && !(aa.isAccident()))){
                         nbreIdent--;
                     }
-                    min = aa.getDistance();
+                    min = aa.getDistance()+aa.getSommetDepart().getDistance(depart);
                     amin=aa;
                 }
             }
@@ -568,17 +548,16 @@ public class Metro {
  
     
     /*
-     * calcule les antécédents optimaux(distance) pour arriver a chaque station
-     
-    public ArrayList<Arete> getMinDistanceTous(){
-        ArrayList a=new ArrayList();
-        for(int i=0;i< this.station.size();i++){
-           Arete aa= this.getMinDistance(this.getStation(i));
-            a.add(aa);
+     * on teste si une station est contenue dans cette ligne
+     */
+    public boolean containsStation(int ligne,Station s){
+        ArrayList<Station> stations=this.getStationsLigne(ligne);
+        Iterator it= stations.iterator();
+        while(it.hasNext()){
+            if(((Station)it.next()).getNom().equals(s.getNom())) return true;
         }
-        return a;
+        return false;
     }
-    */
     
     
     /*

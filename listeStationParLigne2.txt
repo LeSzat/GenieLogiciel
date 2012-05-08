@@ -6,7 +6,7 @@
 1-a: Porte Maillot	48.877946	2.281925
 1-a: Argentine	48.875339	2.290113
 1-a: Franklin D. Roosevelt	48.868977	2.30989
-1-a: Champs-Elysees-Clémenceau	48.867531	2.313542
+1-a: Champs-Élysées-Clémenceau	48.867531	2.313542
 1-a: Concorde	48.866176	2.322397
 1-a: Tuileries	48.864531	2.329617
 1-a: Palais Royal-Musée du Louvre	48.862644	2.336578

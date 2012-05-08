@@ -4,6 +4,9 @@
  */
 package genielogiciel;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /*
  * Itinéraire entre 2 stations de la même ligne
  */
@@ -67,19 +70,21 @@ public class Itineraire {
      * Calcule le temps de parcours de l'iténeraire
      */
     private void calculTemps() {
-        int res = 0;
+        int res = 0;          
+        
         if ((this.depart.getLigne().getNum()) == this.arrivee.getLigne().getNum()) {
             int arrets;
             int d, a;
-            if ((d = this.depart.getPostionLigne()) < (a = this.arrivee.getPostionLigne())) {
+            if (m.getPositionStation(depart) < m.getPositionStation(arrivee)) {
                 int posd = m.getPositionStation(depart);
                 int posa = m.getPositionStation(arrivee);
                 for (int i = posd; i < posa; i++) {
                     res += m.getStation(i).getTempsArret();
                 }
-                arrets = (this.arrivee.getPostionLigne() - this.depart.getPostionLigne());
+                m.getStationsLigne(this.arrivee.getLigne().getNum());
+                arrets = posa-posd;
             } else {
-                arrets = (this.arrivee.getPostionLigne() - this.depart.getPostionLigne());
+                arrets = (m.getPositionStation(depart) - m.getPositionStation(arrivee));
             }
             this.temps = arrets * 5 + res;
         }

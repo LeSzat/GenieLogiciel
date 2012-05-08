@@ -41,29 +41,6 @@ public class Station implements java.lang.Comparable {
 
     }
     
-     
-     
-    public Station(String nom,int ligne,boolean handicape,boolean ascenseur,Zone zone){
-        this.nom=nom;
-        this.ascenseur=ascenseur;
-        this.handicape=handicape;
-//        this.zone=new Zone(zone);
-       this.perturbation=false;
-      this.ligne=new Ligne(ligne,"" + ligne);
-        this.position=0;
-    }
-    
-    
-    public Station(String nom,boolean handicape,boolean ascenseur){
-        this.nom=nom;
-        this.ascenseur=ascenseur;
-        this.handicape=handicape;
-//        this.zone=zone;
-        this.perturbation=false;
-        this.ligne=new Ligne(0,"0");
-        this.position=0;
-       
-    }
     
     public double getAbscisse()
     {
@@ -158,18 +135,6 @@ public class Station implements java.lang.Comparable {
         return false;
     }
     
-
-//    public Zone getZone() {
-//        return zone;
-//    }
-//
-//    public void setZone(Zone zone) {
-//        this.zone = zone;
-//    }
-//     
-    
-  
-    
     
     /*
      * renvoie la distance entre 2 arrêts voisins 
@@ -182,7 +147,7 @@ public class Station implements java.lang.Comparable {
     @Override
     public String toString(){
 
-   return (  this.nom +" "+this.abscisse+" "+this.ordonnée+"\n" + " de la ligne" + this.ligne.getNom()+ "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape );
+   return (  this.nom +" "+this.abscisse+" "+this.ordonnée+"\n" + " de la ligne" + this.ligne.getNom()+ "\n" + " perturbations : " + this.perturbation + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape );
 
     }
 

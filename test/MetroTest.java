@@ -23,8 +23,12 @@ public class MetroTest extends TestCase{
     
     public void testgetMinDistance(){
     //   double res= m.getMinDistance(m.getStation(6)).getDistance();
-       double res = m.getMinDistance(m.getStation(5)).getDistance();    
-        assertEquals(10.,res);    
+        Metro m=new Metro();
+        Station s=m.getStation(0);
+        Station ss=m.getStation(1);
+        Arete a=new Arete(s.getLigne().getNom(),s.getLigne().getNum(),s,ss);
+       double res = m.getMinDistance(ss,s).getDistance();    
+        assertEquals(a.getDistance(),res);    
     }
     
     
