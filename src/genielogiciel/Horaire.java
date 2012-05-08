@@ -4,7 +4,7 @@
  */
 package genielogiciel;
 
-/*
+/**
  * les horaires de passage des lignes(les mêmes pour toutes les lignes) toutes
  * les 12min
  */
@@ -35,15 +35,15 @@ public class Horaire {
     }
 
     /**
-     * 
+     *
      * @return l'horaire du début de la ligne
      */
     public static int getDebut() {
         return debut;
     }
 
-     /**
-     * 
+    /**
+     *
      * @return Le dernier horaire de la ligne
      */
     public static int getFin() {
@@ -51,7 +51,7 @@ public class Horaire {
     }
 
     /**
-     * 
+     *
      * @return La liste des horaires
      */
     public static int[] getHoraire() {

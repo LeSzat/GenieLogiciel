@@ -71,6 +71,7 @@ public class Arete implements java.lang.Comparable {
 
     /**
      * Retourne la distance de cette arete
+     *
      * @return la distance entre l'arrivée et le départ
      */
     public double getDistance() {
@@ -79,12 +80,12 @@ public class Arete implements java.lang.Comparable {
 
     /**
      * Affecte la distance entre 2 stations
+     *
      * @param distance la distance entre les deux stations
      */
     public void setDistance(double distance) {
         this.distance = distance;
     }
- 
 
     /**
      *
@@ -121,7 +122,7 @@ public class Arete implements java.lang.Comparable {
     }
 
     /**
-     * 
+     *
      * @return Vrai s'il y a un accident sur cette arete
      */
     public boolean isAccident() {
@@ -130,6 +131,7 @@ public class Arete implements java.lang.Comparable {
 
     /**
      * Active ou désactive un accident
+     *
      * @param accident Booléen vrai si accident/ faux sinon
      */
     public void setAccident(boolean accident) {
@@ -137,19 +139,18 @@ public class Arete implements java.lang.Comparable {
     }
 
     /**
-     * 
+     *
      * @return Le nom de la ligne
      */
     public String getNom() {
         return nom;
     }
 
-   /**
-    * 
-    * @return Le numéro de la station
-    */
+    /**
+     *
+     * @return Le numéro de la station
+     */
     public int getNum() {
         return num;
     }
-
 }

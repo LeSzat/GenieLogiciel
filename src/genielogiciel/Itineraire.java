@@ -4,10 +4,7 @@
  */
 package genielogiciel;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-/*
+/**
  * Itinéraire entre 2 stations de la même ligne
  */
 public class Itineraire {
@@ -66,9 +63,10 @@ public class Itineraire {
         return temps;
     }
 
-    /*
+    /**
      * Calcule le temps de parcours de l'iténeraire
      */
+    @Deprecated
     private void calculTemps() {
         int res = 0;          
         

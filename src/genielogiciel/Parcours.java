@@ -1,6 +1,8 @@
 package genielogiciel;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
 /**
  *
@@ -20,10 +22,24 @@ public class Parcours {
      * le métro
      */
     private Metro m;
+    /**
+     * Temps de parcours
+     */
     private int temps;
+    /**
+     * Nombre de correspondance
+     */
     private int correspondance;
+    /**
+     * Liste des stations empruntées
+     */
     private ArrayList<Station> res;
 
+    /**
+     * Permet de calculer un parcours
+     * @param depart Station de départ
+     * @param arrivee Station d'arrivée
+     */
     public Parcours(Station depart, Station arrivee) {
         this.depart = depart;
         this.arrivee = arrivee;
@@ -33,7 +49,7 @@ public class Parcours {
         res = new ArrayList();
     }
 
-    /*
+    /**
      * permet de retrouver le chemin optimal entre 2 stations
      */
     public ArrayList dijkstra(Station depart, Station arrivee) {
@@ -65,7 +81,7 @@ public class Parcours {
         //  if(this.depart.getLigne() == this.arrivee.getLigne()){   //si les 2 stations appartiennent à la meme ligne
         if (m.containsStation(depart.getLigne().getNum(), arrivee)) {
             Itineraire itin = new Itineraire(this.depart, this.arrivee);
-          //  this.temps += itin.getTemps();
+            //  this.temps += itin.getTemps();
             resultat.add(depart);
             resultat.add(arrivee);
             return resultat;
@@ -93,7 +109,7 @@ public class Parcours {
                         // resultat.add(depart);
                         temp = m.getStationsIdentiques(temp, actuelle.getLigne().getNum());
                         Itineraire it = new Itineraire(actuelle, temp);
-                    //    this.temps += it.getTemps();
+                        //    this.temps += it.getTemps();
                         Collections.reverse(resultat);
                         return resultat;
                     }
@@ -102,40 +118,38 @@ public class Parcours {
                         if (temp.getLigne() != actuelle.getLigne()) {
                             changement++;
                         }
-                        
-                        
-                     
-                           
+
+
+
+
                         if (a.isArrivee(actuelle) || actuelle.compareTo(temp) == 0) {
-                           //     resultat.add(a); // on ajoute cette arete au resultat du chemin
-                              
+                            //     resultat.add(a); // on ajoute cette arete au resultat du chemin
+
                             //   parcouru.set(i,true); 
-                             actuelle = a.getSommetDepart();  //m.getMinDistance(actuelle).getSommetDepart();         
-                            } else {
-                                if (!m.getStationsIdentiques(actuelle).isEmpty()) {
-                                    if (a.isArrivee(m.getStationsIdentiques(actuelle).get(0))) {
-                                        // resultat.add(a);
-                                        actuelle = m.getMinDistance(actuelle, depart).getSommetDepart();
-                                    }
+                            actuelle = a.getSommetDepart();  //m.getMinDistance(actuelle).getSommetDepart();         
+                        } else {
+                            if (!m.getStationsIdentiques(actuelle).isEmpty()) {
+                                if (a.isArrivee(m.getStationsIdentiques(actuelle).get(0))) {
+                                    // resultat.add(a);
+                                    actuelle = m.getMinDistance(actuelle, depart).getSommetDepart();
                                 }
                             }
-                        } else {
-                            j++;
                         }
+                    } else {
+                        j++;
                     }
                 }
             }
-            this.correspondance += changement;
-            Collections.reverse(resultat);
-            return resultat;
         }
+        this.correspondance += changement;
+        Collections.reverse(resultat);
+        return resultat;
+    }
 
 
-        /*
-         * parcours optimal en passant par un point choisi par l'utilisateur
-         */
-    
-
+    /**
+     * parcours optimal en passant par un point choisi par l'utilisateur
+     */
     public ArrayList dijkstraParPoint(Station s) {
         Parcours p = new Parcours(this.depart, s);
         Parcours p2 = new Parcours(s, this.arrivee);
@@ -188,7 +202,7 @@ public class Parcours {
         this.depart = depart;
     }
 
-    /*
+    /**
      * calcule le changement avec le min de correspondances
      */
     public ArrayList<Station> getMinCorrespondance(Station depart, Station arrivee) {
@@ -241,7 +255,6 @@ public class Parcours {
         return getMinCorrespondance(stationInterm.get(0), arrivee);                   //avec plusieurs changements de ligne
         // return res;
     }
-   
 //    
 //    public ArrayList dijkstraChangements(Station a, Station b) {
 //        if (this.depart.getLigne() == this.arrivee.getLigne()) {
@@ -287,7 +300,4 @@ public class Parcours {
 //            //  return tab;
 //        }
 //    }
-   
-     
-
 }

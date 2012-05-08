@@ -4,7 +4,7 @@ package genielogiciel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/*
+/**
  * représente les lignes qui lient les stations
  */
 public class Ligne {
@@ -18,7 +18,7 @@ public class Ligne {
      */
     private String nom;
     /**
-     * Vi
+     * Vitesse d'un rame de métro
      */
     public static final double vitesse = 18; 
 
