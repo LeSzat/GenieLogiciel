@@ -7,13 +7,20 @@ package genielogiciel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-<<<<<<< HEAD
 /*
  * représente les lignes qui lient les stations
-=======
-/**
- *Modélise une ligne du métro
->>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package genielogiciel;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/*
+ * représente les lignes qui lient les stations
+
+
  */
 public class Ligne {
 

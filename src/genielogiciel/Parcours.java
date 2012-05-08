@@ -77,6 +77,9 @@ public class Parcours {
         if(this.depart.getLigne() == this.arrivee.getLigne()){   //si les 2 stations appartiennent à la meme ligne
                 Itineraire itin=new Itineraire(this.depart,this.arrivee);
                 this.temps=(int)itin.getTemps();
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
+=======
 >>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
         }
         else{     //si les 2 stations n'appartiennent pas à la meme ligne   
@@ -108,9 +111,12 @@ public class Parcours {
                      if((parcouru.get(m.getPositionStation(a.getSommetDepart())) == false)){
                         if(temp.getLigne() != actuelle.getLigne()) changement ++;
 <<<<<<< HEAD
+<<<<<<< HEAD
                         if(a.isArrivee(actuelle) || actuelle.isIdentiqueStation(temp)){
                             // resultat.add(a); // on ajoute cette arete au resultat du chemin
 =======
+=======
+>>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
                         if(a.isArrivee(actuelle) || actuelle.compareTo(temp) == 0){
                              resultat.add(a); // on ajoute cette arete au resultat du chemin
 >>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
