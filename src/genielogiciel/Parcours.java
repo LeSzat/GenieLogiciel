@@ -65,6 +65,7 @@ public class Parcours {
     //    resultat.add(m.getMinDistance(depart,depart));
         int i=0,j=0;
     
+<<<<<<< HEAD
       //  if(this.depart.getLigne() == this.arrivee.getLigne()){   //si les 2 stations appartiennent à la meme ligne
                 if(m.containsStation(depart.getLigne().getNum(), arrivee)){
                 Itineraire itin=new Itineraire(this.depart,this.arrivee);                          
@@ -72,6 +73,11 @@ public class Parcours {
                 resultat.add(depart);
                 resultat.add(arrivee);
                 return resultat;
+=======
+        if(this.depart.getLigne() == this.arrivee.getLigne()){   //si les 2 stations appartiennent à la meme ligne
+                Itineraire itin=new Itineraire(this.depart,this.arrivee);
+                this.temps=(int)itin.getTemps();
+>>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
         }
         else{     //si les 2 stations n'appartiennent pas à la meme ligne   
           Iterator iter= m.getStation().iterator();
@@ -101,8 +107,13 @@ public class Parcours {
                    //   Arete a=aretes.get(j);
                      if((parcouru.get(m.getPositionStation(a.getSommetDepart())) == false)){
                         if(temp.getLigne() != actuelle.getLigne()) changement ++;
+<<<<<<< HEAD
                         if(a.isArrivee(actuelle) || actuelle.isIdentiqueStation(temp)){
                             // resultat.add(a); // on ajoute cette arete au resultat du chemin
+=======
+                        if(a.isArrivee(actuelle) || actuelle.compareTo(temp) == 0){
+                             resultat.add(a); // on ajoute cette arete au resultat du chemin
+>>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
                             //   parcouru.set(i,true); 
                              actuelle= a.getSommetDepart();  //m.getMinDistance(actuelle).getSommetDepart();         
                          }
@@ -238,7 +249,57 @@ public class Parcours {
       // return res;
     }
     
+<<<<<<< HEAD
  
+=======
+    
+    public ArrayList dijkstraChangements(Station a,Station b){
+          if(this.depart.getLigne() == this.arrivee.getLigne()) return dijkstra();
+         else{
+              this.depart=a;
+              this.arrivee=b;
+              boolean bcorrespondance=true;
+              Station corresp;
+              ArrayList tab=new ArrayList();
+              
+              ArrayList<Station> stationsD = m.getStationsLigne(this.depart.getLigne().getNum());
+              ArrayList<Station> stationsA = m.getStationsLigne(this.arrivee.getLigne().getNum());
+             // Iterator it= stationsD.iterator();
+              Station d=null;
+          //    if( bcorrespondance){
+            //  while(it.hasNext()){  
+              for(int j=0;j<stationsD.size();j++){
+                  d = stationsD.get(j);
+                  ArrayList ident= m.getStationsIdentiques(d);
+             //    Iterator it2= stationsA.iterator();
+                  for(int i=0;i<stationsA.size();i++){
+                 // while(it2.hasNext()){                 
+                      if((stationsA.get(i).compareTo(d) == 0) && !(stationsA.get(i).isPerturbation())){
+                          bcorrespondance=false;
+                          correspondance++;
+                          corresp=d;
+                          tab.add(ident.get(0));
+                          tab.add(corresp);
+                          return tab;
+                        //  return corresp;
+                      }
+                  }
+              }
+        //      }
+          //    else{              
+                    correspondance ++;
+                    tab.add(d);
+                    tab.addAll(this.dijkstraChangements(m.getStation(6),this.arrivee));
+                    return tab;
+          //    }
+              
+     //  return tab;
+         }
+    }
+    
+    
+    
+>>>>>>> branch 'master' of https://github.com/LeSzat/GenieLogiciel.git
     
      
 
