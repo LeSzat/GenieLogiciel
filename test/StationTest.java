@@ -25,14 +25,8 @@ public class StationTest  extends TestCase {
         
         Station s1 = new Station("S1",40,40);
         Station s2 = new Station("S2",40,40);
-        
+        assertTrue(s1.compareTo(s2) ==0);
        
-       assertTrue(s1.compareTo(s2) ==0);
-       
-        
-        
-       
-       //assertTrue(s1.compareTo(s2) ==0);
     }
     
     
