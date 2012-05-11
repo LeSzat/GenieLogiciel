@@ -66,7 +66,6 @@ public class Itineraire {
     /**
      * Calcule le temps de parcours de l'iténeraire
      */
-    @Deprecated
     private void calculTemps() {
         int res = 0;          
         
