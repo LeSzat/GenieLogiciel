@@ -5,7 +5,7 @@
 package genielogiciel;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.*;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
@@ -122,11 +122,16 @@ public class Metro {
      * on importe les stations,lignes et coordonnées à partir d'un fichier
      */
     private void importerStations() {
-        String fichier = "listeStationParLigne2.txt";
+        File fichier = new File("listeStationParLigne2.txt");
         //lecture du fichier texte	
         try {
+            if(!fichier.canRead()){
+                System.out.println("Le fichier des données ne peut pas être lu!");
+                System.exit(1);
+            }
+            if(fichier.exists()){
             InputStream ips = new FileInputStream(fichier);
-            InputStreamReader ipsr = new InputStreamReader(ips);
+            InputStreamReader ipsr = new InputStreamReader(ips);        
             try (BufferedReader br = new BufferedReader(ipsr)) {
                 String ligne;
                 int i = 0, j = 0;
@@ -151,6 +156,11 @@ public class Metro {
                         this.station.add(s);
                     }
                 }
+            }
+            }
+            else{
+                System.out.println("Le fichier avec les données n'existe pas!");
+                System.exit(1);
             }
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -258,7 +268,8 @@ public class Metro {
         int heure = d.get(Calendar.HOUR_OF_DAY), i = 0, attente = 0, index = 0;
         int min = d.get(Calendar.MINUTE);
         int sec = d.get(Calendar.SECOND);
-
+        double distance=0;
+        int total=0;
         int tempsDeTerminus = 0;
         int[] horaires = Horaire.horaire;
         Horaire h = new Horaire();
@@ -266,16 +277,32 @@ public class Metro {
         ArrayList<Station> stations = this.getStationsLigne(s.getLigne().getNum());
         Collections.sort(stations);
 
-        Iterator iter = stations.iterator();          // on récupère toutes les stations de cette ligne
-        double distance = 0;
-        int total = 0;
-
-        while (iter.hasNext() && index < s.getPostionLigne()) {
-            station2 = (Station) iter.next();
-            station = (Station) iter.next();
-            index += 2;
-            distance += station2.getDistance(station);
-            attente += station2.getTempsArret();
+         if(sens != 1){     // si c'est dans le sens retour
+                   Collections.reverse(stations);
+                    total = s.getLigne().getTempsTotalParcours();           // on regarde le temps nécesaire à la rame d'arriver au terminus
+                    for(int ii=0;ii<horaires.length;ii++){
+                   //     horaires[ii] = (Horaire.horaire[ii]+ total + 5)%60;
+                        h.horaireRet[ii]=(Horaire.horaire[ii]+ total + 5)%60;                   
+                    }
+                    
+                    tempsDeTerminus = this.getTempsDeTerminus(s,2);
+                    for(int j=0;j<h.horaireRet.length;j++){
+                        h.horaireRet[j] = (h.horaireRet[j]+tempsDeTerminus)%60;
+                    }
+                    Arrays.sort(horaires);
+                    
+                    Arrays.sort(h.horaireRet);
+                    i=0;
+                    while(i<h.horaireRet.length && h.horaireRet[i]<min){
+                        i++;
+                     }
+                 if(h.horaireRet[h.horaireRet.length-1] <min){
+                       heure=heure+1;
+                       min= h.horaireRet[0];
+                }
+                else {
+                 min=h.horaireRet[i];
+                }
         }
         distance += stations.get(index).getDistance(s);
 
@@ -524,11 +551,11 @@ public class Metro {
     /**
      * on teste si une station est contenue dans cette ligne
      */
-    public boolean containsStation(int ligne, Station s) {
-        ArrayList<Station> stations = this.getStationsLigne(ligne);
-        Iterator it = stations.iterator();
-        while (it.hasNext()) {
-            if (((Station) it.next()).getNom().equals(s.getNom())) {
+    public boolean containsStation(int ligne,Station s){
+        ArrayList<Station> stations=this.getStationsLigne(ligne);
+        Iterator it= stations.iterator();
+        while(it.hasNext()){
+            if(((Station)it.next()).getNom().equals(s.getNom())) {
                 return true;
             }
         }

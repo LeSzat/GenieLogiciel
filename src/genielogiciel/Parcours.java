@@ -37,6 +37,7 @@ public class Parcours {
 
     /**
      * Permet de calculer un parcours
+     *
      * @param depart Station de départ
      * @param arrivee Station d'arrivée
      */
@@ -81,7 +82,7 @@ public class Parcours {
         //  if(this.depart.getLigne() == this.arrivee.getLigne()){   //si les 2 stations appartiennent à la meme ligne
         if (m.containsStation(depart.getLigne().getNum(), arrivee)) {
             Itineraire itin = new Itineraire(this.depart, this.arrivee);
-            //  this.temps += itin.getTemps();
+            this.temps += itin.getTemps();
             resultat.add(depart);
             resultat.add(arrivee);
             return resultat;
@@ -95,43 +96,64 @@ public class Parcours {
                 j = 0;
                 ArrayList<Arete> aretes = m.getAretesArriveeStation(actuelle);
                 while ((!(actuelle.getNom().equalsIgnoreCase(depart.getNom()) && (actuelle.getAbscisse() == depart.getAbscisse() && actuelle.getOrdonnée() == depart.getOrdonnée()))) && actuelle.isPerturbation() == false && j < aretes.size()) {   //       
+                    if (temp == null) {
+                        break;
+                    }
                     parcouru.set(m.getPositionStation(actuelle), true);
                     Arete a = m.getMinDistance(actuelle, depart);                          //on récupère l'arete avec distance min pour le sommet arrivee actuelle                    
 
                     if (aretes.isEmpty()) {
                         return null;
                     }
-                    if (m.containsStation(actuelle.getLigne().getNum(), temp)) {   // si la station actuelle est dans la ligne de la station de départ
+                    if (actuelle.getNom().equalsIgnoreCase(temp.getNom())) {
+                        break;
+                    }
+                    if (m.containsStation(actuelle.getLigne().getNum(), depart) || (m.containsStation(depart.getLigne().getNum(), actuelle))) {   // si la station actuelle est dans la ligne de la station de départ
                         //                                dijkstra(depart,temp);
                         //  resultat.add(this.getMinCorrespondance(depart, temp));
                         resultat.add(arrivee);
-                        resultat.add(temp);
+                        resultat.add(actuelle);
+                        // resultat.add(temp);
                         // resultat.add(depart);
-                        temp = m.getStationsIdentiques(temp, actuelle.getLigne().getNum());
-                        Itineraire it = new Itineraire(actuelle, temp);
-                        //    this.temps += it.getTemps();
+                        if (m.containsStation(actuelle.getLigne().getNum(), depart)) {
+                            resultat.add(m.getStationsIdentiques(depart, actuelle.getLigne().getNum()));
+                        }
+                        if (m.containsStation(depart.getLigne().getNum(), actuelle)) {
+                            resultat.add(m.getStationsIdentiques(actuelle, depart.getLigne().getNum()));
+                        }
+                        resultat.add(depart);
                         Collections.reverse(resultat);
                         return resultat;
+
+//                        if(temp != null){
+//                            Itineraire it = new Itineraire(actuelle, temp);
+//                            this.temps += it.getTemps();
+//                            Collections.reverse(resultat);
+//                            return resultat;
+//                        }
+//                        else {
+//                            break;
+//                        }
+
                     }
                     //   Arete a=aretes.get(j);
                     if ((parcouru.get(m.getPositionStation(a.getSommetDepart())) == false)) {
                         if (temp.getLigne() != actuelle.getLigne()) {
                             changement++;
                         }
-
-
-
-
+                        temp = m.getStationsIdentiques(temp, actuelle.getLigne().getNum());
                         if (a.isArrivee(actuelle) || actuelle.compareTo(temp) == 0) {
-                            //     resultat.add(a); // on ajoute cette arete au resultat du chemin
-
+                            //     resultat.add(a); // on ajoute cette arete au resultat du chemin                     
                             //   parcouru.set(i,true); 
-                            actuelle = a.getSommetDepart();  //m.getMinDistance(actuelle).getSommetDepart();         
+                            actuelle = a.getSommetDepart();
                         } else {
                             if (!m.getStationsIdentiques(actuelle).isEmpty()) {
                                 if (a.isArrivee(m.getStationsIdentiques(actuelle).get(0))) {
                                     // resultat.add(a);
+                                    resultat.add(m.getStationsIdentiques(actuelle).get(0));
+                                    this.temps += actuelle.getTempsArret() + actuelle.getDistance(m.getMinDistance(actuelle, depart).getSommetDepart()) * Ligne.vitesse;
                                     actuelle = m.getMinDistance(actuelle, depart).getSommetDepart();
+                                    // actuelle = m.getStationsIdentiques(actuelle).get(0);
                                 }
                             }
                         }
@@ -140,6 +162,12 @@ public class Parcours {
                     }
                 }
             }
+
+
+            this.correspondance += changement;
+            if (resultat.isEmpty()) {
+                return this.getMinCorrespondance(depart, arrivee);
+            }
         }
         this.correspondance += changement;
         Collections.reverse(resultat);
@@ -147,7 +175,7 @@ public class Parcours {
     }
 
 
-    /**
+    /*
      * parcours optimal en passant par un point choisi par l'utilisateur
      */
     public ArrayList dijkstraParPoint(Station s) {
@@ -207,6 +235,16 @@ public class Parcours {
      */
     public ArrayList<Station> getMinCorrespondance(Station depart, Station arrivee) {
         //correspondance=0;
+        if (depart.isPerturbation()) {
+            System.out.println("Il y des perturbations sur votre station de départ");
+            System.out.println("Choisissez une autre station");
+            return null;
+        }
+        if (arrivee.isPerturbation()) {
+            System.out.println("Il y des perturbations sur votre station de départ");
+            System.out.println("Choisissez une autre station");
+            return null;
+        }
         ArrayList<Station> stationsDepart = m.getStationsLigne(depart.getLigne().getNum());
         ArrayList<Station> stationInterm = new ArrayList();
         ArrayList<Station> stationsArrivee = m.getStationsLigne(arrivee.getLigne().getNum());
@@ -224,6 +262,7 @@ public class Parcours {
                         // res.add(stationInterm.get(0));
                         // stationInterm.add(m.getStationsIdentiques(dep).get(j));
                         res.add(depart);
+                        //    res.add(m.getStationsIdentiques(actuelle,arrivee.getLigne().getNum()));
                         res.add(actuelle);
                         this.correspondance++;
                         Itineraire itin = new Itineraire(actuelle, arrivee);
@@ -245,13 +284,18 @@ public class Parcours {
                         // stationInterm.add(m.getStationsIdentiques(dep).get(j));
                         res.add(depart);
                         res.add(actuelle);
+                        res.add(stationInterm.get(j));
                         this.correspondance++;
+                        this.temps += depart.getTemps(actuelle);
                         return res;
                     }
                 }
             }
         }
+        res.add(depart);
+        this.temps += depart.getTemps(stationInterm.get(0));
         this.correspondance++;
+
         return getMinCorrespondance(stationInterm.get(0), arrivee);                   //avec plusieurs changements de ligne
         // return res;
     }

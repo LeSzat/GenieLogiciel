@@ -36,7 +36,7 @@ public class Itineraire {
         this.depart = d;
         this.arrivee = a;
         this.m = new Metro();
-      //  this.calculTemps();
+        this.calculTemps();
     }
 
     /**
@@ -86,5 +86,6 @@ public class Itineraire {
             }
             this.temps = arrets * 5 + res;
         }
+        else this.temps= (int)(this.depart.getDistance(this.arrivee) * Ligne.vitesse);
     }
 }

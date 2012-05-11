@@ -122,11 +122,21 @@ public class Station implements java.lang.Comparable {
     public double getDistance(Station s) {           //distance euclidienne
         return Math.sqrt((s.getAbscisse() - this.getAbscisse()) * (s.getAbscisse() - this.getAbscisse()) + (s.getOrdonnée() - this.getOrdonnée()) * (s.getOrdonnée() - this.getOrdonnée()));
     }
-
+    
+    public int getTemps(Station s){
+        Itineraire it=new Itineraire(this,s);
+        return it.getTemps();
+    }
+    
+    
+    
     @Override
-    public String toString() {
-
-        return (this.nom + " " + this.abscisse + " " + this.ordonnée + "\n" + " de la ligne" + this.ligne.getNom() + "\n" + " perturbations : " + this.perturbation + "\n" + "ascenseur: " + this.isAscenseur() + "\n" + "accès handicapés: " + this.handicape);
+    public String toString(){
+        String pert,hand,ascen;
+        pert = (this.perturbation==false)?("non"):("oui");
+        hand = (this.handicape==false)?("non"):("oui");
+        ascen = (this.ascenseur==false)?("non"):("oui");
+        return (  this.nom +" "+this.abscisse+" "+this.ordonnée+"\n" + "de la ligne" + this.ligne.getNom()+ "\n" + "perturbations : " + pert + "\n" + "ascenseur: " + ascen + "\n" + "accès handicapés: " + hand );
 
     }
 }
