@@ -4,7 +4,10 @@
  */
 package genielogiciel;
 
+import java.io.BufferedReader;
 import java.io.*;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 /**
@@ -22,6 +25,7 @@ public class Metro {
         lignes = new ArrayList<>();
         importerStations();
         creerAretes();
+
     }
 
     @Deprecated
@@ -158,7 +162,7 @@ public class Metro {
                 System.out.println("Le fichier avec les données n'existe pas!");
                 System.exit(1);
             }
-        } catch (IOException | NumberFormatException e) {
+        } catch (Exception e) {
             System.err.println(e.toString());
         }
     }
@@ -166,9 +170,9 @@ public class Metro {
     /**
      * on crée automatiquement les arêtes à partir de la liste des stations
      */
-    private boolean creerAretes() {
+    public boolean creerAretes() {
         Iterator it = this.lignes.iterator();
-        ArrayList<Station> stations;
+        ArrayList<Station> stations = new ArrayList();
         while (it.hasNext()) {
             stations = getStationsLigne(((Ligne) it.next()).getNum());
             int j = 0;
@@ -191,7 +195,7 @@ public class Metro {
      */
     public int rechercherStationProche(double x, double y) {
         int stationn = 0, j = 0;         // la station
-        double distance, distancemin = 10000;
+        double distance = 0, distancemin = 100000;
         Iterator i = this.station.iterator();
         while (i.hasNext()) {
             Station s = (Station) i.next();
@@ -201,10 +205,9 @@ public class Metro {
                 distancemin = distance;
                 stationn = j;
             }
+             j++;
         }
-         j++;
-        int res = stationn;
-        return res;
+        return stationn;
     }
 
     /**
@@ -264,9 +267,10 @@ public class Metro {
         //Permet de trouver le time actuel
         int heure = d.get(Calendar.HOUR_OF_DAY), i = 0, attente = 0, index = 0;
         int min = d.get(Calendar.MINUTE);
+        int sec = d.get(Calendar.SECOND);
         double distance=0;
-        int total;
-        int tempsDeTerminus;
+        int total=0;
+        int tempsDeTerminus = 0;
         int[] horaires = Horaire.horaire;
         Horaire h = new Horaire();
         Station station, station2;

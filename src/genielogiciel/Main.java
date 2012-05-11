@@ -170,16 +170,18 @@ public class Main {
                 Station arr=m.getStationLigne(numLine2,arrivee);
 
                 if(verifierDepartArrivee(dep,arr)){             
-                      Parcours par=new Parcours(dep,arr);
-                      ArrayList parcours=par.dijkstra(dep,arr);
-                    if(parcours != null){
-                         System.out.println(" - " + par.getDepart().getNom() + " ( ligne " + par.getDepart().getLigne().getNom() +" )");
+                    Parcours par=new Parcours(dep,arr);
+                     // par.getDepart().setPerturbation(true);
+                    ArrayList parcours=par.dijkstra(dep,arr);
+                    if(parcours != null){                 
+                         //System.out.println(" - " + par.getDepart().getNom() + " ( ligne " + par.getDepart().getLigne().getNom() +" )");
                          Iterator ite=parcours.iterator();
                          while(ite.hasNext()){
                               Object res=ite.next();           
                              Station arete=((Station)res);
                              System.out.println(" - " + arete.getNom() + " ( ligne " + arete.getLigne().getNom() +" )");
                         }
+                          System.out.println(" - " + arr.getNom() + " ( ligne " + arr.getLigne().getNom() +" )"); 
                     }
                     System.out.println("temps : " + par.getTemps() +" min");
                 }
@@ -191,17 +193,20 @@ public class Main {
                 System.out.println("Quelle est votre position?Position X?");
                 Scanner s=new Scanner(System.in);   
                 int x=0,y=0;
-                while(! s.hasNextInt()){
+                  while (!s.hasNextInt()) {
                     System.out.println("Quelle est votre position?Position X?");
                     s = new Scanner(System.in);
-                    while (!s.hasNextInt()) {
-                        System.out.println("Quelle est votre position?Position X?");
-                        s = new Scanner(System.in);
-                    }
-                     x = s.nextInt();
+                   }
+                   
+                   
+                   while (!s.hasNextInt()) {
+                    System.out.println("Quelle est votre position?Position Y?");
+                    s = new Scanner(System.in);
+                   }
+                   y = s.nextInt();
                     System.out.println("Position Y?");
                     s=new Scanner(System.in);
-                }
+    
                 y=s.nextInt(); 
                 int resu= m.rechercherStationProche(x, y);
                 System.out.println("La station la plus proche est la station " + m.getStation(resu));      
@@ -232,7 +237,8 @@ public class Main {
                         System.out.println("--> " + arete.getNom() +  " ( ligne " + arete.getLigne().getNom() +" )");
                     }
                 }
-                System.out.println("temps : " + p.getTemps() + " min");
+                 System.out.println(" à " + p.getArrivee().getNom() + " ( ligne" + p.getArrivee().getLigne().getNom() + ") ");
+             //   System.out.println("temps : " + p.getTemps() + " min");
             break;
             case 8:        
                  int lineD=demanderLigne();

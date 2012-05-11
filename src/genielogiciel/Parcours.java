@@ -95,7 +95,7 @@ public class Parcours {
                 i = m.getPositionStation(actuelle);
                 j = 0;
                 ArrayList<Arete> aretes = m.getAretesArriveeStation(actuelle);
-                while ((!(actuelle.getNom().equalsIgnoreCase(depart.getNom()) && (actuelle.getAbscisse() == depart.getAbscisse() && actuelle.getOrdonnée() == depart.getOrdonnée()))) && actuelle.isPerturbation() == false && j < aretes.size()) {   //       
+                while ((!(actuelle.getNom().equalsIgnoreCase(depart.getNom()) && (actuelle.getAbscisse() == depart.getAbscisse() && actuelle.getOrdonnée() == depart.getOrdonnée()))) && actuelle.isPerturbation() == false && j < aretes.size() && !(actuelle.getNom().equalsIgnoreCase(arrivee.getNom()))) {   //       
                     if (temp == null) {
                         break;
                     }
@@ -142,7 +142,7 @@ public class Parcours {
                             changement++;
                         }
                         temp = m.getStationsIdentiques(temp, actuelle.getLigne().getNum());
-                        if (a.isArrivee(actuelle) || actuelle.compareTo(temp) == 0) {
+                        if (a.isArrivee(actuelle) || actuelle.compareTo(temp) == 0 || temp != null) {
                             //     resultat.add(a); // on ajoute cette arete au resultat du chemin                     
                             //   parcouru.set(i,true); 
                             actuelle = a.getSommetDepart();
@@ -180,11 +180,15 @@ public class Parcours {
      */
     public ArrayList dijkstraParPoint(Station s) {
         Parcours p = new Parcours(this.depart, s);
+        
         Parcours p2 = new Parcours(s, this.arrivee);
+        
         ArrayList res = new ArrayList();
         ArrayList res2 = new ArrayList();
         res = p.dijkstra(depart, s);
+        System.out.println("parcours 1 : temps " + p.getTemps()+ " min");
         res2 = p2.dijkstra(s, arrivee);
+        System.out.println("parcours 2 : temps " + p2.getTemps() + " min");
         this.correspondance = p.getCorrespondance() + p2.getCorrespondance();
         res.addAll(res2);
         return res;
@@ -292,7 +296,7 @@ public class Parcours {
                 }
             }
         }
-        res.add(depart);
+    //    res.add(depart);
         this.temps += depart.getTemps(stationInterm.get(0));
         this.correspondance++;
 
